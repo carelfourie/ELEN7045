@@ -37,5 +37,4 @@ public class Resources {
     public Logger produceLog(InjectionPoint injectionPoint) {
         return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
     }
-
 }

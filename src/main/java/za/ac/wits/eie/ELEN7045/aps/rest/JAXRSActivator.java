@@ -12,6 +12,6 @@ import javax.ws.rs.core.Application;
  * </p>
  */
 @ApplicationPath("/rest")
-public class JaxRsActivator extends Application {
+public class JAXRSActivator extends Application {
     /* class body intentionally left blank */
 }

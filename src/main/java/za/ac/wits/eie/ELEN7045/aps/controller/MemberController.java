@@ -13,8 +13,6 @@ import za.ac.wits.eie.ELEN7045.aps.service.MemberRegistration;
 
 // The @Model stereotype is a convenience mechanism to make this a request-scoped bean that has an
 // EL name
-// Read more about the @Model stereotype in this FAQ:
-// http://sfwk.org/Documentation/WhatIsThePurposeOfTheModelAnnotation
 @Model
 public class MemberController {
 
@@ -47,22 +45,21 @@ public class MemberController {
     }
 
     private String getRootErrorMessage(Exception e) {
-        // Default to general error message that registration failed.
+        // default to general error message that registration failed.
         String errorMessage = "Registration failed. See server log for more information";
         if (e == null) {
-            // This shouldn't happen, but return the default messages
+            // this shouldn't happen, but return the default messages
             return errorMessage;
         }
-
-        // Start with the exception and recurse to find the root cause
+        
+        // start with the exception and recurse to find the root cause
         Throwable t = e;
         while (t != null) {
-            // Get the message from the Throwable class instance
+            // get the message from the Throwable class instance
             errorMessage = t.getLocalizedMessage();
             t = t.getCause();
         }
-        // This is the root cause message
+        // this is the root cause message
         return errorMessage;
     }
-
 }

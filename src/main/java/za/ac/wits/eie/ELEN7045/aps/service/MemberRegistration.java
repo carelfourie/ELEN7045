@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 
 import za.ac.wits.eie.ELEN7045.aps.model.Member;
 
-// The @Stateless annotation eliminates the need for manual transaction demarcation
+// the @Stateless annotation eliminates the need for manual transaction demarcation
 @Stateless
 public class MemberRegistration {
 

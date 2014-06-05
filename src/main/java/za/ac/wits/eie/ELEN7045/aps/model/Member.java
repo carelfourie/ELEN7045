@@ -18,7 +18,7 @@ import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 @Entity
 @XmlRootElement
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
-public class Member extends BaseDomainEntity<Long> {
+public class Member extends BaseDomainEntity <Long> {
 
     @NotNull
     @NotEmpty
