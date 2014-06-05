@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+<rootpath>/rest</rootpath>
+<rest>
+<applicationclass>
+<package>za.ac.wits.eie.ELEN7045.aps.rest</package>
+<name>JaxRsActivator</name>
+</applicationclass>
+</rest>
+</configuration>
