@@ -4,9 +4,11 @@ Technologies: CDI, JSF, JPA, EJB, JPA, JAX-RS, BV
 Summary: ELEN7045 - Group Project
 Target Product: WildFly
 
-
 What is it?
 -----------
+
+Account Presentation System. 
+
 
 System requirements
 -------------------
