@@ -30,13 +30,13 @@
       <class>za.ac.wits.eie.ELEN7045.aps.model.Company</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.BillingCycle</class>
-      <class>za.ac.wits.eie.ELEN7045.aps.model.CreditCardStatement</class>
-      <class>za.ac.wits.eie.ELEN7045.aps.model.MunicipalityStatement</class>
+      <class>za.ac.wits.eie.ELEN7045.aps.model.statement.CreditCardStatement</class>
+      <class>za.ac.wits.eie.ELEN7045.aps.model.statement.MunicipalityStatement</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.ReturnCode</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.ScrapingEvent</class>
-      <class>za.ac.wits.eie.ELEN7045.aps.model.Statement</class>
+      <class>za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.Status</class>
-      <class>za.ac.wits.eie.ELEN7045.aps.model.TelcoStatement</class>
+      <class>za.ac.wits.eie.ELEN7045.aps.model.statement.TelcoStatement</class>
       <properties>
          <!-- Properties for Hibernate -->
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />
