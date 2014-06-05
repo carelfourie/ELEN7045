@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 
 @Entity
-public class Status extends BaseDomainEntity <Long> {
+public class Status extends BaseDomainEntity<Long> {
     
     private String description;
 

@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 
 @Entity
-public class CompanyAccount extends BaseDomainEntity <Long> {
+public class CompanyAccount extends BaseDomainEntity<Long> {
     
     @OneToOne
     private Status status;
