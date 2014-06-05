@@ -1,0 +1,26 @@
+<project name="wildfly_local_conf" basedir="." default="reset">
+	
+	<property file="build.properties"/>
+	
+	<target name="inject_config_standalone">
+		<copy file="${wildfly_config_standalone}" todir="${wildfly_standalone_config_dir}" overwrite="true" verbose="true"/>
+    </target>
+	
+	<target name="inject_config_standalone_full"> 
+		<copy file="${wildfly_config_standalone_full}" todir="${wildfly_standalone_config_dir}" overwrite="true" verbose="true"/>
+	</target>
+	
+	<target name="inject_driver_mysql">
+		<!-- copy entire dir -->
+		<copy todir="${wildfly_standalone_module_com}" overwrite="true" verbose="true">
+			<fileset dir="${wildfly_config_standalone_module_mysql_driver}"/>
+		</copy>
+	</target>
+	
+	<target name="reset">
+		<delete dir="${wildfly_standalone_dir}/data" verbose="true"/>
+		<delete dir="${wildfly_standalone_dir}/log"  verbose="true"/>
+		<delete dir="${wildfly_standalone_dir}/tmp"  verbose="true"/>
+	</target>
+	
+</project>
