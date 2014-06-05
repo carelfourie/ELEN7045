@@ -6,7 +6,7 @@ import javax.persistence.OneToOne;
 import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 
 @Entity
-public class Company extends BaseDomainEntity<Long> {
+public class Company extends BaseDomainEntity <Long> {
     
     @OneToOne
     private BillingCycle billingCycle;
