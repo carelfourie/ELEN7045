@@ -1,11 +1,9 @@
 jee_aps_app: Assortment of technologies including Arquillian
 ========================
-Author: Pete Muir
-Level: Intermediate
 Technologies: CDI, JSF, JPA, EJB, JPA, JAX-RS, BV
 Summary: An example that incorporates multiple technologies
-Target Product: EAP
-Source: <https://github.com/jboss-jdf/jboss-as-quickstart/>
+Target Product: WildFly
+
 
 What is it?
 -----------
