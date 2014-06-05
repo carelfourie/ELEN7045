@@ -6,10 +6,6 @@
 		<copy file="${wildfly_config_standalone}" todir="${wildfly_standalone_config_dir}" overwrite="true" verbose="true"/>
     </target>
 	
-	<target name="inject_config_standalone_full"> 
-		<copy file="${wildfly_config_standalone_full}" todir="${wildfly_standalone_config_dir}" overwrite="true" verbose="true"/>
-	</target>
-	
 	<target name="inject_driver_mysql">
 		<!-- copy entire dir -->
 		<copy todir="${wildfly_standalone_module_com}" overwrite="true" verbose="true">
