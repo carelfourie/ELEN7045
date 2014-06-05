@@ -157,10 +157,6 @@
 					<security>
 						<user-name>root</user-name>
 						<password>admin</password>
-						<!--
-						<user-name>adminQjX8fC3</user-name>
-						<password>bwS2Myelx7G1</password>
-						-->
 					</security>
 					<validation>
                         <check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
