@@ -148,7 +148,7 @@
                     </security>
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/MySQLDS" pool-name="MySQLDS" enabled="true" use-java-context="true">
-					<connection-url>jdbc:mysql://localhost:3306/clubcontrol</connection-url>
+					<connection-url>jdbc:mysql://localhost:3306/aps_db</connection-url>
 					<driver>mysql</driver>
 					<pool>
 						<min-pool-size>02</min-pool-size>
