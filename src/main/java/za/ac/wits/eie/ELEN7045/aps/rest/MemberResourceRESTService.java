@@ -28,11 +28,6 @@ import za.ac.wits.eie.ELEN7045.aps.data.MemberRepository;
 import za.ac.wits.eie.ELEN7045.aps.model.Member;
 import za.ac.wits.eie.ELEN7045.aps.service.MemberRegistration;
 
-/**
- * JAX-RS Example
- * <p/>
- * This class produces a RESTful service to read/write the contents of the members table.
- */
 @Path("/members")
 @RequestScoped
 public class MemberResourceRESTService {
