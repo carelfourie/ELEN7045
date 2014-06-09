@@ -15,7 +15,7 @@ import za.ac.wits.eie.ELEN7045.aps.model.Member;
 public class MemberRepository {
 
     @Inject
-    private EntityManager em;//injected
+    private EntityManager em;
 
     public List<Member> findAllOrderedByName() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
