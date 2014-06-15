@@ -50,7 +50,8 @@
             </h:column>
             <h:column>
                 <f:facet name="header">View Statement</f:facet>
-                #{_account.company.name}
+                <h:outputLink value="#{_account.statement.statement}"> #{_account.company.name}
+                </h:outputLink> 
             </h:column>
             </h:dataTable>
     </ui:define>
