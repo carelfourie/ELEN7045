@@ -14,12 +14,24 @@
         <h:inputSecret id="password" value="#{credentials.password}"/>
     </h:panelGrid>
     <h:commandButton value="Login" action="#{login.login}" rendered="#{!login.loggedIn}"/>
+    No account?
+    <h:commandLink value="" action="#{login.registerAccount}"> register now
+    </h:commandLink>
     
-    <h:panelGrid columns="2" rendered="#{login.loggedIn}">
+    <h:panelGrid columns="2" rendered="#{login.register}">
+        <h:outputLabel for="username">Username:</h:outputLabel>
+        <h:inputText id="_username" value="#{account.username}"/>
+        <h:outputLabel for="password">Password:</h:outputLabel>
+        <h:inputSecret id="_password_1" value="#{account.password1}"/>
+        <h:outputLabel for="password">Re-enter Password:</h:outputLabel>
+        <h:inputSecret id="_password_2" value="#{account.password2}"/>
+    </h:panelGrid>
+    <h:commandButton value="Register" action="#{login.createAccount}" rendered="#{login.register}"/>
+    <h:panelGrid columns="2" rendered="#{login.aboutToScrape}">
         <h:outputLabel for="url">URL to Scrape:</h:outputLabel>
         <h:inputText id="url" value="#{credentials.url}"/>
     </h:panelGrid>
-    <h:commandButton value="Scrape" action="#{login.scrape}" rendered="#{login.loggedIn}"/>
+    <h:commandButton value="Scrape" action="#{login.scrape}" rendered="#{login.aboutToScrape}"/>
     <h:messages styleClass="messages"
                         errorClass="invalid" infoClass="valid"
                         warnClass="warning" globalOnly="true" />

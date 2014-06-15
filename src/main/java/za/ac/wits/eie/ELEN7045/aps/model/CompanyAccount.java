@@ -69,5 +69,13 @@ public class CompanyAccount extends BaseDomainEntity<Long> {
 	public void setStatement(Statement statement) {
 		this.statement = statement;
 	}
+
+	public APSUser getApsUser() {
+		return apsUser;
+	}
+
+	public void setApsUser(APSUser apsUser) {
+		this.apsUser = apsUser;
+	}
     
 }
