@@ -10,6 +10,7 @@ import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 @Entity
 public class Statement extends BaseDomainEntity<Long> {
 
+	private String statement;
     public Statement() {
         super();
     }
@@ -17,4 +18,12 @@ public class Statement extends BaseDomainEntity<Long> {
     public Statement(Long id) {
         super(id);
     }
+
+	public String getStatement() {
+		return statement;
+	}
+
+	public void setStatement(String statement) {
+		this.statement = statement;
+	}
 }

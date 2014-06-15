@@ -8,6 +8,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
+import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 
 @Entity
 public class CompanyAccount extends BaseDomainEntity<Long> {
@@ -22,6 +23,9 @@ public class CompanyAccount extends BaseDomainEntity<Long> {
     
     @ManyToOne
     private APSUser apsUser;
+    
+    @ManyToOne
+    private Statement statement;
     
     @OneToMany(mappedBy = "companyAccount")
     private List<ScrapingEvent> scrapingEvents;
@@ -56,6 +60,14 @@ public class CompanyAccount extends BaseDomainEntity<Long> {
 
 	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
+	}
+
+	public Statement getStatement() {
+		return statement;
+	}
+
+	public void setStatement(Statement statement) {
+		this.statement = statement;
 	}
     
 }

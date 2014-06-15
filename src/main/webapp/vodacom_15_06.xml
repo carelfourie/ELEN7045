@@ -1,0 +1,25 @@
+<scrape-session>
+<base-url>www.vodacom.co.za</base-url>
+<date>15/06/2014</date>
+<time>13:40:35</time>
+<datapair id="001">
+    <text>Account no</text>
+    <value>1234567</value>
+</datapair>
+<datapair id="002">
+    <text>Service ref</text>
+    <value>VOD1234567</value>
+</datapair>
+<datapair id="003">
+    <text>Previous Invoice</text>
+    <value>R566.90</value>
+</datapair>
+<datapair id="004">
+    <text>Payment</text>
+    <value>R1000</value>
+</datapair>
+<datapair id="005">
+    <text>Opening Balance</text>
+    <value>R433.10</value>
+</datapair>
+</scrape-session>

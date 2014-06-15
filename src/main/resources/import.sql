@@ -21,4 +21,6 @@ insert into APSUser (id, password, username) values (0, 'john', 'john')
 insert into BillingCycle (id, cycle) values (0, 'MONTHLY')
 insert into Company (id, name, billingCycle_id) values (0, 'VODACOM', 0)
 insert into Status (id, description) values (0, 'OPEN')
-insert into CompanyAccount (id, accountNumber, apsUser_id, company_id, status_id) values (0, '1234567', 0, 0, 0)
+insert into Statement (id, statement) values (0, 'vodacom_15_06.xml')
+insert into CompanyAccount (id, accountNumber, apsUser_id, company_id, statement_id, status_id) values (0, '1234567', 0, 0, 0, 0)
+
