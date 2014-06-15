@@ -5,70 +5,53 @@
     xmlns:h="http://java.sun.com/jsf/html"
     template="/WEB-INF/templates/default.xhtml">
     <ui:define name="content">
-        
-
-        <h:form id="reg">
-            <h2>Member Registration</h2>
-            <p>Enforces annotation-based constraints defined on the
-                model class.</p>
-            <h:panelGrid columns="3" columnClasses="titleCell">
-                <h:outputLabel for="name" value="Name:" />
-                <h:inputText id="name" value="#{newMember.name}" />
-                <h:message for="name" errorClass="invalid" />
-
-                <h:outputLabel for="email" value="Email:" />
-                <h:inputText id="email" value="#{newMember.email}" />
-                <h:message for="email" errorClass="invalid" />
-
-                <h:outputLabel for="phoneNumber" value="Phone #:" />
-                <h:inputText id="phoneNumber"
-                    value="#{newMember.phoneNumber}" />
-                <h:message for="phoneNumber" errorClass="invalid" />
-            </h:panelGrid>
-
-            <p>
-                <h:panelGrid columns="2">
-                    <h:commandButton id="register"
-                        action="#{memberController.register}"
-                        value="Register" styleClass="register" />
-                    <h:messages styleClass="messages"
+    
+      <h:form>
+    <h:panelGrid columns="2" rendered="#{!login.loggedIn}">
+        <h:outputLabel for="username">Username:</h:outputLabel>
+        <h:inputText id="username" value="#{credentials.username}"/>
+        <h:outputLabel for="password">Password:</h:outputLabel>
+        <h:inputSecret id="password" value="#{credentials.password}"/>
+    </h:panelGrid>
+    <h:commandButton value="Login" action="#{login.login}" rendered="#{!login.loggedIn}"/>
+    
+    <h:panelGrid columns="2" rendered="#{login.loggedIn}">
+        <h:outputLabel for="url">URL to Scrape:</h:outputLabel>
+        <h:inputText id="url" value="#{credentials.url}"/>
+    </h:panelGrid>
+    <h:commandButton value="Scrape" action="#{login.scrape}" rendered="#{login.loggedIn}"/>
+    <h:messages styleClass="messages"
                         errorClass="invalid" infoClass="valid"
                         warnClass="warning" globalOnly="true" />
-                </h:panelGrid>
-            </p>
-        </h:form>
-        <h2>Members</h2>
-        <h:panelGroup rendered="#{empty members}">
-            <em>No registered members.</em>
+</h:form>
+<h2>Accounts</h2>
+        <h:panelGroup rendered="#{empty companyAccountList}">
+            <em>No scraped accounts.</em>
         </h:panelGroup>
-        <h:dataTable var="_member" value="#{members}"
-            rendered="#{not empty members}"
+        <h:dataTable var="_account" value="#{login.companyAccountList}"
+            rendered="#{not empty companyAccountList}"
             styleClass="simpletablestyle">
+            <em>scraped accounts.</em>
             <h:column>
-                <f:facet name="header">Id</f:facet>
-                #{_member.id}
+                <f:facet name="header">Account Number</f:facet>
+                #{_account.accountNumber}
             </h:column>
             <h:column>
-                <f:facet name="header">Name</f:facet>
-                #{_member.name}
+                <f:facet name="header">Account Status</f:facet>
+                #{_account.status.description}
             </h:column>
             <h:column>
-                <f:facet name="header">Email</f:facet>
-                #{_member.email}
+                <f:facet name="header">Service Provider</f:facet>
+                #{_account.company.name}
             </h:column>
             <h:column>
-                <f:facet name="header">Phone #</f:facet>
-                #{_member.phoneNumber}
+                <f:facet name="header">Billing Cycle</f:facet>
+                #{_account.company.billingCycle.cycle}
             </h:column>
             <h:column>
-                <f:facet name="header">REST URL</f:facet>
-                <a
-                    href="#{request.contextPath}/rest/members/#{_member.id}">/rest/members/#{_member.id}</a>
+                <f:facet name="header">View Statement</f:facet>
+                #{_account.company.name}
             </h:column>
-            <f:facet name="footer">
-            REST URL for all members: <a
-                    href="#{request.contextPath}/rest/members">/rest/members</a>
-            </f:facet>
-        </h:dataTable>
+            </h:dataTable>
     </ui:define>
 </ui:composition>

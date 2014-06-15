@@ -15,6 +15,11 @@ public class CompanyAccount extends BaseDomainEntity<Long> {
     @OneToOne
     private Status status;
     
+    private String accountNumber;
+    
+    @OneToOne
+    private Company company;
+    
     @ManyToOne
     private APSUser apsUser;
     
@@ -28,4 +33,29 @@ public class CompanyAccount extends BaseDomainEntity<Long> {
     public CompanyAccount(Long id) {
         super(id);
     }
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+    
 }

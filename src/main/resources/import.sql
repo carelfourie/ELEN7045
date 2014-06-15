@@ -17,3 +17,8 @@
 
 -- You can use this file to load seed data into the database using SQL statements
 insert into Member (id, name, email, phone_number) values (0, 'John Smith', 'john.smith@mailinator.com', '2125551212') 
+insert into APSUser (id, password, username) values (0, 'john', 'john')
+insert into BillingCycle (id, cycle) values (0, 'MONTHLY')
+insert into Company (id, name, billingCycle_id) values (0, 'VODACOM', 0)
+insert into Status (id, description) values (0, 'OPEN')
+insert into CompanyAccount (id, accountNumber, apsUser_id, company_id, status_id) values (0, '1234567', 0, 0, 0)

@@ -11,6 +11,8 @@ public class Company extends BaseDomainEntity<Long> {
     @OneToOne
     private BillingCycle billingCycle;
 
+    private String name;
+    
     public Company() {
         super();
     }
@@ -18,4 +20,21 @@ public class Company extends BaseDomainEntity<Long> {
     public Company(Long id) {
         super(id);
     }
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public BillingCycle getBillingCycle() {
+		return billingCycle;
+	}
+
+	public void setBillingCycle(BillingCycle billingCycle) {
+		this.billingCycle = billingCycle;
+	}
+    
 }

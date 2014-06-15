@@ -8,8 +8,6 @@
    <persistence-unit name="primary">
       
       <jta-data-source>java:jboss/datasources/jee_aps_app_ds</jta-data-source>
-      
-      <class>za.ac.wits.eie.ELEN7045.aps.model.Member</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.Company</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.BillingCycle</class>
