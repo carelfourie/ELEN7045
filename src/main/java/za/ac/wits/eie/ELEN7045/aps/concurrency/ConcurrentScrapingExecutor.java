@@ -7,7 +7,7 @@ import javax.enterprise.concurrent.ManagedExecutorService;
 import javax.inject.Named;
 
 @Named
-public class ConcurrentScrapingSession {
+public class ConcurrentScrapingExecutor {
     
     /**
      * Container managed thread pool.

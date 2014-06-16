@@ -29,9 +29,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import za.ac.wits.eie.ELEN7045.aps.concurrency.ConcurrentScrapingSession;
+import za.ac.wits.eie.ELEN7045.aps.concurrency.ConcurrentScrapingExecutor;
 import za.ac.wits.eie.ELEN7045.aps.concurrency.ScrapingSession;
-import za.ac.wits.eie.ELEN7045.aps.model.ScrapingEvent;
 import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
 
 @RunWith(Arquillian.class)
@@ -41,7 +40,7 @@ public class ConcurrencyTest extends BaseTest {
     Logger log;
     
     @Inject
-    ConcurrentScrapingSession scraper;
+    ConcurrentScrapingExecutor scraper;
     
     @Test
     public void test() throws Exception {
@@ -63,8 +62,7 @@ public class ConcurrencyTest extends BaseTest {
     
     private  List<ScrapingSession> getScrapingSessions() {
         List<ScrapingSession> sessions = new ArrayList<ScrapingSession>();
-        sessions.add(new ScrapingSession(new ScrapingEvent()));
-        sessions.add(new ScrapingSession(new ScrapingEvent()));
+    
         return sessions;
     }
 }

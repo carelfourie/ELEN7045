@@ -13,6 +13,8 @@ import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 @Entity
 public class CompanyAccount extends BaseDomainEntity<Long> {
     
+    private String url;
+    
     @OneToOne
     private Status status;
     
@@ -104,5 +106,13 @@ public class CompanyAccount extends BaseDomainEntity<Long> {
 
     public void setScrapingEvents(List<ScrapingEvent> scrapingEvents) {
         this.scrapingEvents = scrapingEvents;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
