@@ -1,12 +1,13 @@
 package za.ac.wits.eie.ELEN7045.aps.service;
 
-import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import org.jboss.logging.Logger;
 
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 
