@@ -2,11 +2,10 @@ package za.ac.wits.eie.ELEN7045.aps.test;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.util.logging.Logger;
-
 import javax.inject.Inject;
 
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.logging.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -18,7 +17,7 @@ import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
 public class APSUserAccountCreationTest extends BaseTest {
 
 	@Inject
-    Logger log;
+	Logger log;
 
     @Inject
 	APSUserAccountCreationService aPSUserAccountCreationService;

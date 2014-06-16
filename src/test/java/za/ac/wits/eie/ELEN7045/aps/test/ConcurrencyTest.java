@@ -16,36 +16,21 @@
  */
 package za.ac.wits.eie.ELEN7045.aps.test;
 
-import static org.junit.Assert.assertNotNull;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.logging.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import za.ac.wits.eie.ELEN7045.aps.model.Member;
-import za.ac.wits.eie.ELEN7045.aps.service.MemberRegistration;
-import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
-
 @RunWith(Arquillian.class)
-public class MemberRegistrationTest extends BaseTest {
-
+public class ConcurrencyTest {
+    
     @Inject
     Logger log;
-
-    @Inject
-    MemberRegistration memberRegistration;
-
+    
     @Test
     public void test() throws Exception {
-        Member member = new Member();
-        member.setName("Jane Doe");
-        member.setEmail("jane@mailinator.com");
-        member.setPhoneNumber("2125551234");
-        memberRegistration.register(member);
-        assertNotNull(member.getId());
-        log.info(member.getName() + " was persisted with id " + member.getId());
     }
 }
