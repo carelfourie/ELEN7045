@@ -27,6 +27,10 @@ public class CompanyAccount extends BaseDomainEntity<Long> {
     @ManyToOne
     private Statement statement;
     
+    private String username; 
+    
+    private String password; 
+    
     @OneToMany(mappedBy = "companyAccount")
     private List<ScrapingEvent> scrapingEvents;
 
@@ -77,5 +81,28 @@ public class CompanyAccount extends BaseDomainEntity<Long> {
 	public void setApsUser(APSUser apsUser) {
 		this.apsUser = apsUser;
 	}
-    
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<ScrapingEvent> getScrapingEvents() {
+        return scrapingEvents;
+    }
+
+    public void setScrapingEvents(List<ScrapingEvent> scrapingEvents) {
+        this.scrapingEvents = scrapingEvents;
+    }
 }

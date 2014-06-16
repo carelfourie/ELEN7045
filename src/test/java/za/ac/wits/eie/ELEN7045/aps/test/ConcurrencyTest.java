@@ -16,21 +16,55 @@
  */
 package za.ac.wits.eie.ELEN7045.aps.test;
 
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 import javax.inject.Inject;
 
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.logging.Logger;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import za.ac.wits.eie.ELEN7045.aps.concurrency.ConcurrentScrapingSession;
+import za.ac.wits.eie.ELEN7045.aps.concurrency.ScrapingSession;
+import za.ac.wits.eie.ELEN7045.aps.model.ScrapingEvent;
+import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
+
 @RunWith(Arquillian.class)
-public class ConcurrencyTest {
+public class ConcurrencyTest extends BaseTest {
     
     @Inject
     Logger log;
     
+    @Inject
+    ConcurrentScrapingSession scraper;
+    
     @Test
     public void test() throws Exception {
+        try {
+            for (ScrapingSession scrapingSession : getScrapingSessions()) {
+                Future<?> task = scraper.submit(scrapingSession);
+                log.info("scraping session submitted...");
+                try {
+                   Object result = task.get();
+                   Assert.assertNull(result);
+                } catch (InterruptedException | ExecutionException ex) {
+                    throw new IllegalStateException("Cannot get the answer", ex);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private  List<ScrapingSession> getScrapingSessions() {
+        List<ScrapingSession> sessions = new ArrayList<ScrapingSession>();
+        sessions.add(new ScrapingSession(new ScrapingEvent()));
+        sessions.add(new ScrapingSession(new ScrapingEvent()));
+        return sessions;
     }
 }

@@ -1,16 +1,22 @@
 package za.ac.wits.eie.ELEN7045.aps.concurrency;
 
+import java.util.concurrent.Future;
+
 import javax.annotation.Resource;
 import javax.enterprise.concurrent.ManagedExecutorService;
 import javax.inject.Named;
 
 @Named
-public class ScrapingSessionRunner {
+public class ConcurrentScrapingSession {
     
+    /**
+     * Container managed thread pool.
+     * 5 core threads, 25 max.
+     */
     @Resource(name = "java:jboss/ee/concurrency/executor/default")
     private ManagedExecutorService managedExecutorService;
     
-    public void submit(ScrapingSession session) {
-        managedExecutorService.submit(session);
+    public Future<?> submit(ScrapingSession session) {
+        return managedExecutorService.submit(session);
     }
 }
