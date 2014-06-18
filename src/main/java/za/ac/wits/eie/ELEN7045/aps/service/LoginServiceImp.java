@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import org.jboss.logging.Logger;
 
+import za.ac.wits.eie.ELEN7045.aps.exceptions.InvalidUserException;
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
 
