@@ -11,10 +11,10 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import za.ac.wits.eie.ELEN7045.aps.exceptions.InvalidUserException;
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
 import za.ac.wits.eie.ELEN7045.aps.service.APSUserAccountService;
+import za.ac.wits.eie.ELEN7045.aps.service.InvalidUserException;
 import za.ac.wits.eie.ELEN7045.aps.service.LoginService;
 
 @Model
