@@ -10,27 +10,28 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
-import za.ac.wits.eie.ELEN7045.aps.service.APSUserAccountCreationService;
+import za.ac.wits.eie.ELEN7045.aps.service.APSUserAccountService;
 import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
 
 @RunWith(Arquillian.class)
-public class APSUserAccountCreationTest extends BaseTest {
+public class APSUserAccountTest extends BaseTest {
 
 	@Inject
 	Logger log;
 
     @Inject
-	APSUserAccountCreationService aPSUserAccountCreationService;
+	APSUserAccountService aPSUserAccountCreationService;
     
     @Test
     public void testCreateAccount() throws Exception {
     	
     	APSUser apsUser = new APSUser();
-    	apsUser.setPassword("john");
-    	apsUser.setUsername("john");
+    	apsUser.setPassword("peter");
+    	apsUser.setUsername("peter");
     	aPSUserAccountCreationService.createAccount(apsUser);
         assertNotNull(apsUser.getId());
         log.info(apsUser.getUsername() + " was persisted with id " + apsUser.getId());
+        System.out.println(apsUser.getUsername() + " was persisted with id " + apsUser.getId());
     	
     }
 }

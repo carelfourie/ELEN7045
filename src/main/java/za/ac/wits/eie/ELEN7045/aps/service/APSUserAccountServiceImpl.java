@@ -12,7 +12,7 @@ import org.jboss.logging.Logger;
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 
 @Stateless
-public class APSUserAccountCreationServiceImpl implements APSUserAccountCreationService{
+public class APSUserAccountServiceImpl implements APSUserAccountService{
 
 	@Inject
     private Logger log;
@@ -23,10 +23,12 @@ public class APSUserAccountCreationServiceImpl implements APSUserAccountCreation
 	@PersistenceContext EntityManager userDatabase;
 		
 	@Override
-	public void createAccount(APSUser aPSUser) {
+	public APSUser createAccount(APSUser aPSUser) {
 		log.info("Creating account for " + aPSUser.getUsername());
 		userDatabase.persist(aPSUser);
+		userDatabase.flush();
 		userEventSrc.fire(aPSUser);
+		return aPSUser;
 	}
 
 }
