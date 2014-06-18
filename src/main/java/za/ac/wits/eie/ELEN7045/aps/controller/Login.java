@@ -54,12 +54,12 @@ public class Login {
     	 List<CompanyAccount> results;
 		try {
 			results = loginService.loadAPSUserAccounts(credentials.getPassword(), credentials.getUsername());
-			if( !results.isEmpty()) {
+			if( results.size() != 0) {
 				setCompanyAccountList(results);
 				initCredentials();
 			}
 			else {
-				validLogin = true;
+				setValidLogin(true);
 			}
 		} catch (InvalidUserException e) {
 			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage());
@@ -88,15 +88,20 @@ public class Login {
     }
     
     public boolean isAboutToScrape() {
-    	for(CompanyAccount ca : companyAccountList) {
-    		if(ca.getApsUser() != null) {
-    			if(ca.getApsUser().getUsername() != null) {
-    				return true;
-    			}
-    		}
+    	if(companyAccountList.size() != 0) {
+    		for(CompanyAccount ca : companyAccountList) {
+        		if(ca.getApsUser() != null) {
+        			if(ca.getApsUser().getUsername() != null) {
+        				return true;
+        			}
+        		}
+        	}
     	}
-    	if(validLogin)
+    	
+    	else if(isValidLogin()){
     		return true;
+    	}
+    		
         return false;
     }
     
@@ -107,11 +112,11 @@ public class Login {
     public boolean isLoggedIn() {
     	if(!companyAccountList.isEmpty() && !isRegister()) {
     		return true;
-    	} else if(companyAccountList.isEmpty() && !isRegister()) {
+    	} else if(companyAccountList.isEmpty() && !isRegister() && !isValidLogin()) {
     		return false;
     	}else if(companyAccountList.isEmpty() && isRegister()) {
     		return true;
-    	}else if(validLogin) {
+    	}else if(isValidLogin()) {
     		return true;
     	}
        return false; 
@@ -134,5 +139,15 @@ public class Login {
 	public void setCompanyAccountList(List<CompanyAccount> companyAccountList) {
 		this.companyAccountList = companyAccountList;
 	}
+
+	public boolean isValidLogin() {
+		return validLogin;
+	}
+
+	public void setValidLogin(boolean validLogin) {
+		this.validLogin = validLogin;
+	}
+	
+	
     
 }
