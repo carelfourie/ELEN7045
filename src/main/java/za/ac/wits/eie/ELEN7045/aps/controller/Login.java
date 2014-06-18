@@ -13,7 +13,8 @@ import javax.inject.Named;
 
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
-import za.ac.wits.eie.ELEN7045.aps.service.APSUserAccountCreationService;
+import za.ac.wits.eie.ELEN7045.aps.service.APSUserAccountService;
+import za.ac.wits.eie.ELEN7045.aps.service.InvalidUserException;
 import za.ac.wits.eie.ELEN7045.aps.service.LoginService;
 
 @Model
@@ -34,9 +35,11 @@ public class Login {
     private LoginService loginService;
 
 	@Inject
-	APSUserAccountCreationService aPSUserAccountCreationService;
+	APSUserAccountService aPSUserAccountCreationService;
 	
 	private boolean register;
+	
+	private boolean validLogin;
     
     private List<CompanyAccount> companyAccountList = new ArrayList<CompanyAccount>();
     		
@@ -48,17 +51,20 @@ public class Login {
         
     public void login() {
     	
-    	 List<CompanyAccount> results = loginService.loadAPUserByUsernameAndPassword(credentials.getPassword(), credentials.getUsername());
-        if ( !results.isEmpty() ) {
-        	setCompanyAccountList(results);   
-           FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Login successful!", "Login successful");
-           facesContext.addMessage(null, m);
-           initCredentials();
-        }
-        else {
-        	FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login unsuccessful!", "Login unsuccessful");
-            facesContext.addMessage(null, m);
-        }
+    	 List<CompanyAccount> results;
+		try {
+			results = loginService.loadAPSUserAccounts(credentials.getPassword(), credentials.getUsername());
+			if( !results.isEmpty()) {
+				setCompanyAccountList(results);
+				initCredentials();
+			}
+			else {
+				validLogin = true;
+			}
+		} catch (InvalidUserException e) {
+			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage());
+	           facesContext.addMessage(null, m);
+		}
     }
     
     public void createAccount() {
@@ -89,6 +95,8 @@ public class Login {
     			}
     		}
     	}
+    	if(validLogin)
+    		return true;
         return false;
     }
     
@@ -102,6 +110,8 @@ public class Login {
     	} else if(companyAccountList.isEmpty() && !isRegister()) {
     		return false;
     	}else if(companyAccountList.isEmpty() && isRegister()) {
+    		return true;
+    	}else if(validLogin) {
     		return true;
     	}
        return false; 

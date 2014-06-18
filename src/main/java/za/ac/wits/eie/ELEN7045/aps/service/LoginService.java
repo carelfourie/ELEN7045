@@ -2,8 +2,11 @@ package za.ac.wits.eie.ELEN7045.aps.service;
 
 import java.util.List;
 
+import javax.ejb.Local;
+
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
 
+@Local
 public interface LoginService {
 	
 	/**
@@ -13,8 +16,9 @@ public interface LoginService {
 	 * @parameter username
 	 * @parameter password
 	 * @return CompanyAccount
+	 * @throws InvalidUserException 
 	 */
 	
-	List<CompanyAccount> loadAPUserByUsernameAndPassword(String password, String username);
+	List<CompanyAccount> loadAPSUserAccounts(String password, String username) throws InvalidUserException;
 
 }
