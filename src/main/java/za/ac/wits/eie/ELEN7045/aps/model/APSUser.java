@@ -11,8 +11,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 
 @Entity
-public class APSUser extends BaseDomainEntity<Long> {
-    
+public class APSUser extends BaseDomainEntity<Long> implements java.io.Serializable
+{
+	final static long serialVersionUID = 1L;
     @OneToMany(mappedBy = "apsUser")
     private List<CompanyAccount> companyAccounts;
     

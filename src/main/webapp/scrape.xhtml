@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+    
+<h:form>
+    <h:panelGrid columns="2">
+        <h:outputLabel for="url">URL to Scrape:</h:outputLabel>
+        <h:inputText id="url" value="#{scraperInfo.url}"/>
+    </h:panelGrid>
+    <h:commandButton value="Scrape" action="#{scraper.scrape}"/>
+    <h:messages styleClass="messages"
+                        errorClass="invalid" infoClass="valid"
+                        warnClass="warning" globalOnly="true" />
+</h:form>
+	<h:panelGroup>
+        <h:panelGroup rendered="#{empty companyAccountList}">
+            <em>You have no scraped accounts.</em>
+        </h:panelGroup>
+     </h:panelGroup>
+        <h:panelGroup rendered="#{not empty companyAccountList}">
+            <em>Your scraped accounts.</em>
+        </h:panelGroup>
+        <h:dataTable var="_account" value="#{login.companyAccountList}"
+            rendered="#{not empty companyAccountList}"
+            styleClass="simpletablestyle">
+            <h:column>
+                <f:facet name="header">Account Number</f:facet>
+                #{_account.accountNumber}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Account Status</f:facet>
+                #{_account.status.description}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Service Provider</f:facet>
+                #{_account.company.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Billing Cycle</f:facet>
+                #{_account.company.billingCycle.cycle}
+            </h:column>
+            <h:column>
+                <f:facet name="header">View Statement</f:facet>
+                <h:outputLink value="#{_account.statement.statement}"> #{_account.company.name}
+                </h:outputLink> 
+            </h:column>
+            </h:dataTable>
+    </ui:define>
+</ui:composition>

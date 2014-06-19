@@ -20,6 +20,12 @@ public class LoginServiceImp implements LoginService{
 	
 	@PersistenceContext EntityManager userDatabase;
 	
+	/**
+	 * Load scraped accounts for user
+	 * @param password
+	 * @param username
+	 * @return {@link List}
+	 */
 	@Override
 	public List<CompanyAccount> loadAPSUserAccounts(String password,
 			String username) throws InvalidUserException {
@@ -48,7 +54,14 @@ public class LoginServiceImp implements LoginService{
 		
 	}
 	
+	/**
+	 * Retrieve user
+	 * @param password
+	 * @param username
+	 * @return {@link APSUser}
+	 */
 	private APSUser getAPSUser(String password, String username) throws InvalidUserException {
+		log.info("Retrieving user with username " + username);
 		try {
 			return (APSUser) userDatabase.createQuery("SELECT u FROM APSUser u where u.password=:password and "
 			           + "u.username=:username")

@@ -30,8 +30,6 @@ public class APSUserAccountTest extends BaseTest {
     	apsUser.setUsername("peter");
     	aPSUserAccountCreationService.createAccount(apsUser);
         assertNotNull(apsUser.getId());
-        log.info(apsUser.getUsername() + " was persisted with id " + apsUser.getId());
-        System.out.println(apsUser.getUsername() + " was persisted with id " + apsUser.getId());
     	
     }
 }

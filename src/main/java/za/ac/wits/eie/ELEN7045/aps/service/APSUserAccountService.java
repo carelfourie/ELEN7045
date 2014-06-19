@@ -12,5 +12,5 @@ public interface APSUserAccountService {
 	 * @parameter aPSUser
 	 * 
 	 */
-	APSUser createAccount(APSUser aPSUser);
+	void createAccount(APSUser aPSUser);
 }

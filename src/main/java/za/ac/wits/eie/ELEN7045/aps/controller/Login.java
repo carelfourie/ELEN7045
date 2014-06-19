@@ -11,9 +11,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
+import org.jboss.logging.Logger;
+
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
-import za.ac.wits.eie.ELEN7045.aps.service.APSUserAccountService;
 import za.ac.wits.eie.ELEN7045.aps.service.InvalidUserException;
 import za.ac.wits.eie.ELEN7045.aps.service.LoginService;
 
@@ -24,111 +24,46 @@ public class Login {
     @Named
 	private Credentials credentials;
 	
-	@Produces
-    @Named
-	private Account account;
-	
 	@Inject
     private FacesContext facesContext;
 	
 	@Inject
     private LoginService loginService;
-
+	
 	@Inject
-	APSUserAccountService aPSUserAccountCreationService;
-	
-	private boolean register;
-	
-	private boolean validLogin;
+    private Logger log;
     
     private List<CompanyAccount> companyAccountList = new ArrayList<CompanyAccount>();
     		
     @PostConstruct
     public void initCredentials() {
     	credentials = new Credentials();
-    	account = new Account();
     }
-        
-    public void login() {
+    
+    /**
+     * Login a user to retrieve scraped accounts
+     * @return
+     */
+    public String login() {
     	
     	 List<CompanyAccount> results;
 		try {
+			log.info("login to get scraped accounts for ........ "+credentials.getUsername());
 			results = loginService.loadAPSUserAccounts(credentials.getPassword(), credentials.getUsername());
 			if( results.size() != 0) {
 				setCompanyAccountList(results);
 				initCredentials();
+				return "success";
 			}
 			else {
-				setValidLogin(true);
+				return "success";
 			}
 		} catch (InvalidUserException e) {
 			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage());
 	           facesContext.addMessage(null, m);
 		}
+		return "failure";
     }
-    
-    public void createAccount() {
-        //logic to create account
-    	APSUser aPSUser = new APSUser();
-    	if(account.getUsername() != null && (account.getPassword1().equals(account.getPassword1()))) {
-    		aPSUser.setPassword(account.getPassword1());
-        	aPSUser.setUsername(account.getUsername());
-        	aPSUser.setCompanyAccounts(null);
-        	aPSUserAccountCreationService.createAccount(aPSUser);
-    	}
-    	else{
-    		FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Can't create account!", "Can't create account");
-            facesContext.addMessage(null, m);
-    	}
-    	
-    }
-    
-    public void scrape() {
-        //logic to create account
-    }
-    
-    public boolean isAboutToScrape() {
-    	if(companyAccountList.size() != 0) {
-    		for(CompanyAccount ca : companyAccountList) {
-        		if(ca.getApsUser() != null) {
-        			if(ca.getApsUser().getUsername() != null) {
-        				return true;
-        			}
-        		}
-        	}
-    	}
-    	
-    	else if(isValidLogin()){
-    		return true;
-    	}
-    		
-        return false;
-    }
-    
-    public void registerAccount() {
-        setRegister(true);
-    }
-    
-    public boolean isLoggedIn() {
-    	if(!companyAccountList.isEmpty() && !isRegister()) {
-    		return true;
-    	} else if(companyAccountList.isEmpty() && !isRegister() && !isValidLogin()) {
-    		return false;
-    	}else if(companyAccountList.isEmpty() && isRegister()) {
-    		return true;
-    	}else if(isValidLogin()) {
-    		return true;
-    	}
-       return false; 
-    }
-
-    public boolean isRegister() {
-		return register;
-	}
-
-	public void setRegister(boolean register) {
-		this.register = register;
-	}
 
 	@Produces
     @Named
@@ -139,15 +74,5 @@ public class Login {
 	public void setCompanyAccountList(List<CompanyAccount> companyAccountList) {
 		this.companyAccountList = companyAccountList;
 	}
-
-	public boolean isValidLogin() {
-		return validLogin;
-	}
-
-	public void setValidLogin(boolean validLogin) {
-		this.validLogin = validLogin;
-	}
-	
-	
     
 }
