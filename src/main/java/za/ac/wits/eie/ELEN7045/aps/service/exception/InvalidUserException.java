@@ -1,6 +1,5 @@
-package za.ac.wits.eie.ELEN7045.aps.service;
+package za.ac.wits.eie.ELEN7045.aps.service.exception;
 
-import java.util.Arrays;
 
 public class InvalidUserException extends Exception{
 
@@ -23,6 +22,4 @@ public class InvalidUserException extends Exception{
 		String message = getLocalizedMessage();
 		return (message != null)? (message) : s;
 	}
-	
-	
 }

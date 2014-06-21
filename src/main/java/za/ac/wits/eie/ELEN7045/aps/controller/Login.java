@@ -14,8 +14,8 @@ import javax.inject.Named;
 import org.jboss.logging.Logger;
 
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
-import za.ac.wits.eie.ELEN7045.aps.service.InvalidUserException;
 import za.ac.wits.eie.ELEN7045.aps.service.LoginService;
+import za.ac.wits.eie.ELEN7045.aps.service.exception.InvalidUserException;
 
 @Model
 public class Login {
