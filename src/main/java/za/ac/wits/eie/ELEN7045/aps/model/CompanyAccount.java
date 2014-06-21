@@ -2,7 +2,9 @@ package za.ac.wits.eie.ELEN7045.aps.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -23,7 +25,7 @@ public class CompanyAccount extends BaseDomainEntity<Long> {
     
     private String password;
     
-    @OneToMany(mappedBy = "companyAccount")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "companyAccount")
     private List<ScrapingEvent> scrapingEvents;
     
     @ManyToOne

@@ -8,22 +8,25 @@
    <persistence-unit name="primary">
       
       <jta-data-source>java:jboss/datasources/jee_aps_app_ds</jta-data-source>
+      
+      <class>za.ac.wits.eie.ELEN7045.aps.model.APSUser</class>
+      <class>za.ac.wits.eie.ELEN7045.aps.model.BillingCycle</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.Company</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount</class>
-      <class>za.ac.wits.eie.ELEN7045.aps.model.BillingCycle</class>
-      <class>za.ac.wits.eie.ELEN7045.aps.model.statement.CreditCardStatement</class>
-      <class>za.ac.wits.eie.ELEN7045.aps.model.statement.MunicipalityStatement</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.ReturnCode</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.ScrapingEvent</class>
-      <class>za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.Status</class>
+     
+      <class>za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement</class>
+      <class>za.ac.wits.eie.ELEN7045.aps.model.statement.CreditCardStatement</class>
+      <class>za.ac.wits.eie.ELEN7045.aps.model.statement.MunicipalityStatement</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.statement.TelcoStatement</class>
-      <class>za.ac.wits.eie.ELEN7045.aps.model.APSUser</class>
-      
+       
       <properties>
          <!-- properties for hibernate -->
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />
          <property name="hibernate.show_sql" value="false" />
       </properties>
+      
    </persistence-unit>
 </persistence>
