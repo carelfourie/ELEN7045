@@ -64,4 +64,11 @@ public class CreditCardStatement extends Statement {
     public void setMinimumAmountDue(String minimumAmountDue) {
         this.minimumAmountDue = minimumAmountDue;
     }
+    
+	@Override
+	public String toString() {
+		return String
+				.format("{CREDIT-CARD-SCRAPE [base-url: %s][date: %s][time: %s][return-code: %s]}",
+						getBaseUrl(), getDate(), getTime(), getReturnCode());
+	}
 }
