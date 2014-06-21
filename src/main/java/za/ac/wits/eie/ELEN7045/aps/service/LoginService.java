@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import org.hibernate.criterion.Restrictions;
 
@@ -19,7 +21,7 @@ import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 @Stateless
 public class LoginService extends BaseService {
     
-    @Inject
+    @PersistenceContext(type = PersistenceContextType.TRANSACTION, unitName = "primary")
     protected EntityManager entityManager;
 
     @Inject
