@@ -1,12 +1,5 @@
 package za.ac.wits.eie.ELEN7045.aps.service;
 
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.util.List;
-
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
@@ -16,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import org.jboss.logging.Logger;
 
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
-import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
 
 @Stateless
 public class APSUserAccountServiceImpl implements APSUserAccountService{
