@@ -42,6 +42,12 @@ public class ConcurrencyTest extends BaseTest {
     @Inject
     ConcurrentScrapingExecutor scraper;
     
+    private  List<ScrapingSession> getScrapingSessions() {
+        List<ScrapingSession> sessions = new ArrayList<ScrapingSession>();
+    
+        return sessions;
+    }
+    
     @Test
     public void test() throws Exception {
         try {
@@ -58,11 +64,5 @@ public class ConcurrencyTest extends BaseTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    
-    private  List<ScrapingSession> getScrapingSessions() {
-        List<ScrapingSession> sessions = new ArrayList<ScrapingSession>();
-    
-        return sessions;
     }
 }

@@ -21,20 +21,20 @@ public class Company extends BaseDomainEntity<Long> {
         super(id);
     }
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public BillingCycle getBillingCycle() {
 		return billingCycle;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public void setBillingCycle(BillingCycle billingCycle) {
 		this.billingCycle = billingCycle;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
     
 }

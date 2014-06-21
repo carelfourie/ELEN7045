@@ -20,6 +20,8 @@ import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 @Model
 public class Login {
 
+	private List<CompanyAccount> companyAccountList = new ArrayList<CompanyAccount>();
+	
 	@Produces
     @Named
 	private Credentials credentials;
@@ -28,19 +30,23 @@ public class Login {
     private FacesContext facesContext;
 	
 	@Inject
-    private LoginService loginService;
-	
-	@Inject
     private Logger log;
     
-    private List<CompanyAccount> companyAccountList = new ArrayList<CompanyAccount>();
+    @Inject
+    private LoginService loginService;
     		
+    @Produces
+    @Named
+	public List<CompanyAccount> getCompanyAccountList() {
+		return companyAccountList;
+	}
+    
     @PostConstruct
     public void initCredentials() {
     	credentials = new Credentials();
     }
-    
-    /**
+
+	/**
      * Login a user to retrieve scraped accounts
      * @return
      * @throws APSException 
@@ -65,12 +71,6 @@ public class Login {
 		}
 		return "failure";
     }
-
-	@Produces
-    @Named
-	public List<CompanyAccount> getCompanyAccountList() {
-		return companyAccountList;
-	}
 
 	public void setCompanyAccountList(List<CompanyAccount> companyAccountList) {
 		this.companyAccountList = companyAccountList;

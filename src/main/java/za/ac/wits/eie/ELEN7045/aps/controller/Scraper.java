@@ -11,12 +11,12 @@ import org.jboss.logging.Logger;
 @Model
 public class Scraper {
 
+	@Inject
+    private Logger log;
+	
 	@Produces
     @Named
 	private ScraperInfo scraperInfo;
-	
-	@Inject
-    private Logger log;
 	
 	@PostConstruct
     public void initScraperInfo() {

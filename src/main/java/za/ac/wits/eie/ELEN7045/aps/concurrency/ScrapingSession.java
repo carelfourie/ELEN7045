@@ -8,10 +8,10 @@ import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
 
 public class ScrapingSession implements Runnable {
     
+    private CompanyAccount account;
+    
     @Inject
     private Logger log;
-    
-    private CompanyAccount account;
     
     @Inject
     public ScrapingSession(CompanyAccount account) {

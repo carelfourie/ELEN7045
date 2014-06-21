@@ -23,12 +23,12 @@ public class ReturnCode extends BaseDomainEntity<Long> {
         return code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public String getDescription() {
         return description;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public void setDescription(String description) {

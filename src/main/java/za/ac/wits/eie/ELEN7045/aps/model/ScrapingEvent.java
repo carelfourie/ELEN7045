@@ -11,13 +11,13 @@ import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 @Entity
 public class ScrapingEvent extends BaseDomainEntity<Long> {
     
-    @OneToOne
-    private ReturnCode returnCode;
+    @ManyToOne
+    private CompanyAccount companyAccount;
     
     private Date date;
     
-    @ManyToOne
-    private CompanyAccount companyAccount;
+    @OneToOne
+    private ReturnCode returnCode;
 
     public ScrapingEvent() {
         super();
@@ -27,24 +27,24 @@ public class ScrapingEvent extends BaseDomainEntity<Long> {
         super(id);
     }
 
+    public CompanyAccount getCompanyAccount() {
+        return companyAccount;
+    }
+
     public Date getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public CompanyAccount getCompanyAccount() {
-        return companyAccount;
+    public ReturnCode getReturnCode() {
+        return returnCode;
     }
 
     public void setCompanyAccount(CompanyAccount companyAccount) {
         this.companyAccount = companyAccount;
     }
 
-    public ReturnCode getReturnCode() {
-        return returnCode;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public void setReturnCode(ReturnCode returnCode) {

@@ -8,16 +8,16 @@ public class APSException extends Exception {
         super();
     }
 
-    public APSException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
+    public APSException(String message) {
+        super(message);
     }
 
     public APSException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public APSException(String message) {
-        super(message);
+    public APSException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
     }
 
     public APSException(Throwable cause) {

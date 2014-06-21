@@ -19,11 +19,11 @@ public class APSUser extends BaseDomainEntity<Long> implements java.io.Serializa
     
     @NotNull
     @NotEmpty
-    private String username;
+    private String password;
     
     @NotNull
     @NotEmpty
-    private String password;
+    private String username;
 
     public APSUser() {
         super();
@@ -37,24 +37,24 @@ public class APSUser extends BaseDomainEntity<Long> implements java.io.Serializa
 		return companyAccounts;
 	}
 
-	public void setCompanyAccounts(List<CompanyAccount> companyAccounts) {
-		this.companyAccounts = companyAccounts;
+	public String getPassword() {
+		return password;
 	}
 
 	public String getUsername() {
 		return username;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
+	public void setCompanyAccounts(List<CompanyAccount> companyAccounts) {
+		this.companyAccounts = companyAccounts;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
     
 }

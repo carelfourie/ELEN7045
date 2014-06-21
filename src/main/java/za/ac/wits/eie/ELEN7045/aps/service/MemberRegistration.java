@@ -13,10 +13,10 @@ import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 public class MemberRegistration extends BaseService {
     
     @Inject
-    private SaveRepository saveRepo;
+    private Event<Member> memberEventSrc;
 
     @Inject
-    private Event<Member> memberEventSrc;
+    private SaveRepository saveRepo;
 
     public void register(Member member) throws APSException {
         log.info("Registering " + member.getName());

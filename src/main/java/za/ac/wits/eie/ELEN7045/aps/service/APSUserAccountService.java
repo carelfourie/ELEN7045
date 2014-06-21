@@ -16,10 +16,10 @@ public class APSUserAccountService {
 	@Inject
     private Logger log;
 	
+	@PersistenceContext EntityManager userDatabase;
+	
 	@Inject
     private Event<APSUser> userEventSrc;
-	
-	@PersistenceContext EntityManager userDatabase;
 	
 	/**
 	 * Create account for user

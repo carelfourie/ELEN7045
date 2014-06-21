@@ -29,42 +29,6 @@ public class LoginService extends BaseService {
     
     
 	/**
-     * Load CompanyAccount object for the record that
-     * is return with the same username and password
-     * 
-     * @parameter username
-     * @parameter password
-     * @return CompanyAccount
-     * @throws APSException 
-     */
-	public List<CompanyAccount> loadAPSUserAccounts(String password, String username) throws APSException {
-		APSUser user = null;
-		
-		try {
-			user = getAPSUser(password, username);
-		} catch (APSException e) {
-			throw new APSException(e.getMessage());
-		}
-		
-		if(user != null) {
-			log.info("Loading scraped accounts for " + username);
-			@SuppressWarnings("unchecked")
-	        List<CompanyAccount> results = entityManager.createQuery(
-			           "SELECT c FROM CompanyAccount c "
-			           + "join c.company join c.status join c.apsUser where c.apsUser.password=:password and "
-			           + "c.apsUser.username=:username")
-			           .setParameter("password", password)
-			           .setParameter("username", username)
-			           .getResultList();
-			return results;
-		}
-		else{
-			throw new APSException("Invalid Login");
-		}
-		
-	}
-	
-	/**
 	 * Retrieve user
 	 * @param password
 	 * @param username
@@ -101,5 +65,41 @@ public class LoginService extends BaseService {
 		} catch (Exception e) {
 			throw new APSException("Invalid Login");
 		}
+	}
+	
+	/**
+     * Load CompanyAccount object for the record that
+     * is return with the same username and password
+     * 
+     * @parameter username
+     * @parameter password
+     * @return CompanyAccount
+     * @throws APSException 
+     */
+	public List<CompanyAccount> loadAPSUserAccounts(String password, String username) throws APSException {
+		APSUser user = null;
+		
+		try {
+			user = getAPSUser(password, username);
+		} catch (APSException e) {
+			throw new APSException(e.getMessage());
+		}
+		
+		if(user != null) {
+			log.info("Loading scraped accounts for " + username);
+			@SuppressWarnings("unchecked")
+	        List<CompanyAccount> results = entityManager.createQuery(
+			           "SELECT c FROM CompanyAccount c "
+			           + "join c.company join c.status join c.apsUser where c.apsUser.password=:password and "
+			           + "c.apsUser.username=:username")
+			           .setParameter("password", password)
+			           .setParameter("username", username)
+			           .getResultList();
+			return results;
+		}
+		else{
+			throw new APSException("Invalid Login");
+		}
+		
 	}
 }
