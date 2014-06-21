@@ -2,7 +2,7 @@
 <base-url>www.telco.co.za</base-url>
 <date>15/06/2014</date>
 <time>13:40:35</time>
-<returncode>200</returncode>
+<return-code>200</return-code>
 <datapair id="001">
     <text>Account Number</text>
     <value>1234567</value>
