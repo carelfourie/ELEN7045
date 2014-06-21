@@ -11,7 +11,20 @@ import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 public class Statement extends BaseDomainEntity<Long> {
 
 	private String statement;
-    public Statement() {
+	
+	private String xmlResult;
+	
+	
+	
+    public String getXmlResult() {
+		return xmlResult;
+	}
+
+	public void setXmlResult(String xmlResult) {
+		this.xmlResult = xmlResult;
+	}
+
+	public Statement() {
         super();
     }
 
