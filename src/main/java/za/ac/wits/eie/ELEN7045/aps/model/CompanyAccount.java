@@ -10,7 +10,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
-import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 
 @Entity
 public class CompanyAccount extends BaseDomainEntity<Long> {

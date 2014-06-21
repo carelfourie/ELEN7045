@@ -8,6 +8,6 @@ import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
-public class Satement extends BaseDomainEntity<Long> {
+public class Statement extends BaseDomainEntity<Long> {
 
 }
