@@ -17,10 +17,10 @@ import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
 public class APSUserAccountTest extends BaseTest {
 
 	@Inject
-	Logger log;
+	APSUserAccountService aPSUserAccountCreationService;
 
     @Inject
-	APSUserAccountService aPSUserAccountCreationService;
+	Logger log;
     
     @Test
     public void testCreateAccount() throws Exception {

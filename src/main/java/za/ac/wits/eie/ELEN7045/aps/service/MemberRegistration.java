@@ -3,28 +3,24 @@ package za.ac.wits.eie.ELEN7045.aps.service;
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 
-import org.jboss.logging.Logger;
-
+import za.ac.wits.eie.ELEN7045.aps.data.SaveRepository;
 import za.ac.wits.eie.ELEN7045.aps.model.Member;
+import za.ac.wits.eie.ELEN7045.aps.service.base.BaseService;
+import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 
-// the @Stateless annotation eliminates the need for manual transaction demarcation
 @Stateless
-public class MemberRegistration {
-
-    @Inject
-    private EntityManager em;
-
-    @Inject
-    private Logger log;
-
+public class MemberRegistration extends BaseService {
+    
     @Inject
     private Event<Member> memberEventSrc;
 
-    public void register(Member member) throws Exception {
+    @Inject
+    private SaveRepository saveRepo;
+
+    public void register(Member member) throws APSException {
         log.info("Registering " + member.getName());
-        em.persist(member);
+        saveRepo.save(member);
         memberEventSrc.fire(member);
     }
 }

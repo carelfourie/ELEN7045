@@ -26,24 +26,6 @@ public class MemberController {
     @Named
     private Member newMember;
 
-    @PostConstruct
-    public void initNewMember() {
-        newMember = new Member();
-    }
-
-    public void register() throws Exception {
-        try {
-            memberRegistration.register(newMember);
-            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
-            facesContext.addMessage(null, m);
-            initNewMember();
-        } catch (Exception e) {
-            String errorMessage = getRootErrorMessage(e);
-            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");
-            facesContext.addMessage(null, m);
-        }
-    }
-
     private String getRootErrorMessage(Exception e) {
         // default to general error message that registration failed.
         String errorMessage = "Registration failed. See server log for more information";
@@ -61,5 +43,23 @@ public class MemberController {
         }
         // this is the root cause message
         return errorMessage;
+    }
+
+    @PostConstruct
+    public void initNewMember() {
+        newMember = new Member();
+    }
+
+    public void register() throws Exception {
+        try {
+            memberRegistration.register(newMember);
+            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
+            facesContext.addMessage(null, m);
+            initNewMember();
+        } catch (Exception e) {
+            String errorMessage = getRootErrorMessage(e);
+            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");
+            facesContext.addMessage(null, m);
+        }
     }
 }

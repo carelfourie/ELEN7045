@@ -16,12 +16,12 @@ import za.ac.wits.eie.ELEN7045.aps.service.APSUserAccountService;
 @Model
 public class Account {
 	
-	@Inject
-	APSUserAccountService aPSUserAccountService;
-	
 	@Produces
     @Named
 	private AccountInfo accountInfo;
+	
+	@Inject
+	APSUserAccountService aPSUserAccountService;
 	
 	@Inject
     private FacesContext facesContext;
@@ -29,11 +29,6 @@ public class Account {
 	@Inject
     private Logger log;
 	
-	@PostConstruct
-    public void initCredentials() {
-		accountInfo = new AccountInfo();
-    }
-
 	/**
 	 * Create account for user
 	 * @return
@@ -42,7 +37,7 @@ public class Account {
         //logic to create account
     	log.info("Creating account for user:  "+accountInfo.getUsername());
     	APSUser aPSUser = new APSUser();
-    	if(accountInfo.getUsername() != null && (accountInfo.getPassword1().equals(accountInfo.getPassword2()))) {
+    	if((accountInfo.getUsername() != null) && (accountInfo.getPassword1().equals(accountInfo.getPassword2()))) {
     		aPSUser.setPassword(accountInfo.getPassword1());
         	aPSUser.setUsername(accountInfo.getUsername());
         	aPSUser.setCompanyAccounts(null);
@@ -53,5 +48,10 @@ public class Account {
             facesContext.addMessage(null, m);
     	}
     	return "success";
+    }
+
+	@PostConstruct
+    public void initCredentials() {
+		accountInfo = new AccountInfo();
     }
 }

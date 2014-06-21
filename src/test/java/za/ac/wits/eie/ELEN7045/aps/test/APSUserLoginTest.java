@@ -1,16 +1,15 @@
 package za.ac.wits.eie.ELEN7045.aps.test;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.validation.constraints.AssertTrue;
 
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.logging.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import static org.junit.Assert.*;
 
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
@@ -22,13 +21,13 @@ import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
 public class APSUserLoginTest extends BaseTest {
 
 	@Inject
-	Logger log;
+	APSUserAccountService aPSUserAccountCreationService;
 
     @Inject
-	LoginService loginService;
+	Logger log;
     
     @Inject
-	APSUserAccountService aPSUserAccountCreationService;
+	LoginService loginService;
     
     @Test
     public void testCreateAccount() throws Exception {

@@ -1,16 +1,29 @@
 package za.ac.wits.eie.ELEN7045.aps.service;
 
-import javax.ejb.Local;
+import javax.ejb.Stateless;
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
 
+import za.ac.wits.eie.ELEN7045.aps.data.SaveRepository;
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
+import za.ac.wits.eie.ELEN7045.aps.service.base.BaseService;
 
-@Local
-public interface APSUserAccountService {
-
+@Stateless
+public class APSUserAccountService extends BaseService {
+	
+    @Inject
+    private SaveRepository saveRepo;
+    
+	@Inject
+    private Event<APSUser> userEventSrc;
+	
 	/**
-	 * Create APSUser object 
-	 * @parameter aPSUser
-	 * 
+	 * Create account for user
+	 * @param aPSUser
 	 */
-	void createAccount(APSUser aPSUser);
+	public void createAccount(APSUser apsUser) {
+		log.info("Creating account for " + apsUser.getUsername());
+		saveRepo.save(apsUser);
+		userEventSrc.fire(apsUser);
+	}
 }

@@ -14,12 +14,14 @@ import javax.inject.Named;
 import org.jboss.logging.Logger;
 
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
-import za.ac.wits.eie.ELEN7045.aps.service.InvalidUserException;
 import za.ac.wits.eie.ELEN7045.aps.service.LoginService;
+import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 
 @Model
 public class Login {
 
+	private List<CompanyAccount> companyAccountList = new ArrayList<CompanyAccount>();
+	
 	@Produces
     @Named
 	private Credentials credentials;
@@ -28,23 +30,28 @@ public class Login {
     private FacesContext facesContext;
 	
 	@Inject
-    private LoginService loginService;
-	
-	@Inject
     private Logger log;
     
-    private List<CompanyAccount> companyAccountList = new ArrayList<CompanyAccount>();
+    @Inject
+    private LoginService loginService;
     		
+    @Produces
+    @Named
+	public List<CompanyAccount> getCompanyAccountList() {
+		return companyAccountList;
+	}
+    
     @PostConstruct
     public void initCredentials() {
     	credentials = new Credentials();
     }
-    
-    /**
+
+	/**
      * Login a user to retrieve scraped accounts
      * @return
+     * @throws APSException 
      */
-    public String login() {
+    public String login() throws APSException {
     	
     	 List<CompanyAccount> results;
 		try {
@@ -58,18 +65,12 @@ public class Login {
 			else {
 				return "success";
 			}
-		} catch (InvalidUserException e) {
+		} catch (APSException e) {
 			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage());
 	           facesContext.addMessage(null, m);
 		}
 		return "failure";
     }
-
-	@Produces
-    @Named
-	public List<CompanyAccount> getCompanyAccountList() {
-		return companyAccountList;
-	}
 
 	public void setCompanyAccountList(List<CompanyAccount> companyAccountList) {
 		this.companyAccountList = companyAccountList;

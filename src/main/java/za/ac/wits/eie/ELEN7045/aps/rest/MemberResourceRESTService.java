@@ -37,13 +37,13 @@ public class MemberResourceRESTService {
     private Logger log;
 
     @Inject
+    MemberRegistration registration;
+
+    @Inject
     private MemberRepository repository;
 
     @Inject
     private Validator validator;
-
-    @Inject
-    MemberRegistration registration;
 
     /**
      * Creates a new member from the values provided. Performs validation, and will return a JAX-RS response with either 200 ok,
@@ -83,6 +83,25 @@ public class MemberResourceRESTService {
     }
 
     /**
+     * Creates a JAX-RS "Bad Request" response including a map of all violation fields, and their message. This can then be used
+     * by clients to show violations.
+     * 
+     * @param violations A set of violations that needs to be reported
+     * @return JAX-RS response containing all violations
+     */
+    private Response.ResponseBuilder createViolationResponse(Set<ConstraintViolation<?>> violations) {
+        log.debug("Validation completed. violations found: " + violations.size());
+
+        Map<String, String> responseObj = new HashMap<String, String>();
+
+        for (ConstraintViolation<?> violation : violations) {
+            responseObj.put(violation.getPropertyPath().toString(), violation.getMessage());
+        }
+
+        return Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+    }
+
+    /**
      * Checks if a member with the same email address is already registered. This is the only way to easily capture the
      * "@UniqueConstraint(columnNames = "email")" constraint from the Member class.
      * 
@@ -114,25 +133,6 @@ public class MemberResourceRESTService {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
         return member;
-    }
-
-    /**
-     * Creates a JAX-RS "Bad Request" response including a map of all violation fields, and their message. This can then be used
-     * by clients to show violations.
-     * 
-     * @param violations A set of violations that needs to be reported
-     * @return JAX-RS response containing all violations
-     */
-    private Response.ResponseBuilder createViolationResponse(Set<ConstraintViolation<?>> violations) {
-        log.debug("Validation completed. violations found: " + violations.size());
-
-        Map<String, String> responseObj = new HashMap<String, String>();
-
-        for (ConstraintViolation<?> violation : violations) {
-            responseObj.put(violation.getPropertyPath().toString(), violation.getMessage());
-        }
-
-        return Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
     }
 
     /**
