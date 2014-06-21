@@ -16,11 +16,11 @@
 --
 
 -- You can use this file to load seed data into the database using SQL statements
-insert into Member (id, name, email, phone_number) values (0, 'John Smith', 'john.smith@mailinator.com', '2125551212') 
-insert into APSUser (id, password, username) values (0, 'john', 'john')
-insert into BillingCycle (id, cycle) values (0, 'MONTHLY')
-insert into Company (id, name, billingCycle_id) values (0, 'VODACOM', 0)
-insert into Status (id, description) values (0, 'OPEN')
-insert into Statement (id, statement) values (0, 'vodacom_15_06.xml')
-insert into CompanyAccount (id, accountNumber, apsUser_id, company_id, statement_id, status_id) values (0, '1234567', 0, 0, 0, 0)
-
+insert into Member (id, name, email, phone_number) values (1, 'John Smith', 'john.smith@mailinator.com', '2125551212') 
+insert into APSUser (id, password, username) values (1, 'john', 'john')
+insert into BillingCycle (id, cycle) values (1, 'MONTHLY')
+insert into Company (id, name, billingCycle_id) values (1, 'VODACOM', 1)
+insert into Status (id, description) values (1, 'OPEN')
+insert into Statement (id, statement) values (1, 'vodacom_15_06.xml')
+--insert into CompanyAccount (id, accountNumber, apsUser_id, company_id, statement_id, status_id) values (0, '1234567', 0, 0, 0, 0)
+insert into CompanyAccount (id, accountNumber, apsUser_id, company_id, statement_id, status_id) values (1, '1234567', 1, 1, 1, 1)

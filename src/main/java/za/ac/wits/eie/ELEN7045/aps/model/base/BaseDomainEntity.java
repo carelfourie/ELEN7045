@@ -26,7 +26,7 @@ public abstract class BaseDomainEntity<ID extends Serializable> {
         this.id = id;
     }
 
-    protected <T extends BaseDomainEntity<Integer>> List<T> constructListIfNull(List<T> list) {
+    protected <T extends BaseDomainEntity<Long>> List<T> constructListIfNull(List<T> list) {
         if (list == null) {
             list = new ArrayList<T>();
         }

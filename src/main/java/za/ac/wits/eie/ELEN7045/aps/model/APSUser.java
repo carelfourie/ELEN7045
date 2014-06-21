@@ -2,7 +2,9 @@ package za.ac.wits.eie.ELEN7045.aps.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -11,10 +13,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 
 @Entity
-public class APSUser extends BaseDomainEntity<Long> implements java.io.Serializable
-{
-	final static long serialVersionUID = 1L;
-    @OneToMany(mappedBy = "apsUser")
+public class APSUser extends BaseDomainEntity<Long> {
+    
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "apsUser")
     private List<CompanyAccount> companyAccounts;
     
     @NotNull
@@ -34,6 +35,7 @@ public class APSUser extends BaseDomainEntity<Long> implements java.io.Serializa
     }
 
 	public List<CompanyAccount> getCompanyAccounts() {
+	    companyAccounts = constructListIfNull(companyAccounts);
 		return companyAccounts;
 	}
 
