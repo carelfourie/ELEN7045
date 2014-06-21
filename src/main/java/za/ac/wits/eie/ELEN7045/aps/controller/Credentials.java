@@ -1,6 +1,5 @@
 package za.ac.wits.eie.ELEN7045.aps.controller;
 
-//@Named @RequestScoped
 public class Credentials {
 
 	private String password;
@@ -11,6 +10,5 @@ public class Credentials {
     
     public void setPassword(String password) { this.password = password; }
     public void setUsername(String username) { this.username = username; }
-	
     
 }
