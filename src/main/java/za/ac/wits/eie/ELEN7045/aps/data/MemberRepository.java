@@ -3,20 +3,16 @@ package za.ac.wits.eie.ELEN7045.aps.data;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import za.ac.wits.eie.ELEN7045.aps.data.base.BaseRepository;
 import za.ac.wits.eie.ELEN7045.aps.model.Member;
 
 @ApplicationScoped
-public class MemberRepository {
-
-    @Inject
-    private EntityManager em;
-
+public class MemberRepository extends BaseRepository {
+    
     public List<Member> findAllOrderedByName() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Member> criteria = cb.createQuery(Member.class);

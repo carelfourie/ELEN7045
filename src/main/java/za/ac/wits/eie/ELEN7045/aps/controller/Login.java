@@ -15,6 +15,7 @@ import org.jboss.logging.Logger;
 
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
 import za.ac.wits.eie.ELEN7045.aps.service.LoginService;
+import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 import za.ac.wits.eie.ELEN7045.aps.service.exception.InvalidUserException;
 
 @Model
@@ -43,8 +44,9 @@ public class Login {
     /**
      * Login a user to retrieve scraped accounts
      * @return
+     * @throws APSException 
      */
-    public String login() {
+    public String login() throws APSException {
     	
     	 List<CompanyAccount> results;
 		try {
@@ -58,7 +60,7 @@ public class Login {
 			else {
 				return "success";
 			}
-		} catch (InvalidUserException e) {
+		} catch (APSException e) {
 			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage());
 	           facesContext.addMessage(null, m);
 		}
