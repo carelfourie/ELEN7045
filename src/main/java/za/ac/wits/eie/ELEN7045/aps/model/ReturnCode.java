@@ -11,6 +11,8 @@ public class ReturnCode extends BaseDomainEntity<Long> {
     
     private String description;
 
+    private String apsdescription;
+    
     public ReturnCode() {
         super();
     }
@@ -33,5 +35,15 @@ public class ReturnCode extends BaseDomainEntity<Long> {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public void setApsdescription(String apsdescription)
+    {
+    	this.apsdescription = apsdescription;
+    }
+    
+    public String getApsdescription()
+    {
+    	return apsdescription;
     }
 }

@@ -1,0 +1,82 @@
+<scrape-session>
+<base-url>www.telco.co.za</base-url>
+<date>15/06/2014</date>
+<time>13:40:35</time>
+<returncode>200</returncode>
+<datapair id="001">
+    <text>Account Number</text>
+    <value>1234567</value>
+</datapair>
+<datapair id="002">
+    <text>Account Holder Name</text>
+    <value>Mr T Mbelli</value>
+</datapair>
+<datapair id="003">
+    <text>Statement Date</text>
+    <value>12/06/2014</value>
+</datapair>
+<datapair id="004">
+    <text>Statement Number</text>
+    <value>1123</value>
+</datapair>
+<datapair id="005">
+    <text>Statement Month</text>
+    <value>June</value>
+</datapair>
+<datapair id="006">
+    <text>Total Due</text>
+    <value>R100.00</value>
+</datapair>
+<datapair id="007">
+    <text>Due Date</text>
+    <value>12/07/2014</value>
+</datapair>
+<datapair id="008">
+    <text>Opening Balance</text>
+    <value>R200.00</value>
+</datapair>
+<datapair id="009">
+    <text>Closing Balance</text>
+    <value>R150.00</value>
+</datapair>
+<datapair id="010">
+    <text>Payment Received</text>
+    <value>R50.00</value>
+</datapair>
+<datapair id="011">
+    <text>New Charges</text>
+    <value>R0.00</value>
+</datapair>
+<datapair id="012">
+    <text>Deductions</text>
+    <value>R0.00</value>
+</datapair>
+<datapair id="013">
+    <text>Discount</text>
+    <value>R0.00</value>
+</datapair>
+<datapair id="014">
+    <text>VAT Amount</text>
+    <value>R14.00</value>
+</datapair>
+<datapair id="015">
+    <text>Telephone Number</text>
+    <value>01234567890</value>
+</datapair>
+<datapair id="016">
+    <text>Service Charges</text>
+    <value>R70.00</value>
+</datapair>
+<datapair id="017">
+    <text>Call Charges</text>
+    <value>R50.00</value>
+</datapair>
+<datapair id="018">
+    <text>Total Number of Calls</text>
+    <value>1</value>
+</datapair>
+<datapair id="019">
+    <text>Total Call Duration</text>
+    <value>2:27:32</value>
+</datapair>
+</scrape-session>
