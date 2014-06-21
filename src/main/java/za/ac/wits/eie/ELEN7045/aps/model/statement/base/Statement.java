@@ -14,8 +14,6 @@ public class Statement extends BaseDomainEntity<Long> {
 	
 	private String xmlResult;
 	
-	
-	
     public String getXmlResult() {
 		return xmlResult;
 	}
