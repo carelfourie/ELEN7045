@@ -3,21 +3,17 @@ package za.ac.wits.eie.ELEN7045.aps.service;
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
-import org.jboss.logging.Logger;
-
+import za.ac.wits.eie.ELEN7045.aps.data.SaveRepository;
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
+import za.ac.wits.eie.ELEN7045.aps.service.base.BaseService;
 
 @Stateless
-public class APSUserAccountService {
-
-	@Inject
-    private Logger log;
+public class APSUserAccountService extends BaseService {
 	
-	@PersistenceContext EntityManager userDatabase;
-	
+    @Inject
+    private SaveRepository saveRepo;
+    
 	@Inject
     private Event<APSUser> userEventSrc;
 	
@@ -25,9 +21,9 @@ public class APSUserAccountService {
 	 * Create account for user
 	 * @param aPSUser
 	 */
-	public void createAccount(APSUser aPSUser) {
-		log.info("Creating account for " + aPSUser.getUsername());
-		userDatabase.persist(aPSUser);
-		userEventSrc.fire(aPSUser);
+	public void createAccount(APSUser apsUser) {
+		log.info("Creating account for " + apsUser.getUsername());
+		saveRepo.save(apsUser);
+		userEventSrc.fire(apsUser);
 	}
 }
