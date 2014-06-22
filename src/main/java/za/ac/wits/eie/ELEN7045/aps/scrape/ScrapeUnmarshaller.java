@@ -48,14 +48,6 @@ public class ScrapeUnmarshaller {
 		}
 	}
 	
-	private static String getTagValue(String sTag, Element eElement) {
-
-		NodeList nlList = eElement.getElementsByTagName(sTag).item(0)
-				.getChildNodes();
-		Node nValue = (Node) nlList.item(0);
-		return nValue.getNodeValue();
-	}
-
 	private static String getTagValue(NodeList nodeList) {
 		if (nodeList == null) {
 			return null;
@@ -65,5 +57,12 @@ public class ScrapeUnmarshaller {
 		}
 		return null;
 	}
-	
+
+	private static String getTagValue(String sTag, Element eElement) {
+
+		NodeList nlList = eElement.getElementsByTagName(sTag).item(0)
+				.getChildNodes();
+		Node nValue = nlList.item(0);
+		return nValue.getNodeValue();
+	}
 }

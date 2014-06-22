@@ -31,7 +31,6 @@ import org.junit.runner.RunWith;
 
 import za.ac.wits.eie.ELEN7045.aps.concurrency.ConcurrentScrapingExecutor;
 import za.ac.wits.eie.ELEN7045.aps.concurrency.ScrapingSession;
-import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
 import za.ac.wits.eie.ELEN7045.aps.service.LoginService;
 import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
@@ -44,11 +43,20 @@ public class ConcurrencyTest extends BaseTest {
     Logger log;
     
     @Inject
-    ConcurrentScrapingExecutor scraper;
+    LoginService loginService;
     
     @Inject
-    LoginService loginService;
+    ConcurrentScrapingExecutor scraper;
    
+    private  List<ScrapingSession> getScrapingSessions() throws APSException {
+        List<ScrapingSession> sessions = new ArrayList<ScrapingSession>();
+        List<CompanyAccount> acounts = loginService.loadAPSUserAccounts("john", "john");
+        for (CompanyAccount companyAccount : acounts) {
+            sessions.add(new ScrapingSession(companyAccount));
+        }
+        return sessions;
+    }
+    
     @Test
     public void test() throws Exception {
         try {
@@ -65,14 +73,5 @@ public class ConcurrencyTest extends BaseTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    
-    private  List<ScrapingSession> getScrapingSessions() throws APSException {
-        List<ScrapingSession> sessions = new ArrayList<ScrapingSession>();
-        List<CompanyAccount> acounts = loginService.loadAPSUserAccounts("john", "john");
-        for (CompanyAccount companyAccount : acounts) {
-            sessions.add(new ScrapingSession(companyAccount));
-        }
-        return sessions;
     }
 }

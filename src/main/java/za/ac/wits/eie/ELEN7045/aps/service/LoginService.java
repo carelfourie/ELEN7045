@@ -22,20 +22,6 @@ public class LoginService extends BaseService {
     private FindByCriteriaRepository findByCriteriaRepo;
 
     /**
-     * Load CompanyAccount object for the record that is return with the same username and password
-     * 
-     * @parameter username
-     * @parameter password
-     * @return CompanyAccount
-     * @throws APSException
-     */
-    public List<CompanyAccount> loadAPSUserAccounts(String password, String username) throws APSException {
-        APSUser user = getAPSUser(password, username);
-        log.info("Loading scraped accounts for " + user.getUsername());
-        return user.getCompanyAccounts();
-    }
-
-    /**
      * Retrieve APS User
      * 
      * @param password
@@ -59,5 +45,19 @@ public class LoginService extends BaseService {
         }
 
         return users.get(0);
+    }
+
+    /**
+     * Load CompanyAccount object for the record that is return with the same username and password
+     * 
+     * @parameter username
+     * @parameter password
+     * @return CompanyAccount
+     * @throws APSException
+     */
+    public List<CompanyAccount> loadAPSUserAccounts(String password, String username) throws APSException {
+        APSUser user = getAPSUser(password, username);
+        log.info("Loading scraped accounts for " + user.getUsername());
+        return user.getCompanyAccounts();
     }
 }

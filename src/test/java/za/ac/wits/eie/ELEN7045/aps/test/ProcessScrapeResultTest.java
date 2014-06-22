@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import javax.inject.Inject;
+
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.logging.Logger;
 import org.junit.Test;
