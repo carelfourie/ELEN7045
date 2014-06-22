@@ -1,22 +1,26 @@
 package za.ac.wits.eie.ELEN7045.aps.scrape;
 
+import java.lang.reflect.Method;
 
-
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
+import za.ac.wits.eie.ELEN7045.aps.model.statement.CreditCardStatement;
+import za.ac.wits.eie.ELEN7045.aps.model.statement.MunicipalityStatement;
+import za.ac.wits.eie.ELEN7045.aps.model.statement.TelcoStatement;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 
-public abstract class ScrapeSessionMapper {
+@Stateless
+public class ScrapeSessionMapper {
 
 	@Inject
-	private static Logger log;
+	private Logger log;
 
-	public static void map(ScrapeSession scrapeSession,
+
+	public void map(ScrapeSession scrapeSession,
 			Statement statement) throws Exception {
-
-		//TODO: Cast ScrapeSessionInfo object to extending class.
 		statement.setBaseUrl(scrapeSession.getBaseurl());
 		statement.setDate(scrapeSession.getDate());
 		statement.setTime(scrapeSession.getTime());
@@ -25,19 +29,21 @@ public abstract class ScrapeSessionMapper {
 		for (Datapair datapair : scrapeSession.getDatapairs()) {
 			try {
 
-				ScrapeSessionData ssd = ScrapeSessionData
-						.getScrapeSessionData(datapair.getText());
-
-				//TODO: Complete setters
-				log.info(String.format(">>> SCRAPE-SESSION-MAPPER: %s = '%s'",
-						datapair.getText(), datapair.getValue()));
-				if (ssd == null) {
+				String methodName = AttributeTranslator.translate("set", datapair.getText());
+				if(methodName == null){
 					continue;
 				}
-				log.info(String.format(">>> SCRAPE-SESSION-MAPPER: Will call %s(\"%s\")",
-						ssd.getSetterMethodName(), datapair.getValue()));
+				log.debug(String.format(">>>> SCRAPE-SESSION-MAPPER >>>> %s(%s)", methodName, datapair.getValue()));
+				invoke(statement, methodName, datapair.getValue());
 			} catch (NullPointerException npe) {
+				log.error("Error mapping field: " + npe.getMessage());
 			}
 		}
+	}
+	
+	private Object invoke(Statement statement, String methodName, Object parameter) throws Exception{
+		Class<?> c = statement.getClass();
+		Method m = c.getMethod(methodName, parameter.getClass());
+		return m.invoke(statement, parameter);
 	}
 }

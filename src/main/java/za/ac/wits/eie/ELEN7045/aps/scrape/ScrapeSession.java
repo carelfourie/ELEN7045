@@ -7,56 +7,56 @@ public class ScrapeSession {
 
 	private String baseurl;
 	
-	private List<Datapair> datapairs = new ArrayList<Datapair>();
-	
 	private String date;
+	
+	private String time;
 	
 	private String returncode;
 	
-	private String time;
-
-	public void addDatapair(Datapair datapair) {
-		datapairs.add(datapair);
-	}
+	private List<Datapair> datapairs = new ArrayList<Datapair>();
 
 	public String getBaseurl() {
 		return baseurl;
-	}
-
-	public List<Datapair> getDatapairs() {
-		return datapairs;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public String getReturncode() {
-		return returncode;
-	}
-
-	public String getTime() {
-		return time;
 	}
 
 	public void setBaseurl(String baseurl) {
 		this.baseurl = baseurl;
 	}
 
-	public void setDatapairs(List<Datapair> datapairs) {
-		this.datapairs = datapairs;
+	public String getDate() {
+		return date;
 	}
 
 	public void setDate(String date) {
 		this.date = date;
 	}
 
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public String getReturncode() {
+		return returncode;
+	}
+
 	public void setReturncode(String returncode) {
 		this.returncode = returncode;
 	}
+
+	public List<Datapair> getDatapairs() {
+		return datapairs;
+	}
+
+	public void setDatapairs(List<Datapair> datapairs) {
+		this.datapairs = datapairs;
+	}
 	
-	public void setTime(String time) {
-		this.time = time;
+	public void addDatapair(Datapair datapair) {
+		datapairs.add(datapair);
 	}
 	
 }
