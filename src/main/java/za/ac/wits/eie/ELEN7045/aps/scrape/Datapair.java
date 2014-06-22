@@ -12,20 +12,20 @@ public class Datapair {
 		return id;
 	}
 
-	public String getText() {
-		return text;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
 
+	public String getText() {
+		return text;
+	}
+
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	public String getValue() {
+		return value;
 	}
 
 	public void setValue(String value) {

@@ -1,69 +1,53 @@
-package za.ac.wits.eie.ELEN7045.aps.model.statement.base;
+package za.ac.wits.eie.ELEN7045.aps.scrape;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 
-@Inheritance(strategy = InheritanceType.JOINED)
+/*
+ * This class enables use of the common fields.
+ * 
+ * ======================
+ * Common Fields
+ * ----------------------
+ * Account number
+ * Account holder name
+ * Statement date
+ * Statement number
+ * Statement month
+ * Total due
+ * Due date
+ * Opening balance
+ * Closing balance
+ * Payment received
+ * New charges
+ * Deductions
+ * Discount
+ * VAT amount
+ * ======================
+ */
+
+@XmlRootElement(name = "scrape-session")
 @Entity
-public class Statement extends BaseDomainEntity<Long> {
+public class ScrapeSessionInfo extends BaseDomainEntity<Long> {
 
-	private String statement;
-
+	@Column(name = "base_url")
 	private String baseUrl;
 	
+	@Column(name = "date")
 	private String date;
 	
+	@Column(name = "time")
 	private String time;
 	
+	@Column(name = "return_code")
 	private String returnCode;
 	
+	@Column(name = "account_number")
 	private String acccountNumber;
-
-	private String accountHolderName;
 	
-	private String statementDate;
-	
-	private String statementNumber;
-	
-	private String statementMonth;
-	
-	private String totalDue;
-	
-	private String dueDate;
-	
-	private String openingBalance;
-	
-	private String closingBalance;
-	
-	private String paymentReceived;
-	
-	private String newCharges;
-	
-	private String deductions;
-	
-	private String discount;
-	
-	private String vatAmount;
-	
-	public Statement() {
-        super();
-    }
-
-    public Statement(Long id) {
-        super(id);
-    }
-
-	public String getStatement() {
-		return statement;
-	}
-
-	public void setStatement(String statement) {
-		this.statement = statement;
-	}
-		
 	public String getBaseUrl() {
 		return baseUrl;
 	}
@@ -95,12 +79,61 @@ public class Statement extends BaseDomainEntity<Long> {
 	public void setReturnCode(String returnCode) {
 		this.returnCode = returnCode;
 	}
-		
+
+
+	@Column(name = "account_holder_name")
+	private String accountHolderName;
+	
+	@Column(name = "statement_date")
+	private String statementDate;
+	
+	@Column(name = "statement_number")
+	private String statementNumber;
+	
+	@Column(name = "statement_month")
+	private String statementMonth;
+	
+	@Column(name = "total_due")
+	private String totalDue;
+	
+	@Column(name = "due_date")
+	private String dueDate;
+	
+	@Column(name = "opening_balance")
+	private String openingBalance;
+	
+	@Column(name = "closing_balance")
+	private String closingBalance;
+	
+	@Column(name = "payment_received")
+	private String paymentReceived;
+	
+	@Column(name = "new_charges")
+	private String newCharges;
+	
+	@Column(name = "deductions")
+	private String deductions;
+	
+	@Column(name = "discount")
+	private String discount;
+	
+	@Column(name = "vat_amount")
+	private String vatAmount;
+	
+	
+    public ScrapeSessionInfo() {
+        super();
+    }
+
+    public ScrapeSessionInfo(Long id) {
+        super(id);
+    }
+
 	public String getAcccountNumber() {
 		return acccountNumber;
 	}
 
-	public void setAccountNumber(String acccountNumber) {
+	public void setAcccountNumber(String acccountNumber) {
 		this.acccountNumber = acccountNumber;
 	}
 
@@ -207,4 +240,5 @@ public class Statement extends BaseDomainEntity<Long> {
 	public void setVatAmount(String vatAmount) {
 		this.vatAmount = vatAmount;
 	}
+
 }

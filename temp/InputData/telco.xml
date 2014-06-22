@@ -1,5 +1,5 @@
 <scrape-session>
-	<base-url>www.statement.co.za</base-url>
+	<base-url>www.telco.co.za</base-url>
 	<date>15/06/2014</date>
 	<time>13:40:35</time>
 	<return-code>200</return-code>
@@ -60,39 +60,23 @@
 		<value>R14.00</value>
 	</datapair>
 	<datapair id="015">
-		<text>Installment Notice</text>
-		<value>2452582</value>
+		<text>Telephone Number</text>
+		<value>01234567890</value>
 	</datapair>
 	<datapair id="016">
-		<text>Electricity Used</text>
-		<value>1000 units</value>
+		<text>Service Charges</text>
+		<value>R70.00</value>
 	</datapair>
 	<datapair id="017">
-		<text>Electricity Charges</text>
-		<value>R1200.00</value>
+		<text>Call Charges</text>
+		<value>R50.00</value>
 	</datapair>
 	<datapair id="018">
-		<text>Gas Used</text>
-		<value>0</value>
+		<text>Total Number of Calls</text>
+		<value>1</value>
 	</datapair>
 	<datapair id="019">
-		<text>Gas Charges</text>
-		<value>R0.00</value>
-	</datapair>
-	<datapair id="020">
-		<text>Water Used</text>
-		<value>1000 litres</value>
-	</datapair>
-	<datapair id="021">
-		<text>Water Charges</text>
-		<value>R2000.00</value>
-	</datapair>
-	<datapair id="022">
-		<text>Sewerage Charges</text>
-		<value>R200.00</value>
-	</datapair>
-	<datapair id="023">
-		<text>Refuse Charges</text>
-		<value>R100.00</value>
+		<text>Total Call Duration</text>
+		<value>2:27:32</value>
 	</datapair>
 </scrape-session>
