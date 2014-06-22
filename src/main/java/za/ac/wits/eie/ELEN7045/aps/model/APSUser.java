@@ -17,7 +17,7 @@ import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 @Entity
 public class APSUser extends BaseDomainEntity<Long> {
     
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "apsUser")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "apsUser")
 	@Fetch(FetchMode.SELECT)
     private List<CompanyAccount> companyAccounts;
     
