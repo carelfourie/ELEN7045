@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -17,7 +16,7 @@ import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 @Entity
 public class APSUser extends BaseDomainEntity<Long> {
     
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "apsUser")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "apsUser")
 	@Fetch(FetchMode.SELECT)
     private List<CompanyAccount> companyAccounts;
     

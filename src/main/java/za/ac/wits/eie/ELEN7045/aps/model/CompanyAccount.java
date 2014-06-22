@@ -28,8 +28,8 @@ public class CompanyAccount extends BaseDomainEntity<Long> {
     
     private String password;
     
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "companyAccount")
-    @Fetch(FetchMode.SELECT)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "companyAccount")
+    //@Fetch(FetchMode.SELECT)
     private List<ScrapingEvent> scrapingEvents;
     
     @ManyToOne
@@ -67,6 +67,7 @@ public class CompanyAccount extends BaseDomainEntity<Long> {
     }
 
 	public List<ScrapingEvent> getScrapingEvents() {
+	    scrapingEvents = constructListIfNull(scrapingEvents);
         return scrapingEvents;
     }
 
