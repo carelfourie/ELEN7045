@@ -2,17 +2,15 @@ package za.ac.wits.eie.ELEN7045.aps.model;
 
 import javax.persistence.Entity;
 
-import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
+import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDescriptionDomainEntity;
 
 @Entity
-public class ReturnCode extends BaseDomainEntity<Long> {
+public class ReturnCode extends BaseDescriptionDomainEntity<Long>{
     
     private String apsdescription;
     
     private String code;
 
-    private String description;
-    
     public ReturnCode() {
         super();
     }
@@ -30,10 +28,6 @@ public class ReturnCode extends BaseDomainEntity<Long> {
         return code;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public void setApsdescription(String apsdescription)
     {
     	this.apsdescription = apsdescription;
@@ -43,7 +37,5 @@ public class ReturnCode extends BaseDomainEntity<Long> {
         this.code = code;
     }
     
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    
 }
