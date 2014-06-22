@@ -9,11 +9,11 @@ public class CreditCardStatement extends Statement {
     
     private String cardType;
     
-    private String interestRate;
+    private String creditAvailable;
     
     private String creditLimit;
     
-    private String creditAvailable;
+    private String interestRate;
     
     private String minimumAmountDue;
 
@@ -29,36 +29,36 @@ public class CreditCardStatement extends Statement {
         return cardType;
     }
 
-    public void setCardType(String cardType) {
-        this.cardType = cardType;
-    }
-
-    public String getInterestRate() {
-        return interestRate;
-    }
-
-    public void setInterestRate(String interestRate) {
-        this.interestRate = interestRate;
+    public String getCreditAvailable() {
+        return creditAvailable;
     }
 
     public String getCreditLimit() {
         return creditLimit;
     }
 
-    public void setCreditLimit(String creditLimit) {
-        this.creditLimit = creditLimit;
+    public String getInterestRate() {
+        return interestRate;
     }
 
-    public String getCreditAvailable() {
-        return creditAvailable;
+    public String getMinimumAmountDue() {
+        return minimumAmountDue;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
     }
 
     public void setCreditAvailable(String creditAvailable) {
         this.creditAvailable = creditAvailable;
     }
 
-    public String getMinimumAmountDue() {
-        return minimumAmountDue;
+    public void setCreditLimit(String creditLimit) {
+        this.creditLimit = creditLimit;
+    }
+
+    public void setInterestRate(String interestRate) {
+        this.interestRate = interestRate;
     }
 
     public void setMinimumAmountDue(String minimumAmountDue) {
