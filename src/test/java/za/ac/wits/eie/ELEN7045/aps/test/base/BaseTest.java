@@ -15,6 +15,7 @@ import za.ac.wits.eie.ELEN7045.aps.controller.MemberController;
 import za.ac.wits.eie.ELEN7045.aps.data.MemberListProducer;
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 import za.ac.wits.eie.ELEN7045.aps.rest.JAXRSActivator;
+import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeSession;
 import za.ac.wits.eie.ELEN7045.aps.service.MemberRegistration;
 import za.ac.wits.eie.ELEN7045.aps.util.Resources;
 
@@ -34,6 +35,7 @@ public abstract class BaseTest {
                 .addPackages(true, APSUser.class.getPackage())
                 .addPackages(true, JAXRSActivator.class.getPackage())
                 .addPackages(true, MemberRegistration.class.getPackage())
+                .addPackages(true, ScrapeSession.class.getPackage())
                 .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsWebInfResource("test-ds.xml")
