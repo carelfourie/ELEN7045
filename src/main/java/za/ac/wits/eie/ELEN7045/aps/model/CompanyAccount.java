@@ -9,9 +9,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 
@@ -28,7 +25,7 @@ public class CompanyAccount extends BaseDomainEntity<Long> {
     
     private String password;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "companyAccount")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "companyAccount")
     //@Fetch(FetchMode.SELECT)
     private List<ScrapingEvent> scrapingEvents;
     
