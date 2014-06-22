@@ -25,7 +25,7 @@ public class CompanyAccount extends BaseDomainEntity<Long> {
     
     private String password;
     
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "companyAccount")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "companyAccount")
     private List<ScrapingEvent> scrapingEvents;
     
     @ManyToOne
