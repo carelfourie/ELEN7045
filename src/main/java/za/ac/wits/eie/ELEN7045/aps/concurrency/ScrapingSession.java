@@ -8,19 +8,27 @@ import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
 
 public class ScrapingSession implements Runnable {
     
-    private CompanyAccount account;
+    private CompanyAccount companyAccount;
     
     @Inject
     private Logger log;
     
     @Inject
-    public ScrapingSession(CompanyAccount account) {
-        this.account = account;
+    public ScrapingSession(CompanyAccount companyAccount) {
+        this.companyAccount = companyAccount;
     }
     
     @Override
     public void run() {
-        log.info(String.format("scraping: [%s]", account.getUrl()));
+        log.info(String.format("scraping: [%s]", companyAccount.getUrl()));
         // now pass this to the "already developed scraper..."
     }
+
+	public CompanyAccount getCompanyAccount() {
+		return companyAccount;
+	}
+
+	public void setCompanyAccount(CompanyAccount companyAccount) {
+		this.companyAccount = companyAccount;
+	}
 }

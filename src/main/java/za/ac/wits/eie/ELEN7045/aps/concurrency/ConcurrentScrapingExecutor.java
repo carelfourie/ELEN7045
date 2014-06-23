@@ -7,7 +7,7 @@ import javax.enterprise.concurrent.ManagedExecutorService;
 import javax.inject.Named;
 
 @Named
-public class ConcurrentScrapingExecutor {
+public class ConcurrentScrapingExecutor implements ConcurrentScrapingExecutorIFace {
     
     /**
      * Container managed thread pool.
@@ -16,6 +16,7 @@ public class ConcurrentScrapingExecutor {
     @Resource(name = "java:jboss/ee/concurrency/executor/default")
     private ManagedExecutorService managedExecutorService;
     
+    @Override
     public Future<?> submit(ScrapingSession session) {
         return managedExecutorService.submit(session);
     }

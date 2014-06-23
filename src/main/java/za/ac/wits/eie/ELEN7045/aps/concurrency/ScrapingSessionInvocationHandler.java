@@ -2,19 +2,41 @@ package za.ac.wits.eie.ELEN7045.aps.concurrency;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.util.Date;
 
+import javax.inject.Inject;
+
+import za.ac.wits.eie.ELEN7045.aps.data.SaveRepository;
+import za.ac.wits.eie.ELEN7045.aps.model.ScrapingEventAuditLog;
 
 public class ScrapingSessionInvocationHandler implements InvocationHandler {
-	private Object scrapingSession;
+	
+	@Inject
+	private SaveRepository saveRepository;
+	
+	
+	
+	private Object concurrentScrapingExecutor;
 
-	public ScrapingSessionInvocationHandler(Object scrapingSession) {
-	   this.scrapingSession = scrapingSession;
+	public ScrapingSessionInvocationHandler(Object concurrentScrapingExecutor) {
+	   this.concurrentScrapingExecutor = concurrentScrapingExecutor;
 	}
 	
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-	  //log the scrape
-	   return method.invoke(scrapingSession, args);
+		//log the scrape
+		ScrapingSession ss = (ScrapingSession) args[0];
+		ScrapingEventAuditLog log = new ScrapingEventAuditLog();
+		
+		log.setApsUser(ss.getCompanyAccount().getApsUser());
+		log.setCompany(ss.getCompanyAccount().getCompany());
+		log.setReturnCode(null);
+		log.setScrapeDate(new Date());
+		
+		saveRepository.save(log);
+		
+		//invoke the method
+	   return method.invoke(concurrentScrapingExecutor, args);
 	}
 }
 
