@@ -15,3 +15,4 @@ insert into ReturnCode (id, code,description, apsdescription) values(6, '408', '
 insert into ReturnCode (id, code,description, apsdescription) values(7, '500' ,'Internal Server Error', 'Server Down, scraper rescheduled')
 insert into ReturnCode (id, code,description, apsdescription) values(8, '503', 'Service Unavailable', 'Error, scraper rescheduled')
 insert into CompanyAccount (id, accountNumber, apsUser_id, company_id, statement_id, status_id) values (1, '1234567', 1, 1, 1, 1)
+insert into ScrapingEventAuditLog (id, scrapeDate, apsUser_id, company_id, returnCode_id) values (1, '2014-06-24', 1, 1, 1)

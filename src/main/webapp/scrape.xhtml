@@ -15,6 +15,11 @@
     <h:messages styleClass="messages"
                         errorClass="invalid" infoClass="valid"
                         warnClass="warning" globalOnly="true" />
+    <!-- rocky added audit log -->                    
+    <h:commandButton value="Audit Log" action="#{scrapingEventAuditLogController.getAuditLog}"/>
+    <h:messages styleClass="messages"
+                        errorClass="invalid" infoClass="valid"
+                        warnClass="warning" globalOnly="true" />
 </h:form>
 	<h:panelGroup>
         <h:panelGroup rendered="#{empty companyAccountList}">

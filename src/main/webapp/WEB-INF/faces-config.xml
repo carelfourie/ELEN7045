@@ -38,4 +38,12 @@
 		<to-view-id>/scrape.xhtml</to-view-id>
 	</navigation-case>
 </navigation-rule>
+<navigation-rule>
+        <from-view-id>/scrape.xhtml</from-view-id>
+	<navigation-case>
+		<from-action>#{scrapingEventAuditLogController.getAuditLog}</from-action>
+		<from-outcome>success</from-outcome>
+		<to-view-id>/auditlog.xhtml</to-view-id>
+	</navigation-case>
+</navigation-rule>
 </faces-config>

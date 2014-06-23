@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#account.xhtml" PATH="/account.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#account.xhtml:0" NAME="item"
+   PATH="/account.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="success:#{account.createAccount}:#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml"
+    TITLE="#{account.createAccount}:success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#index.xhtml:0" NAME="item"
+   PATH="/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success:#{login.login}:#scrape.xhtml"
+    NAME="output" PATH="/scrape.xhtml" TARGET="rules:#scrape.xhtml"
+    TITLE="#{login.login}:success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#scrape.xhtml" PATH="/scrape.xhtml"
+  SHAPE="448,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#scrape.xhtml:0" NAME="item"
+   PATH="/scrape.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="success:#{scrapingEventAuditLogController.getAuditLog}:#auditlog.xhtml"
+    NAME="output" PATH="/auditlog.xhtml" TARGET="rules:#auditlog.xhtml"
+    TITLE="#{scrapingEventAuditLogController.getAuditLog}:success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#auditlog.xhtml" PATH="/auditlog.xhtml"
+  SHAPE="656,33,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

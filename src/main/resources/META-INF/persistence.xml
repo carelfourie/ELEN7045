@@ -21,6 +21,7 @@
       <class>za.ac.wits.eie.ELEN7045.aps.model.statement.CreditCardStatement</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.statement.MunicipalityStatement</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.statement.TelcoStatement</class>
+      <class>za.ac.wits.eie.ELEN7045.aps.model.ScrapingEventAuditLog</class>
        
       <properties>
          <!-- properties for hibernate -->

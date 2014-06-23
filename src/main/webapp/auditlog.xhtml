@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+    
+<h:form>
+
+	<h:panelGroup>
+        <h:panelGroup rendered="#{empty scrapingEventList}">
+            <em>There are no audit logs for you.</em>
+        </h:panelGroup>
+     </h:panelGroup>
+        <h:panelGroup rendered="#{not empty scrapingEventList}">
+            <em>Your audit logs for scraped accounts.</em>
+        </h:panelGroup>
+        <h:dataTable var="_log" value="#{scrapingEventAuditLogController.scrapingEventList}"
+            rendered="#{not empty scrapingEventList}"
+            styleClass="simpletablestyle">
+            <h:column>
+                <f:facet name="header">User Name</f:facet>
+                #{_log.apsUser.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Company</f:facet>
+                #{_log.company.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Return</f:facet>
+                #{_log.returnCode.description}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Scrape Date</f:facet>
+                #{_log.scrapeDate.toString()}
+            </h:column>
+            </h:dataTable>
+            
+             </h:form>
+            
+    </ui:define>
+    
+   
+</ui:composition>
