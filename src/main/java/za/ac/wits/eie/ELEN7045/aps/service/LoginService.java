@@ -1,6 +1,7 @@
 package za.ac.wits.eie.ELEN7045.aps.service;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,13 +37,19 @@ public class LoginService extends BaseService {
         map.put("password", password);
 
         List<APSUser> users = findByCriteriaRepo.findByCriteria(APSUser.class, Restrictions.allEq(map));
-        if (users.size() < 1) {
-            throw new APSException(String.format("User not found: [%s]", username));
-        }
-
-        if (users.size() > 1) {
-            throw new APSException(String.format("Duplicate user found: [%s]", username));
-        }
+        
+        Map<String, String> msgVal = new LinkedHashMap<String, String>(2);
+        msgVal.put("User not found: [%s]", username);
+        msgVal.put("Duplicate user found: [%s]", username);
+       
+        listCheck(users, msgVal);
+        
+        //if (users.size() < 1) {
+        //    throw new APSException(String.format("User not found: [%s]", username));
+        //}
+        //if (users.size() > 1) {
+        //    throw new APSException(String.format("Duplicate user found: [%s]", username));
+        //}
 
         return users.get(0);
     }

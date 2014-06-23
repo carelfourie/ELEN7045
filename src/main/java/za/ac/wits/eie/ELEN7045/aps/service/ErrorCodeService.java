@@ -1,6 +1,8 @@
 package za.ac.wits.eie.ELEN7045.aps.service;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -21,13 +23,11 @@ public class ErrorCodeService extends BaseService {
     public String getDescriptionForCode(String code) throws APSException {
         List<ReturnCode> codes = findByCriteriaRepo.findByCriteria(ReturnCode.class, Restrictions.eq("code", code));
         
-        if (codes.size() < 1) {
-            throw new APSException(String.format("Code not found: [%s]", code));
-        }
-
-        if (codes.size() > 1) {
-            throw new APSException(String.format("Duplicate code found: [%s]", code));
-        }
+        Map<String, String> msgVal = new LinkedHashMap<String, String>(2);
+        msgVal.put("Code not found: [%s]", code);
+        msgVal.put("Duplicate code found: [%s]", code);
+       
+        listCheck(codes, msgVal);
         
         return codes.get(0).getApsdescription();
     }
