@@ -1,7 +1,5 @@
 package za.ac.wits.eie.ELEN7045.aps.service;
 
-import static org.junit.Assert.assertNotNull;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,14 +12,12 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.jpa.criteria.CriteriaBuilderImpl;
 
 import za.ac.wits.eie.ELEN7045.aps.controller.ScraperInfo;
 import za.ac.wits.eie.ELEN7045.aps.data.FindByCriteriaRepository;
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.CreditCardStatement;
-import za.ac.wits.eie.ELEN7045.aps.model.statement.TelcoStatement;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeSession;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeSessionMapper;
