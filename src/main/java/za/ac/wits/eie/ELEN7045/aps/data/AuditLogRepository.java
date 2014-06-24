@@ -15,10 +15,8 @@ import za.ac.wits.eie.ELEN7045.aps.model.ScrapingEventAuditLog;
 @ApplicationScoped
 public class AuditLogRepository  extends BaseRepository {
 	
-	@Inject
-	private FindByCriteriaRepository findByCriteriaRepo;
-	
-	public List<ScrapingEventAuditLog> findByAPSUser(String name) {
+	@SuppressWarnings("unchecked")
+    public List<ScrapingEventAuditLog> findByAPSUser(String name) {
 		Session session = (Session) em.getDelegate();
 		List<ScrapingEventAuditLog> users = null;
 		 

@@ -4,10 +4,17 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import org.jboss.logging.Logger;
 
 public class Resources {
+    
+    @Produces
+    @PersistenceContext(type = PersistenceContextType.TRANSACTION, unitName = "primary")
+    protected EntityManager em;
     
     @Produces
     @RequestScoped
