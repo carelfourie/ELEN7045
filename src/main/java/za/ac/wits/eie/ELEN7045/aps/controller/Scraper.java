@@ -14,6 +14,9 @@ public class Scraper {
 	@Inject
     private Logger log;
 	
+//	@Inject
+	private Credentials credentials;
+	
 	@Produces
     @Named
 	private ScraperInfo scraperInfo;
@@ -26,5 +29,8 @@ public class Scraper {
 	public void scrape() {
         //logic to scrape account
 		log.info("In the scraper logic ------------- bean");
+		if(credentials != null){
+			log.info(">>> CREDENTIAL >>> " + credentials.getUsername());
+		}
     }
 }

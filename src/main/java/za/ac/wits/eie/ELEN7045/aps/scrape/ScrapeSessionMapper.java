@@ -37,6 +37,8 @@ public class ScrapeSessionMapper {
 				invoke(statement, methodName, datapair.getValue());
 			} catch (NullPointerException npe) {
 				log.error("Error mapping field: " + npe.getMessage());
+			} catch (Exception e){
+				
 			}
 		}
 	}

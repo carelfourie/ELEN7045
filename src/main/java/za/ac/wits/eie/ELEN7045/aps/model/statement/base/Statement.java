@@ -20,7 +20,7 @@ public class Statement extends BaseDomainEntity<Long> {
 	
 	private String returnCode;
 	
-	private String acccountNumber;
+	private String accountNumber;
 
 	private String accountHolderName;
 	
@@ -96,12 +96,12 @@ public class Statement extends BaseDomainEntity<Long> {
 		this.returnCode = returnCode;
 	}
 		
-	public String getAcccountNumber() {
-		return acccountNumber;
+	public String getAccountNumber() {
+		return accountNumber;
 	}
 
 	public void setAccountNumber(String acccountNumber) {
-		this.acccountNumber = acccountNumber;
+		this.accountNumber = acccountNumber;
 	}
 
 	public String getAccountHolderName() {

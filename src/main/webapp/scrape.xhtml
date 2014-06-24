@@ -22,36 +22,55 @@
                         warnClass="warning" globalOnly="true" />
 </h:form>
 	<h:panelGroup>
-        <h:panelGroup rendered="#{empty companyAccountList}">
+        <h:panelGroup rendered="#{empty  statementList}">
             <em>You have no scraped accounts.</em>
         </h:panelGroup>
      </h:panelGroup>
-        <h:panelGroup rendered="#{not empty companyAccountList}">
+        <h:panelGroup rendered="#{not empty statementList}">
             <em>Your scraped accounts.</em>
         </h:panelGroup>
-        <h:dataTable var="_account" value="#{login.companyAccountList}"
-            rendered="#{not empty companyAccountList}"
+        <h:dataTable var="_statement" value="#{login.statementList}"
+            rendered="#{not empty statementList}"
             styleClass="simpletablestyle">
             <h:column>
+                <f:facet name="header">Website</f:facet>
+                #{_statement.baseUrl}
+            </h:column>
+            <h:column>
                 <f:facet name="header">Account Number</f:facet>
-                #{_account.accountNumber}
+                #{_statement.accountNumber}
             </h:column>
             <h:column>
-                <f:facet name="header">Account Status</f:facet>
-                #{_account.status.description}
+                <f:facet name="header">Account Holder Name</f:facet>
+                #{_statement.accountHolderName}
             </h:column>
             <h:column>
-                <f:facet name="header">Service Provider</f:facet>
-                #{_account.company.name}
+                <f:facet name="header">Account Number</f:facet>
+                #{_statement.accountNumber}
             </h:column>
             <h:column>
-                <f:facet name="header">Billing Cycle</f:facet>
-                #{_account.company.billingCycle.cycle}
+                <f:facet name="header">Opening Balance</f:facet>
+                #{_statement.openingBalance}
             </h:column>
             <h:column>
-                <f:facet name="header">View Statement</f:facet>
-                <h:outputLink value="#{_account.statement.statement}"> #{_account.company.name}
-                </h:outputLink> 
+                <f:facet name="header">Payments Received</f:facet>
+                #{_statement.paymentReceived}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Deductions</f:facet>
+                #{_statement.deductions}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Closing Balance</f:facet>
+                #{_statement.closingBalance}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Total Due</f:facet>
+                #{_statement.totalDue}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Detailed Statement</f:facet>
+                Link to detailed statement
             </h:column>
             </h:dataTable>
     </ui:define>

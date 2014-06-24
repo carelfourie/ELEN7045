@@ -14,6 +14,7 @@ import javax.inject.Named;
 import org.jboss.logging.Logger;
 
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
+import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 import za.ac.wits.eie.ELEN7045.aps.service.LoginService;
 import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 
@@ -21,6 +22,8 @@ import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 public class Login {
 
 	private List<CompanyAccount> companyAccountList = new ArrayList<CompanyAccount>();
+	
+	private List<Statement> statementList = new ArrayList<Statement>();
 	
 	@Produces
     @Named
@@ -41,6 +44,12 @@ public class Login {
 		return companyAccountList;
 	}
     
+    @Produces
+    @Named
+	public List<Statement> getStatementList() {
+		return statementList;
+	}
+    
     @PostConstruct
     public void initCredentials() {
     	credentials = new Credentials();
@@ -53,12 +62,15 @@ public class Login {
      */
     public String login() throws APSException {
     	
-    	 List<CompanyAccount> results;
+    	 //List<CompanyAccount> results;
+    	List<Statement> results;
 		try {
 			log.info("login to get scraped accounts for ........ "+credentials.getUsername());
-			results = loginService.loadAPSUserAccounts(credentials.getPassword(), credentials.getUsername());
+			results = loginService.loadAccountStatements(credentials.getPassword(), credentials.getUsername());
+			//results = loginService.loadAPSUserAccounts(credentials.getPassword(), credentials.getUsername());
 			if( results.size() != 0) {
-				setCompanyAccountList(results);
+//				setCompanyAccountList(results);
+				setStatementList(results);
 				initCredentials();
 				return "success";
 			}
@@ -74,6 +86,10 @@ public class Login {
 
 	public void setCompanyAccountList(List<CompanyAccount> companyAccountList) {
 		this.companyAccountList = companyAccountList;
+	}
+	
+	public void setStatementList(List<Statement> statementList){
+		this.statementList = statementList;
 	}
     
 }
