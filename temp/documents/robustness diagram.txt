@@ -1,0 +1,10 @@
+The Robustness Diagram
+------------------------
+
+The Robustness diagram in fig ? shows the APS problem domain at a lower level than entity and class diagrams. The intention is to illustrate during the analysis and design phase how the solution will be make use of the components identified in he earlier stages. This diagram was drawn after designing the entity relationships and class diagrams. Drawing it after after going through the entities and class diagrams helps with reviewing the user stories and correctness of text. It also helps with ensuring that the behaviour discussed prior to it is reasonable and possible. It highlights errors and omissions made in the previous phase of analysis and hence the ability to go back and fix those. Another benefit is that it helps the team to understand the proposed solution a bit more.
+
+The robustness diagram also depicts where and how alternate course of action will be implemented in order to complete a use case. The APS robustness diagram (fig ?) uses icons filled with red colour to highlight the points where an alternate course of action is required.
+
+The boundary objects illustrate the points of interaction between the solution and both human and non-human actors. The end-user (i.e human actor) interaction is facilitated with website screens. The non-human actor is an automated process that invokes ConcurrentScrapingExecutor to run as a scheduled task.
+
+In conclusion of the robustness diagram, Fig ? presents a concise description of the critical path of the domain and exposes pluggable points for alternate courses of action. The APS system must allow the user to login, request different accounts from different sources and have them displayed in a single screen uniformly. 
