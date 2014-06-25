@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+       
+           
+            
+            <h:panelGrid columns="2">
+             <h:outputLabel value="Telephone Number:"  rendered="#{scraper.renderTelco}"/>
+            <h:outputText value="#{scraper.telNo}" rendered="#{scraper.renderTelco}"/>
+            <h:outputLabel value="Call Charges:" rendered="#{scraper.renderTelco}"/>
+            <h:outputText value="#{scraper.callCharges}" rendered="#{scraper.renderTelco}"/>
+            <h:outputLabel value="Service Charges:"  rendered="#{scraper.renderTelco}"/>
+            <h:outputText value="#{scraper.serviceCharges}" rendered="#{scraper.renderTelco}"/>
+            
+            <h:outputLabel value="Credit Card Type:"  rendered="#{scraper.renderCredit}"/>
+            <h:outputText value="#{scraper.creditCardType}" rendered="#{scraper.renderCredit}"/>
+            <h:outputLabel value="Minimum Amount Due:" rendered="#{scraper.renderCredit}"/>
+            <h:outputText value="#{scraper.minimumAmountDue}" rendered="#{scraper.renderCredit}"/>
+            <h:outputLabel value="Credit Available:"  rendered="#{scraper.renderCredit}"/>
+            <h:outputText value="#{scraper.creditAvailable}" rendered="#{scraper.renderCredit}"/>
+            <h:outputLabel value="Credit Limit:" rendered="#{scraper.renderCredit}"/>
+            <h:outputText value="#{scraper.creditLimit}" rendered="#{scraper.renderCredit}"/>
+            <h:outputLabel value="Interest Rate:"  rendered="#{scraper.renderCredit}"/>
+            <h:outputText value="#{scraper.interestRate}" rendered="#{scraper.renderCredit}"/>
+            
+            <h:outputLabel value="Account Number:" />
+            <h:outputText value="#{scraper.accountNumber}"/>
+            <h:outputLabel value="Opening Balance:" />
+            <h:outputText value="#{scraper.openingBalance}"/>
+            <h:outputLabel value="Closing Balance:" />
+            <h:outputText value="#{scraper.closingBalance}"/>
+            <h:outputLabel value="Discount:" />
+            <h:outputText value="#{scraper.discount}"/>
+            </h:panelGrid>
+            
+    </ui:define>
+</ui:composition>

@@ -5,73 +5,45 @@
     xmlns:h="http://java.sun.com/jsf/html"
     template="/WEB-INF/templates/default.xhtml">
     <ui:define name="content">
-    
 <h:form>
-    <h:panelGrid columns="2">
-        <h:outputLabel for="url">URL to Scrape:</h:outputLabel>
-        <h:inputText id="url" value="#{scraperInfo.url}"/>
-    </h:panelGrid>
-    <h:commandButton value="Scrape" action="#{scraper.scrape}"/>
-    <h:messages styleClass="messages"
-                        errorClass="invalid" infoClass="valid"
-                        warnClass="warning" globalOnly="true" />
-    <!-- rocky added audit log -->                    
-    <h:commandButton value="Audit Log" action="#{scrapingEventAuditLogController.getAuditLog}"/>
-    <h:messages styleClass="messages"
-                        errorClass="invalid" infoClass="valid"
-                        warnClass="warning" globalOnly="true" />
-</h:form>
 	<h:panelGroup>
-        <h:panelGroup rendered="#{empty  statementList}">
+        <h:panelGroup rendered="#{empty companyAccountModel}">
             <em>You have no scraped accounts.</em>
         </h:panelGroup>
      </h:panelGroup>
-        <h:panelGroup rendered="#{not empty statementList}">
+        <h:panelGroup rendered="#{not empty companyAccountModel}">
             <em>Your scraped accounts.</em>
         </h:panelGroup>
-        <h:dataTable var="_statement" value="#{login.statementList}"
-            rendered="#{not empty statementList}"
+   
+        <h:dataTable var="_account" value="#{scraper.companyAccountModel}"
+            rendered="#{not empty companyAccountModel}"
             styleClass="simpletablestyle">
             <h:column>
-                <f:facet name="header">Website</f:facet>
-                #{_statement.baseUrl}
-            </h:column>
-            <h:column>
                 <f:facet name="header">Account Number</f:facet>
-                #{_statement.accountNumber}
+                #{_account.accountNumber}
             </h:column>
             <h:column>
-                <f:facet name="header">Account Holder Name</f:facet>
-                #{_statement.accountHolderName}
+                <f:facet name="header">Account Status</f:facet>
+                #{_account.status.description}
             </h:column>
             <h:column>
-                <f:facet name="header">Account Number</f:facet>
-                #{_statement.accountNumber}
+                <f:facet name="header">Service Provider</f:facet>
+                #{_account.company.name}
             </h:column>
             <h:column>
-                <f:facet name="header">Opening Balance</f:facet>
-                #{_statement.openingBalance}
+                <f:facet name="header">Billing Cycle</f:facet>
+                #{_account.company.billingCycle.cycle}
             </h:column>
             <h:column>
-                <f:facet name="header">Payments Received</f:facet>
-                #{_statement.paymentReceived}
+                <f:facet name="header">View Statement</f:facet>
+                <h:commandLink value="View" action="#{scraper.view}">
+                	
+  					<f:param name="id" value="#{_account.id}"/>
+                </h:commandLink> 
             </h:column>
-            <h:column>
-                <f:facet name="header">Deductions</f:facet>
-                #{_statement.deductions}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Closing Balance</f:facet>
-                #{_statement.closingBalance}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Total Due</f:facet>
-                #{_statement.totalDue}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Detailed Statement</f:facet>
-                Link to detailed statement
-            </h:column>
+            
             </h:dataTable>
+         </h:form>
+         
     </ui:define>
 </ui:composition>

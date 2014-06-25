@@ -84,7 +84,7 @@ public class LoginService extends BaseService {
 	 * @return CompanyAccount
 	 * @throws APSException
 	 */
-	@Deprecated
+	
 	public List<CompanyAccount> loadAPSUserAccounts(String password,
 			String username) throws APSException {
 		APSUser user = null;
@@ -112,6 +112,7 @@ public class LoginService extends BaseService {
 
 	}
 
+	@Deprecated
 	public List<Statement> loadAccountStatements(String password,
 			String username) throws APSException {
 		APSUser user = null;
