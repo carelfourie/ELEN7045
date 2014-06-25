@@ -21,3 +21,7 @@ insert into CompanyAccount (id, accountNumber, apsUser_id, company_id, statement
 insert into CompanyAccount (id, accountNumber, apsUser_id, company_id, statement_id, status_id) values (1, '5667390', 0, 1, 1, 0)
 insert into TelcoStatement (id, telephoneNumber, serviceCharges, callCharges, totalNumberOfCalls, totalCallDuration) values (0, '0781655485','R45', 'R390', '14', '80 mins')
 insert into CreditCardStatement (id, cardType, creditAvailable, creditLimit, interestRate, minimumAmountDue) values (1, 'MASTER CARD','R450000', 'R500000', '21%', 'R3896')
+insert into ScrapingEventAuditLog (id, scrapeDate, apsUser_id, company_id, returnCode_id) values (1, '2014-06-24', 1, 1, 1)
+insert into ScraperInfo(id,apsUser_id,url,xmlResultFile) values(1,1,"http://www.telco.co.za","C:/enterprise/wildfly-8.0.0.Final/standalone/tmp/InputData/telco.xml");
+insert into ScraperInfo(id,apsUser_id,url,xmlResultFile) values(2,1,"http://www.creditcard.co.za","C:/enterprise/wildfly-8.0.0.Final/standalone/tmp/InputData/creditcard.xml");
+insert into ScraperInfo(id,apsUser_id,url,xmlResultFile) values(3,1,"http://www.municipality.co.za","C:/enterprise/wildfly-8.0.0.Final/standalone/tmp/InputData/municipality.xml");
