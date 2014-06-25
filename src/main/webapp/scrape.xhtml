@@ -6,6 +6,11 @@
     template="/WEB-INF/templates/default.xhtml">
     <ui:define name="content">
 <h:form>
+    <!-- rocky added audit log -->                    
+    <h:commandButton value="Audit Log" action="#{scrapingEventAuditLogController.getAuditLog}"/>
+    <h:messages styleClass="messages"
+                        errorClass="invalid" infoClass="valid"
+                        warnClass="warning" globalOnly="true" />
 	<h:panelGroup>
         <h:panelGroup rendered="#{empty companyAccountModel}">
             <em>You have no scraped accounts.</em>
