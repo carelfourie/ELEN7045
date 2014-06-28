@@ -17,13 +17,11 @@ public class AuditLogService extends BaseService {
 	private AuditLogRepository auditLogRepo;
 	
     public List<ScrapingEventAuditLog> getScrapingEvent(String username) throws APSException {
-        log.info("Retrieving auditlog with username " + username);
-
         List<ScrapingEventAuditLog> auditLog = auditLogRepo.findByAPSUser(username);
         if (auditLog.size() < 1) {
             throw new APSException(String.format("User not found: [%s]", username));
         }
-        
+        log.info(String.format("Audit Log for user: [%s]", username));
         return auditLog;
     }
 }
