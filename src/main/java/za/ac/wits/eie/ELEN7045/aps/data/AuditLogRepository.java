@@ -15,7 +15,7 @@ public class AuditLogRepository  extends BaseRepository {
 	
 	@SuppressWarnings("unchecked")
     public List<ScrapingEventAuditLog> findByAPSUser(String name) {
-		Session session = (Session) em.getDelegate();
+		Session session = (Session) entityManager.getDelegate();
 		
 		List<ScrapingEventAuditLog> users = session.createCriteria(ScrapingEventAuditLog.class)
 		                                           .createAlias("apsUser", "user")

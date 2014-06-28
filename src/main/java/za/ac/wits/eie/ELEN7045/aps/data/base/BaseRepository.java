@@ -6,6 +6,6 @@ import javax.persistence.EntityManager;
 public abstract class BaseRepository {
     
     @Inject
-    protected EntityManager em;
+    protected EntityManager entityManager;
     
 }

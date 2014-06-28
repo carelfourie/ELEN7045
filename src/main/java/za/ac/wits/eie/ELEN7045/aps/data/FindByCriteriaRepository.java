@@ -20,7 +20,7 @@ public class FindByCriteriaRepository extends BaseRepository {
 
     @SuppressWarnings("unchecked")
     public <T extends BaseDomainEntity<Long>> List<T> findByCriteria(Class<T> entity, final int firstResult, final int maxResults, final Criterion... criterion) {
-        Session session = (Session) em.getDelegate();
+        Session session = (Session) entityManager.getDelegate();
         Criteria criteria = session.createCriteria(entity);
         for (final Criterion c : criterion) {
             criteria.add(c);

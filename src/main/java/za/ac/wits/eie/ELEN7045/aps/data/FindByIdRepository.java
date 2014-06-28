@@ -9,6 +9,6 @@ import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 public class FindByIdRepository extends BaseRepository {
 
     public <T extends BaseDomainEntity<Long>> T findById(Class<T> entity, Long id) {
-        return em.find(entity, id);
+        return entityManager.find(entity, id);
     }
 }

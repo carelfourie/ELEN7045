@@ -14,22 +14,22 @@ import za.ac.wits.eie.ELEN7045.aps.model.Member;
 public class MemberRepository extends BaseRepository {
     
     public List<Member> findAllOrderedByName() {
-        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Member> criteria = cb.createQuery(Member.class);
         Root<Member> member = criteria.from(Member.class);
         criteria.select(member).orderBy(cb.asc(member.get("name")));
-        return em.createQuery(criteria).getResultList();
+        return entityManager.createQuery(criteria).getResultList();
     }
 
     public Member findByEmail(String email) {
-        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Member> criteria = cb.createQuery(Member.class);
         Root<Member> member = criteria.from(Member.class);
         criteria.select(member).where(cb.equal(member.get("email"), email));
-        return em.createQuery(criteria).getSingleResult();
+        return entityManager.createQuery(criteria).getSingleResult();
     }
 
     public Member findById(Long id) {
-        return em.find(Member.class, id);
+        return entityManager.find(Member.class, id);
     }
 }

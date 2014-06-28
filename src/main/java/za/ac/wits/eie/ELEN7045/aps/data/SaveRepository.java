@@ -9,6 +9,6 @@ import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 public class SaveRepository extends BaseRepository {
 
     public <T extends BaseDomainEntity<Long>> T save(T entity) {
-        return em.merge(entity);
+        return entityManager.merge(entity);
     }
 }

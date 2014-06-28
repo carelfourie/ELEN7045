@@ -14,10 +14,10 @@ import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 public class FindAllRepository extends BaseRepository {
     
     public <T extends BaseDomainEntity<Long>> List<T> findAll(Class<T> entity) {
-        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<T> criteria = cb.createQuery(entity);
         Root<T> root = criteria.from(entity);
         criteria.select(root);
-        return em.createQuery(criteria).getResultList();
+        return entityManager.createQuery(criteria).getResultList();
     }
 }
