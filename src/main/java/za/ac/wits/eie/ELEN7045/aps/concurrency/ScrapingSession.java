@@ -27,8 +27,4 @@ public class ScrapingSession implements Runnable {
         log.info(String.format("scraping: [%s]", companyAccount.getUrl()));
         // now pass this to the "already developed scraper..."
     }
-
-	public void setCompanyAccount(CompanyAccount companyAccount) {
-		this.companyAccount = companyAccount;
-	}
 }

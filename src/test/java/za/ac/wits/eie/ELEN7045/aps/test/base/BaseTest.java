@@ -14,6 +14,7 @@ import za.ac.wits.eie.ELEN7045.aps.concurrency.ScrapingSession;
 import za.ac.wits.eie.ELEN7045.aps.controller.MemberController;
 import za.ac.wits.eie.ELEN7045.aps.data.MemberListProducer;
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
+import za.ac.wits.eie.ELEN7045.aps.resource.Producer;
 import za.ac.wits.eie.ELEN7045.aps.rest.JAXRSActivator;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeSession;
 import za.ac.wits.eie.ELEN7045.aps.service.MemberRegistration;
@@ -27,7 +28,7 @@ public abstract class BaseTest {
         
         return ShrinkWrap.create(WebArchive.class, "jee_aps_app_test.war")
                 .addClasses(BaseTest.class)
-                .addClass(Resources.class)
+                .addClass(Producer.class)
                 .addPackages(true, ScrapingSession.class.getPackage())
                 .addPackages(true, MemberController.class.getPackage())
                 .addPackages(true, MemberListProducer.class.getPackage())
