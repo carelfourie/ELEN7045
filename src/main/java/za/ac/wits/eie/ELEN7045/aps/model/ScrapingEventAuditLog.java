@@ -2,7 +2,6 @@ package za.ac.wits.eie.ELEN7045.aps.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
@@ -20,7 +19,6 @@ public class ScrapingEventAuditLog extends BaseDomainEntity<Long> {
     @OneToOne
     private ReturnCode returnCode;
 
-    @Column(name = "scrapeDate")
     private Date scrapeDate;
 
     public ScrapingEventAuditLog() {
