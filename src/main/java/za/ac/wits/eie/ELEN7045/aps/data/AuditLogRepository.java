@@ -16,10 +16,10 @@ public class AuditLogRepository  extends BaseRepository {
 	@SuppressWarnings("unchecked")
     public List<ScrapingEventAuditLog> findByAPSUser(String name) {
 		Session session = (Session) em.getDelegate();
-		List<ScrapingEventAuditLog> users = null;
-		 
-		users = session.createCriteria(ScrapingEventAuditLog.class).createAlias("apsUser", "user").add(Restrictions.eq("user.username", name)).list();
 		
+		List<ScrapingEventAuditLog> users = session.createCriteria(ScrapingEventAuditLog.class)
+		                                           .createAlias("apsUser", "user")
+		                                           .add(Restrictions.eq("user.username", name)).list();
 		return users;
 	}
 }
