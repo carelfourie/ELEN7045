@@ -4,8 +4,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 public abstract class BaseRepository {
-    
-    @Inject
-    protected EntityManager entityManager;
-    
+
+	@Inject
+	protected EntityManager entityManager;
+
 }

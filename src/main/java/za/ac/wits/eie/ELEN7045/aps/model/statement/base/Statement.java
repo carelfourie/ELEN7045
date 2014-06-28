@@ -13,48 +13,48 @@ public class Statement extends BaseDomainEntity<Long> {
 	private String accountHolderName;
 
 	private String accountNumber;
-	
+
 	private String baseUrl;
-	
+
 	private String closingBalance;
-	
+
 	private String date;
-	
+
 	private String deductions;
 
 	private String discount;
-	
-	private String dueDate;
-	
-	private String newCharges;
-	
-	private String openingBalance;
-	
-	private String paymentReceived;
-	
-	private String returnCode;
-	
-	private String statement;
-	
-	private String statementDate;
-	
-	private String statementMonth;
-	
-	private String statementNumber;
-	
-	private String time;
-	
-	private String totalDue;
-	
-	private String vatAmount;
-	
-	public Statement() {
-        super();
-    }
 
-    public Statement(Long id) {
-        super(id);
-    }
+	private String dueDate;
+
+	private String newCharges;
+
+	private String openingBalance;
+
+	private String paymentReceived;
+
+	private String returnCode;
+
+	private String statement;
+
+	private String statementDate;
+
+	private String statementMonth;
+
+	private String statementNumber;
+
+	private String time;
+
+	private String totalDue;
+
+	private String vatAmount;
+
+	public Statement() {
+		super();
+	}
+
+	public Statement(Long id) {
+		super(id);
+	}
 
 	public String getAccountHolderName() {
 		return accountHolderName;
@@ -63,7 +63,7 @@ public class Statement extends BaseDomainEntity<Long> {
 	public String getAccountNumber() {
 		return accountNumber;
 	}
-		
+
 	public String getBaseUrl() {
 		return baseUrl;
 	}
@@ -95,7 +95,7 @@ public class Statement extends BaseDomainEntity<Long> {
 	public String getOpeningBalance() {
 		return openingBalance;
 	}
-		
+
 	public String getPaymentReceived() {
 		return paymentReceived;
 	}

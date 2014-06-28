@@ -6,69 +6,67 @@ import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 
 @Entity
 public class CreditCardStatement extends Statement {
-    
-    private String cardType;
-    
-    private String creditAvailable;
-    
-    private String creditLimit;
-    
-    private String interestRate;
-    
-    private String minimumAmountDue;
 
-    public CreditCardStatement() {
-        super();
-    }
+	private String cardType;
 
-    public CreditCardStatement(Long id) {
-        super(id);
-    }
+	private String creditAvailable;
 
-    public String getCardType() {
-        return cardType;
-    }
+	private String creditLimit;
 
-    public String getCreditAvailable() {
-        return creditAvailable;
-    }
+	private String interestRate;
 
-    public String getCreditLimit() {
-        return creditLimit;
-    }
+	private String minimumAmountDue;
 
-    public String getInterestRate() {
-        return interestRate;
-    }
+	public CreditCardStatement() {
+		super();
+	}
 
-    public String getMinimumAmountDue() {
-        return minimumAmountDue;
-    }
+	public CreditCardStatement(Long id) {
+		super(id);
+	}
 
-    public void setCardType(String cardType) {
-        this.cardType = cardType;
-    }
+	public String getCardType() {
+		return cardType;
+	}
 
-    public void setCreditAvailable(String creditAvailable) {
-        this.creditAvailable = creditAvailable;
-    }
+	public String getCreditAvailable() {
+		return creditAvailable;
+	}
 
-    public void setCreditLimit(String creditLimit) {
-        this.creditLimit = creditLimit;
-    }
+	public String getCreditLimit() {
+		return creditLimit;
+	}
 
-    public void setInterestRate(String interestRate) {
-        this.interestRate = interestRate;
-    }
+	public String getInterestRate() {
+		return interestRate;
+	}
 
-    public void setMinimumAmountDue(String minimumAmountDue) {
-        this.minimumAmountDue = minimumAmountDue;
-    }
-    
+	public String getMinimumAmountDue() {
+		return minimumAmountDue;
+	}
+
+	public void setCardType(String cardType) {
+		this.cardType = cardType;
+	}
+
+	public void setCreditAvailable(String creditAvailable) {
+		this.creditAvailable = creditAvailable;
+	}
+
+	public void setCreditLimit(String creditLimit) {
+		this.creditLimit = creditLimit;
+	}
+
+	public void setInterestRate(String interestRate) {
+		this.interestRate = interestRate;
+	}
+
+	public void setMinimumAmountDue(String minimumAmountDue) {
+		this.minimumAmountDue = minimumAmountDue;
+	}
+
 	@Override
 	public String toString() {
-		return String
-				.format("{CREDIT-CARD-SCRAPE [base-url: %s][date: %s][time: %s][return-code: %s]}",
-						getBaseUrl(), getDate(), getTime(), getReturnCode());
+		return String.format("{CREDIT-CARD-SCRAPE [base-url: %s][date: %s][time: %s][return-code: %s]}", getBaseUrl(), getDate(), getTime(), getReturnCode());
 	}
 }

@@ -15,23 +15,23 @@ import za.ac.wits.eie.ELEN7045.aps.model.Member;
 @RequestScoped
 public class MemberListProducer {
 
-    @Inject
-    private MemberRepository memberRepository;
+	@Inject
+	private MemberRepository memberRepository;
 
-    private List<Member> members;
+	private List<Member> members;
 
-    @Produces
-    @Named
-    public List<Member> getMembers() {
-        return members;
-    }
+	@Produces
+	@Named
+	public List<Member> getMembers() {
+		return members;
+	}
 
-    public void onMemberListChanged(@Observes(notifyObserver = Reception.IF_EXISTS) final Member member) {
-        retrieveAllMembersOrderedByName();
-    }
+	public void onMemberListChanged(@Observes(notifyObserver = Reception.IF_EXISTS) final Member member) {
+		retrieveAllMembersOrderedByName();
+	}
 
-    @PostConstruct
-    public void retrieveAllMembersOrderedByName() {
-        members = memberRepository.findAllOrderedByName();
-    }
+	@PostConstruct
+	public void retrieveAllMembersOrderedByName() {
+		members = memberRepository.findAllOrderedByName();
+	}
 }

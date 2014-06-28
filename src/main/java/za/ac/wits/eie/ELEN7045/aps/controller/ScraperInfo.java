@@ -11,9 +11,9 @@ public class ScraperInfo extends BaseDomainEntity<Long> {
 
 	@ManyToOne
 	private APSUser apsUser;
-	
+
 	private String url;
-	
+
 	private String xmlResultFile;
 
 	public APSUser getApsUser() {

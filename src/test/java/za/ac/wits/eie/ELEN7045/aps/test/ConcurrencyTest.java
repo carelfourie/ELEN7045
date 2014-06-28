@@ -40,60 +40,60 @@ import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
 
 @RunWith(Arquillian.class)
 public class ConcurrencyTest extends BaseTest {
-    
-    @Inject
-    ConcurrentScrapingExecutor executor;
-    
-    @Inject
-    Logger log;
-    
-    @Inject
-    LoginService loginService;
-   
-    private  List<ScrapingSession> getScrapingSessions() throws APSException {
-        List<ScrapingSession> sessions = new ArrayList<ScrapingSession>();
-        List<CompanyAccount> acounts = loginService.loadAPSUserAccounts("john", "john");
-        for (CompanyAccount companyAccount : acounts) {
-            sessions.add(new ScrapingSession(companyAccount));
-        }
-        return sessions;
-    }
-    
-    @Test
-    public void test1() throws Exception {
-        try {
-            for (ScrapingSession scrapingSession : getScrapingSessions()) {
-                Future<?> task = executor.submit(scrapingSession);
-                log.info("scraping session submitted...");
-                try {
-                   Object result = task.get();
-                   Assert.assertNull(result);
-                } catch (InterruptedException | ExecutionException ex) {
-                    throw new IllegalStateException("Cannot get the answer", ex);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    @Test
-    public void test2() throws Exception {
-        try {
-            for (ScrapingSession scrapingSession : getScrapingSessions()) {
-            	ConcurrentScrapingExecutorIFace proxyExecutor = (ConcurrentScrapingExecutorIFace) ProxyFactory.newInstance(new ConcurrentScrapingExecutor());
-            	Future<?> task = proxyExecutor.submit(scrapingSession);
-                log.info("proxy scraping session submitted...");
-                try {
-                   Object result = task.get();
-                   Assert.assertNull(result);
-                } catch (InterruptedException | ExecutionException ex) {
-                    throw new IllegalStateException("Cannot get the answer", ex);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
+	@Inject
+	ConcurrentScrapingExecutor executor;
+
+	@Inject
+	Logger log;
+
+	@Inject
+	LoginService loginService;
+
+	private List<ScrapingSession> getScrapingSessions() throws APSException {
+		List<ScrapingSession> sessions = new ArrayList<ScrapingSession>();
+		List<CompanyAccount> acounts = loginService.loadAPSUserAccounts("john", "john");
+		for (CompanyAccount companyAccount : acounts) {
+			sessions.add(new ScrapingSession(companyAccount));
+		}
+		return sessions;
+	}
+
+	@Test
+	public void test1() throws Exception {
+		try {
+			for (ScrapingSession scrapingSession : getScrapingSessions()) {
+				Future<?> task = executor.submit(scrapingSession);
+				log.info("scraping session submitted...");
+				try {
+					Object result = task.get();
+					Assert.assertNull(result);
+				} catch (InterruptedException | ExecutionException ex) {
+					throw new IllegalStateException("Cannot get the answer", ex);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test2() throws Exception {
+		try {
+			for (ScrapingSession scrapingSession : getScrapingSessions()) {
+				ConcurrentScrapingExecutorIFace proxyExecutor = (ConcurrentScrapingExecutorIFace) ProxyFactory.newInstance(new ConcurrentScrapingExecutor());
+				Future<?> task = proxyExecutor.submit(scrapingSession);
+				log.info("proxy scraping session submitted...");
+				try {
+					Object result = task.get();
+					Assert.assertNull(result);
+				} catch (InterruptedException | ExecutionException ex) {
+					throw new IllegalStateException("Cannot get the answer", ex);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

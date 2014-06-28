@@ -5,23 +5,23 @@ import javax.validation.constraints.NotNull;
 
 @MappedSuperclass
 public abstract class BaseDescriptionDomainEntity<ID> extends BaseDomainEntity<Long> {
-    
-    @NotNull
-    private String description;
-    
-    public BaseDescriptionDomainEntity() {
-        super();
-    }
 
-    public BaseDescriptionDomainEntity(Long id) {
-        super(id);
-    }
+	@NotNull
+	private String description;
 
-    public String getDescription() {
-        return description;
-    }
+	public BaseDescriptionDomainEntity() {
+		super();
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public BaseDescriptionDomainEntity(Long id) {
+		super(id);
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 }

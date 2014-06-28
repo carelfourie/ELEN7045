@@ -15,15 +15,13 @@ public class ScrapeSessionMapper {
 	@Inject
 	private Logger log;
 
-
-	private Object invoke(Statement statement, String methodName, Object parameter) throws Exception{
+	private Object invoke(Statement statement, String methodName, Object parameter) throws Exception {
 		Class<?> c = statement.getClass();
 		Method m = c.getMethod(methodName, parameter.getClass());
 		return m.invoke(statement, parameter);
 	}
-	
-	public void map(ScrapeSession scrapeSession,
-			Statement statement) throws Exception {
+
+	public void map(ScrapeSession scrapeSession, Statement statement) throws Exception {
 		statement.setBaseUrl(scrapeSession.getBaseurl());
 		statement.setDate(scrapeSession.getDate());
 		statement.setTime(scrapeSession.getTime());
@@ -33,15 +31,15 @@ public class ScrapeSessionMapper {
 			try {
 
 				String methodName = AttributeTranslator.translate("set", datapair.getText());
-				if(methodName == null){
+				if (methodName == null) {
 					continue;
 				}
 				log.debug(String.format(">>>> SCRAPE-SESSION-MAPPER >>>> %s(%s)", methodName, datapair.getValue()));
 				invoke(statement, methodName, datapair.getValue());
 			} catch (NullPointerException npe) {
 				log.error("Error mapping field: " + npe.getMessage());
-			} catch (Exception e){
-				
+			} catch (Exception e) {
+
 			}
 		}
 	}

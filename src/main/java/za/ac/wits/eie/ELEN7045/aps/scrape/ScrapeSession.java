@@ -6,13 +6,13 @@ import java.util.List;
 public class ScrapeSession {
 
 	private String baseurl;
-	
+
 	private List<Datapair> datapairs = new ArrayList<Datapair>();
-	
+
 	private String date;
-	
+
 	private String returncode;
-	
+
 	private String time;
 
 	public void addDatapair(Datapair datapair) {
@@ -54,9 +54,9 @@ public class ScrapeSession {
 	public void setReturncode(String returncode) {
 		this.returncode = returncode;
 	}
-	
+
 	public void setTime(String time) {
 		this.time = time;
 	}
-	
+
 }

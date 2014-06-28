@@ -19,17 +19,17 @@ public class APSUserAccountTest extends BaseTest {
 	@Inject
 	APSUserAccountService aPSUserAccountCreationService;
 
-    @Inject
+	@Inject
 	Logger log;
-    
-    @Test
-    public void testCreateAccount() throws Exception {
-    	
-    	APSUser apsUser = new APSUser();
-    	apsUser.setPassword("peter");
-    	apsUser.setUsername("peter");
-    	aPSUserAccountCreationService.createAccount(apsUser);
-        assertNotNull(apsUser.getId());
-    	
-    }
+
+	@Test
+	public void testCreateAccount() throws Exception {
+
+		APSUser apsUser = new APSUser();
+		apsUser.setPassword("peter");
+		apsUser.setUsername("peter");
+		aPSUserAccountCreationService.createAccount(apsUser);
+		assertNotNull(apsUser.getId());
+
+	}
 }

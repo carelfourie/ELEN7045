@@ -11,16 +11,16 @@ import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 
 @Stateless
 public class MemberRegistration extends BaseService {
-    
-    @Inject
-    private Event<Member> memberEventSrc;
 
-    @Inject
-    private SaveRepository saveRepo;
+	@Inject
+	private Event<Member> memberEventSrc;
 
-    public void register(Member member) throws APSException {
-        log.info("Registering " + member.getName());
-        saveRepo.save(member);
-        memberEventSrc.fire(member);
-    }
+	@Inject
+	private SaveRepository saveRepo;
+
+	public void register(Member member) throws APSException {
+		log.info("Registering " + member.getName());
+		saveRepo.save(member);
+		memberEventSrc.fire(member);
+	}
 }

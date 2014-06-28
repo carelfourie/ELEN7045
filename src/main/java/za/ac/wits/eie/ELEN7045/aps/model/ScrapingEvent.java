@@ -10,44 +10,44 @@ import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 
 @Entity
 public class ScrapingEvent extends BaseDomainEntity<Long> {
-    
-    @ManyToOne
-    private CompanyAccount companyAccount;
-    
-    private Date date;
-    
-    @OneToOne
-    private ReturnCode returnCode;
 
-    public ScrapingEvent() {
-        super();
-    }
+	@ManyToOne
+	private CompanyAccount companyAccount;
 
-    public ScrapingEvent(Long id) {
-        super(id);
-    }
+	private Date date;
 
-    public CompanyAccount getCompanyAccount() {
-        return companyAccount;
-    }
+	@OneToOne
+	private ReturnCode returnCode;
 
-    public Date getDate() {
-        return date;
-    }
+	public ScrapingEvent() {
+		super();
+	}
 
-    public ReturnCode getReturnCode() {
-        return returnCode;
-    }
+	public ScrapingEvent(Long id) {
+		super(id);
+	}
 
-    public void setCompanyAccount(CompanyAccount companyAccount) {
-        this.companyAccount = companyAccount;
-    }
+	public CompanyAccount getCompanyAccount() {
+		return companyAccount;
+	}
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+	public Date getDate() {
+		return date;
+	}
 
-    public void setReturnCode(ReturnCode returnCode) {
-        this.returnCode = returnCode;
-    }
+	public ReturnCode getReturnCode() {
+		return returnCode;
+	}
+
+	public void setCompanyAccount(CompanyAccount companyAccount) {
+		this.companyAccount = companyAccount;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public void setReturnCode(ReturnCode returnCode) {
+		this.returnCode = returnCode;
+	}
 }

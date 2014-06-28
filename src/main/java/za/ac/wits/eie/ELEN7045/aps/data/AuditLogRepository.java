@@ -11,15 +11,13 @@ import za.ac.wits.eie.ELEN7045.aps.data.base.BaseRepository;
 import za.ac.wits.eie.ELEN7045.aps.model.ScrapingEventAuditLog;
 
 @ApplicationScoped
-public class AuditLogRepository  extends BaseRepository {
-	
+public class AuditLogRepository extends BaseRepository {
+
 	@SuppressWarnings("unchecked")
-    public List<ScrapingEventAuditLog> findByAPSUser(String name) {
+	public List<ScrapingEventAuditLog> findByAPSUser(String name) {
 		Session session = (Session) entityManager.getDelegate();
-		
-		List<ScrapingEventAuditLog> users = session.createCriteria(ScrapingEventAuditLog.class)
-		                                           .createAlias("apsUser", "user")
-		                                           .add(Restrictions.eq("user.username", name)).list();
+
+		List<ScrapingEventAuditLog> users = session.createCriteria(ScrapingEventAuditLog.class).createAlias("apsUser", "user").add(Restrictions.eq("user.username", name)).list();
 		return users;
 	}
 }

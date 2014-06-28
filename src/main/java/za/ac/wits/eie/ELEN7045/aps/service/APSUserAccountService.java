@@ -10,15 +10,16 @@ import za.ac.wits.eie.ELEN7045.aps.service.base.BaseService;
 
 @Stateless
 public class APSUserAccountService extends BaseService {
-	
-    @Inject
-    private SaveRepository saveRepo;
-    
+
 	@Inject
-    private Event<APSUser> userEventSrc;
-	
+	private SaveRepository saveRepo;
+
+	@Inject
+	private Event<APSUser> userEventSrc;
+
 	/**
 	 * Create account for user
+	 * 
 	 * @param aPSUser
 	 */
 	public void createAccount(APSUser apsUser) {

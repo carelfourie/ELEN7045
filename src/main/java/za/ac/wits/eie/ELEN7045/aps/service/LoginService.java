@@ -51,12 +51,12 @@ public class LoginService extends BaseService {
 			map.put("password", password);
 
 			List<APSUser> users = findByCriteriaRepo.findByCriteria(APSUser.class, Restrictions.allEq(map));
-			
+
 			Map<String, String> msgVal = new LinkedHashMap<String, String>(2);
-	        msgVal.put("User not found: [%s]", username);
-	        msgVal.put("Duplicate user found: [%s]", username);
-	       
-	        listCheck(users, msgVal);
+			msgVal.put("User not found: [%s]", username);
+			msgVal.put("Duplicate user found: [%s]", username);
+
+			listCheck(users, msgVal);
 
 			return users.get(0);
 		} catch (Exception e) {
@@ -65,8 +65,7 @@ public class LoginService extends BaseService {
 	}
 
 	@Deprecated
-	public List<Statement> loadAccountStatements(String password,
-			String username) throws APSException {
+	public List<Statement> loadAccountStatements(String password, String username) throws APSException {
 		APSUser user = null;
 		List<Statement> statements = new ArrayList<Statement>();
 		try {
@@ -78,22 +77,16 @@ public class LoginService extends BaseService {
 		if (user != null) {
 
 			@SuppressWarnings("unchecked")
-			List<ScraperInfo> scraperInfoList = entityManager
-					.createQuery(
-							"select s from ScraperInfo s where apsUser_id=:id")
-					.setParameter("id", user.getId()).getResultList();
+			List<ScraperInfo> scraperInfoList = entityManager.createQuery("select s from ScraperInfo s where apsUser_id=:id").setParameter("id", user.getId()).getResultList();
 			try {
 				log.info(">>>>> scraperInfoList size = " + scraperInfoList.size());
 
 				for (ScraperInfo si : scraperInfoList) {
 					log.info(">>>> XmlResultFile = " + si.getXmlResultFile());
 
-					ScrapeSession ss = ScrapeUnmarshaller.domUnmarshaller(si
-							.getXmlResultFile());
+					ScrapeSession ss = ScrapeUnmarshaller.domUnmarshaller(si.getXmlResultFile());
 
 					CreditCardStatement statement = new CreditCardStatement();
-					
-					
 
 					try {
 						scrapeSessionMapper.map(ss, statement);
@@ -119,7 +112,7 @@ public class LoginService extends BaseService {
 	 * @return CompanyAccount
 	 * @throws APSException
 	 */
-	
+
 	public List<CompanyAccount> loadAPSUserAccounts(String password, String username) throws APSException {
 		APSUser user = null;
 
@@ -131,7 +124,7 @@ public class LoginService extends BaseService {
 
 		if (user != null) {
 			log.info("Loading scraped accounts for " + username);
-			return user.getCompanyAccounts();			
+			return user.getCompanyAccounts();
 		} else {
 			throw new APSException("Invalid Login");
 		}

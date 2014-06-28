@@ -62,10 +62,8 @@ public class TelcoStatement extends Statement {
 	}
 
 	@Override
-    public String toString() {
-		return String
-				.format("{TELCO-SCRAPE [base-url: %s][date: %s][time: %s][return-code: %s][tel-number: %s][total due: %s]}",
-						getBaseUrl(), getDate(), getTime(), getReturnCode(),
-						getTelephoneNumber(), getTotalDue());
+	public String toString() {
+		return String.format("{TELCO-SCRAPE [base-url: %s][date: %s][time: %s][return-code: %s][tel-number: %s][total due: %s]}", getBaseUrl(), getDate(), getTime(), getReturnCode(),
+				getTelephoneNumber(), getTotalDue());
 	}
 }

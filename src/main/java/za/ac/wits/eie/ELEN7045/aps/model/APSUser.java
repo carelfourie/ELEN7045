@@ -16,29 +16,29 @@ import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 
 @Entity
 public class APSUser extends BaseDomainEntity<Long> {
-    
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "apsUser")
 	@Fetch(FetchMode.SELECT)
-    private List<CompanyAccount> companyAccounts;
-    
-    @NotNull
-    @NotEmpty
-    private String password;
-    
-    @NotNull
-    @NotEmpty
-    private String username;
+	private List<CompanyAccount> companyAccounts;
 
-    public APSUser() {
-        super();
-    }
+	@NotNull
+	@NotEmpty
+	private String password;
 
-    public APSUser(Long id) {
-        super(id);
-    }
+	@NotNull
+	@NotEmpty
+	private String username;
+
+	public APSUser() {
+		super();
+	}
+
+	public APSUser(Long id) {
+		super(id);
+	}
 
 	public List<CompanyAccount> getCompanyAccounts() {
-	    companyAccounts = constructListIfNull(companyAccounts);
+		companyAccounts = constructListIfNull(companyAccounts);
 		return companyAccounts;
 	}
 
@@ -61,5 +61,5 @@ public class APSUser extends BaseDomainEntity<Long> {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-    
+
 }

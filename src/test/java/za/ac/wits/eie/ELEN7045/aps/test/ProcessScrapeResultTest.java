@@ -19,69 +19,69 @@ import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeUnmarshaller;
 import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
 
 @RunWith(Arquillian.class)
-public class ProcessScrapeResultTest extends BaseTest{
-	
-	@Inject 
+public class ProcessScrapeResultTest extends BaseTest {
+
+	@Inject
 	private Logger logger;
-	
+
 	@Inject
 	private ScrapeSessionMapper scrapeSessionMapper;
-	
+
 	@Test
 	public void parseScrapeResult() {
 		assertTrue(testCreditCard());
 		assertTrue(testMunicipality());
 		assertTrue(testTelco());
 	}
-	
-	private boolean testCreditCard(){
+
+	private boolean testCreditCard() {
 		boolean result = true;
 		String exampleFileName = "temp/InputData/creditcard.xml";
 		ScrapeSession ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
 		assertNotNull(ss);
-		
+
 		CreditCardStatement ccs = new CreditCardStatement();
-		
+
 		try {
 			scrapeSessionMapper.map(ss, ccs);
 			logger.info(">>> TEST >>> Scraped: " + ccs.toString());
-		} catch(Exception e) {
-			logger.error(e);
-			result = false;
-		}
-		return result;
-	}
-	
-	private boolean testMunicipality(){
-		boolean result = true;
-		String exampleFileName = "temp/InputData/municipality.xml";
-		ScrapeSession ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
-		assertNotNull(ss);
-		
-		MunicipalityStatement ccs = new MunicipalityStatement();
-		
-		try {
-			scrapeSessionMapper.map(ss, ccs);
-			logger.info(">>> TEST >>> Scraped: " + ccs.toString());
-		} catch(Exception e) {
+		} catch (Exception e) {
 			logger.error(e);
 			result = false;
 		}
 		return result;
 	}
 
-	private boolean testTelco(){
+	private boolean testMunicipality() {
+		boolean result = true;
+		String exampleFileName = "temp/InputData/municipality.xml";
+		ScrapeSession ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
+		assertNotNull(ss);
+
+		MunicipalityStatement ccs = new MunicipalityStatement();
+
+		try {
+			scrapeSessionMapper.map(ss, ccs);
+			logger.info(">>> TEST >>> Scraped: " + ccs.toString());
+		} catch (Exception e) {
+			logger.error(e);
+			result = false;
+		}
+		return result;
+	}
+
+	private boolean testTelco() {
 		boolean result = true;
 		String exampleFileName = "temp/InputData/telco.xml";
 		ScrapeSession ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
 		assertNotNull(ss);
-		
+
 		TelcoStatement ccs = new TelcoStatement();
-		
+
 		try {
 			scrapeSessionMapper.map(ss, ccs);
 			logger.info(">>> TEST >>> Scraped: " + ccs.toString());
-		} catch(Exception e) {
+		} catch (Exception e) {
 			logger.error(e);
 			result = false;
 		}

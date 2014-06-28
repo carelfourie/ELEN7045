@@ -22,61 +22,61 @@ import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 public class Login {
 
 	private List<CompanyAccount> companyAccountList = new ArrayList<CompanyAccount>();
-	
+
 	@Produces
-    @Named
+	@Named
 	private Credentials credentials;
-	
+
 	@Inject
-    private FacesContext facesContext;
-	
+	private FacesContext facesContext;
+
 	@Inject
-    private Logger log;
-    
-    @Inject
-    private LoginService loginService;
-    		
-    @Produces
-    @Named
+	private Logger log;
+
+	@Inject
+	private LoginService loginService;
+
+	@Produces
+	@Named
 	public List<CompanyAccount> getCompanyAccountList() {
 		return companyAccountList;
 	}
-    
-    @PostConstruct
-    public void initCredentials() {
-    	credentials = new Credentials();
-    }
+
+	@PostConstruct
+	public void initCredentials() {
+		credentials = new Credentials();
+	}
 
 	/**
-     * Login a user to retrieve scraped accounts
-     * @return
-     * @throws APSException 
-     */
-    public String login() throws APSException {
-    	
-    	 List<CompanyAccount> results;
+	 * Login a user to retrieve scraped accounts
+	 * 
+	 * @return
+	 * @throws APSException
+	 */
+	public String login() throws APSException {
+
+		List<CompanyAccount> results;
 		try {
-			log.info("login to get scraped accounts for ........ "+credentials.getUsername());
+			log.info("login to get scraped accounts for ........ " + credentials.getUsername());
 			results = loginService.loadAPSUserAccounts(credentials.getPassword(), credentials.getUsername());
-			log.info("account size ........ "+results.size());
-			if( results.size() != 0) {
+			log.info("account size ........ " + results.size());
+			if (results.size() != 0) {
 				setCompanyAccountList(results);
-				new ListDataModel<CompanyAccount>(results); 
+				new ListDataModel<CompanyAccount>(results);
 				initCredentials();
 				return "success";
-			}
-			else {
+			} else {
 				return "success";
 			}
 		} catch (APSException e) {
 			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage());
-	           facesContext.addMessage(null, m);
+			facesContext.addMessage(null, m);
 		}
 		return "failure";
-    }
+	}
 
 	public void setCompanyAccountList(List<CompanyAccount> companyAccountList) {
 		this.companyAccountList = companyAccountList;
 	}
-    
+
 }

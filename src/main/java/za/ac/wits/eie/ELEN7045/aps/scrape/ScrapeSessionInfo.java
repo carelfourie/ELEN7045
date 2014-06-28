@@ -35,19 +35,19 @@ public class ScrapeSessionInfo extends BaseDomainEntity<Long> {
 
 	@Column(name = "account_number")
 	private String acccountNumber;
-	
+
 	@Column(name = "account_holder_name")
 	private String accountHolderName;
-	
+
 	@Column(name = "base_url")
 	private String baseUrl;
-	
+
 	@Column(name = "closing_balance")
 	private String closingBalance;
-	
+
 	@Column(name = "date")
 	private String date;
-	
+
 	@Column(name = "deductions")
 	private String deductions;
 
@@ -72,60 +72,58 @@ public class ScrapeSessionInfo extends BaseDomainEntity<Long> {
 	@Column(name = "statement_date")
 	private String statementDate;
 
-
 	@Column(name = "statement_month")
 	private String statementMonth;
-	
+
 	@Column(name = "statement_number")
 	private String statementNumber;
-	
+
 	@Column(name = "time")
 	private String time;
-	
+
 	@Column(name = "total_due")
 	private String totalDue;
-	
+
 	@Column(name = "vat_amount")
 	private String vatAmount;
-	
+
 	public ScrapeSessionInfo() {
-        super();
-    }
-	
+		super();
+	}
+
 	public ScrapeSessionInfo(Long id) {
-        super(id);
-    }
-	
+		super(id);
+	}
+
 	public String getAcccountNumber() {
 		return acccountNumber;
 	}
-	
+
 	public String getAccountHolderName() {
 		return accountHolderName;
 	}
-	
+
 	public String getBaseUrl() {
 		return baseUrl;
 	}
-	
+
 	public String getClosingBalance() {
 		return closingBalance;
 	}
-	
+
 	public String getDate() {
 		return date;
 	}
-	
+
 	public String getDeductions() {
 		return deductions;
 	}
-	
-	
-    public String getDiscount() {
+
+	public String getDiscount() {
 		return discount;
 	}
 
-    public String getDueDate() {
+	public String getDueDate() {
 		return dueDate;
 	}
 

@@ -8,12 +8,12 @@ import javax.inject.Named;
 
 @Named
 public class ConcurrentScrapingExecutor implements ConcurrentScrapingExecutorIFace {
-    
-    @Inject
-    private ManagedExecutorService managedExecutorService;
-    
-    @Override
-    public Future<?> submit(ScrapingSession session) {
-        return managedExecutorService.submit(session);
-    }
+
+	@Inject
+	private ManagedExecutorService managedExecutorService;
+
+	@Override
+	public Future<?> submit(ScrapingSession session) {
+		return managedExecutorService.submit(session);
+	}
 }

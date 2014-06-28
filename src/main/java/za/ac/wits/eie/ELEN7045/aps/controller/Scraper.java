@@ -22,66 +22,65 @@ import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 import za.ac.wits.eie.ELEN7045.aps.service.StatementService;
 import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 
-@ManagedBean(name="scraper")
+@ManagedBean(name = "scraper")
 @SessionScoped
 public class Scraper {
-	
-	private String accountNumber;     
+
+	private String accountNumber;
 	private String callCharges;
-	
+
 	private String closingBalance;
 	private DataModel<CompanyAccount> companyAccountModel;
 	private List<CompanyAccount> companyAccounts;
 	private String creditAvailable;
-	
-	//credit card statement
+
+	// credit card statement
 	private String creditCardType;
 	private String creditLimit;
 	private String discount;
 	private String electricityCharges;
-	
+
 	private String interestRate;
 	@Inject
-    private Logger log;
+	private Logger log;
 	@Inject
 	Login login;
-	
+
 	private String minimumAmountDue;
-    private String openingBalance;
-    private boolean renderCredit;
-    private boolean renderMunicpal;
-    //render 
+	private String openingBalance;
+	private boolean renderCredit;
+	private boolean renderMunicpal;
+	// render
 	private boolean renderTelco;
-	
-	
+
 	private String serviceCharges;
-	
+
 	@Inject
-    private StatementService statementService;
-	
-	//telco statement
+	private StatementService statementService;
+
+	// telco statement
 	private String telNo;
-	
+
 	@Produces
-    @Named
+	@Named
 	public String getAccountNumber() {
 		return accountNumber;
 	}
-	
+
 	@Produces
-    @Named
+	@Named
 	public String getCallCharges() {
 		return callCharges;
 	}
 
 	@Produces
-    @Named
+	@Named
 	public String getClosingBalance() {
 		return closingBalance;
 	}
 
 	@Produces
-    @Named
+	@Named
 	public DataModel<CompanyAccount> getCompanyAccountModel() {
 		return companyAccountModel;
 	}
@@ -91,84 +90,85 @@ public class Scraper {
 	}
 
 	@Produces
-    @Named
+	@Named
 	public String getCreditAvailable() {
 		return creditAvailable;
 	}
 
 	@Produces
-    @Named
+	@Named
 	public String getCreditCardType() {
 		return creditCardType;
 	}
 
 	@Produces
-    @Named
+	@Named
 	public String getCreditLimit() {
 		return creditLimit;
 	}
 
 	@Produces
-    @Named
+	@Named
 	public String getDiscount() {
 		return discount;
 	}
-	
+
 	@Produces
-    @Named
+	@Named
 	public String getElectricityCharges() {
 		return electricityCharges;
 	}
 
 	@Produces
-    @Named
+	@Named
 	public String getInterestRate() {
 		return interestRate;
 	}
-	
+
 	@Produces
-    @Named
+	@Named
 	public String getMinimumAmountDue() {
 		return minimumAmountDue;
 	}
 
 	@Produces
-    @Named
+	@Named
 	public String getOpeningBalance() {
 		return openingBalance;
 	}
-	
+
 	@Produces
-    @Named
+	@Named
 	public String getServiceCharges() {
 		return serviceCharges;
 	}
 
 	@Produces
-    @Named
+	@Named
 	public String getTelNo() {
 		return telNo;
 	}
 
-	@PostConstruct   public void init() {
-		companyAccounts = login.getCompanyAccountList();         
+	@PostConstruct
+	public void init() {
+		companyAccounts = login.getCompanyAccountList();
 		companyAccountModel = new ListDataModel<CompanyAccount>(companyAccounts);
 	}
 
 	@Produces
-    @Named
+	@Named
 	public boolean isRenderCredit() {
 		return renderCredit;
 	}
-	
+
 	@Produces
-    @Named
+	@Named
 	public boolean isRenderMunicpal() {
 		return renderMunicpal;
 	}
 
 	@Produces
-    @Named
+	@Named
 	public boolean isRenderTelco() {
 		return renderTelco;
 	}
@@ -219,8 +219,8 @@ public class Scraper {
 
 	public void setMinimumAmountDue(String minimumAmountDue) {
 		this.minimumAmountDue = minimumAmountDue;
-	} 
-	
+	}
+
 	public void setOpeningBalance(String openingBalance) {
 		this.openingBalance = openingBalance;
 	}
@@ -246,62 +246,62 @@ public class Scraper {
 	}
 
 	public String view() {
-		
+
 		List<Statement> results = new ArrayList<Statement>();
 		CompanyAccount companyAccount = companyAccountModel.getRowData();
-		if(companyAccount != null) {
+		if (companyAccount != null) {
 			try {
 				results.clear();
 				results = statementService.loadAccountStatement(companyAccount.getAccountNumber());
-				log.info("List of statements for account number: "+companyAccount.getAccountNumber() +" are : "+results.size());
-				if(results.size() != 0) {
-					log.info("companyAccountModel.getRowCount() ------------ "+companyAccountModel.getRowCount());
-					for(Statement st : results){
-						//check the type of statement before setting the fields
-						if(st instanceof TelcoStatement ){
+				log.info("List of statements for account number: " + companyAccount.getAccountNumber() + " are : " + results.size());
+				if (results.size() != 0) {
+					log.info("companyAccountModel.getRowCount() ------------ " + companyAccountModel.getRowCount());
+					for (Statement st : results) {
+						// check the type of statement before setting the fields
+						if (st instanceof TelcoStatement) {
 							log.info("-------Telco statement--------");
 							setRenderTelco(true);
 							setRenderCredit(false);
 							setRenderMunicpal(false);
-							TelcoStatement tel = (TelcoStatement)st;
+							TelcoStatement tel = (TelcoStatement) st;
 							setTelNo(tel.getTelephoneNumber());
 							setCallCharges(tel.getCallCharges());
 							setServiceCharges(tel.getServiceCharges());
-						}else if(st instanceof CreditCardStatement){
+						} else if (st instanceof CreditCardStatement) {
 							log.info("-------Credit statement--------");
 							setRenderCredit(true);
 							setRenderMunicpal(false);
 							setRenderTelco(false);
-							CreditCardStatement crd = (CreditCardStatement)st;
+							CreditCardStatement crd = (CreditCardStatement) st;
 							setCreditCardType(crd.getCardType());
 							setMinimumAmountDue(crd.getMinimumAmountDue());
 							setCreditAvailable(crd.getCreditAvailable());
 							setCreditLimit(crd.getCreditLimit());
 							setInterestRate(crd.getInterestRate());
-							
-						}else if(st instanceof MunicipalityStatement){
+
+						} else if (st instanceof MunicipalityStatement) {
 							setRenderMunicpal(true);
 							setRenderCredit(false);
 							setRenderTelco(false);
 							log.info("-------Municipal statement--------");
-							MunicipalityStatement mun = (MunicipalityStatement)st;
+							MunicipalityStatement mun = (MunicipalityStatement) st;
 							setElectricityCharges(mun.getElectrictyCharges());
 						}
-						
+
 						setAccountNumber(st.getAccountNumber());
 						setOpeningBalance(st.getOpeningBalance());
 						setClosingBalance(st.getClosingBalance());
 						setDiscount(st.getDiscount());
 					}
-					
+
 					return "success";
 				}
-				
+
 			} catch (APSException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return "failure";
-	}	
+	}
 }

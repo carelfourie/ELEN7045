@@ -32,20 +32,20 @@ import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
 @RunWith(Arquillian.class)
 public class MemberRegistrationTest extends BaseTest {
 
-    @Inject
-    Logger log;
+	@Inject
+	Logger log;
 
-    @Inject
-    MemberRegistration memberRegistration;
+	@Inject
+	MemberRegistration memberRegistration;
 
-    @Test
-    public void test() throws Exception {
-        Member member = new Member();
-        member.setName("Jane Doe");
-        member.setEmail("jane@mailinator.com");
-        member.setPhoneNumber("2125551234");
-        memberRegistration.register(member);
-        assertNotNull(member.getId());
-        log.info(member.getName() + " was persisted with id " + member.getId());
-    }
+	@Test
+	public void test() throws Exception {
+		Member member = new Member();
+		member.setName("Jane Doe");
+		member.setEmail("jane@mailinator.com");
+		member.setPhoneNumber("2125551234");
+		memberRegistration.register(member);
+		assertNotNull(member.getId());
+		log.info(member.getName() + " was persisted with id " + member.getId());
+	}
 }

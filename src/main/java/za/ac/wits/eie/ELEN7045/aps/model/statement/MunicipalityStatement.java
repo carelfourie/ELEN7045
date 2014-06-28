@@ -16,14 +16,14 @@ public class MunicipalityStatement extends Statement {
 	private String sewerageCharges;
 	private String waterCharges;
 	private String waterUsed;
-	
-    public MunicipalityStatement() {
-        super();
-    }
 
-    public MunicipalityStatement(Long id) {
-        super(id);
-    }
+	public MunicipalityStatement() {
+		super();
+	}
+
+	public MunicipalityStatement(Long id) {
+		super(id);
+	}
 
 	public String getElectricityUsed() {
 		return electricityUsed;
@@ -96,10 +96,11 @@ public class MunicipalityStatement extends Statement {
 	public void setWaterUsed(String waterUsed) {
 		this.waterUsed = waterUsed;
 	}
-    
+
 	@Override
-    public String toString(){
-		return String.format("{MUNICIPALITY-SCRAPE [base-url: %s][date: %s][time: %s][return-code: %s][electricity-used: %s][electricity-charges: %s]}", getBaseUrl(), getDate(), getTime(), getReturnCode(), getElectricityUsed(),getElectrictyCharges());
+	public String toString() {
+		return String.format("{MUNICIPALITY-SCRAPE [base-url: %s][date: %s][time: %s][return-code: %s][electricity-used: %s][electricity-charges: %s]}", getBaseUrl(), getDate(), getTime(),
+				getReturnCode(), getElectricityUsed(), getElectrictyCharges());
 	}
-    
+
 }
