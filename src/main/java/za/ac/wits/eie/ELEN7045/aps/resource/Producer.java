@@ -15,7 +15,7 @@ import org.jboss.logging.Logger;
 public class Producer {
     
     /**
-     * Container managed persistence via JPA 2.1 (JSR 338)
+     * Container managed persistence via JPA 2.1 (JSR-338)
      * 
      */
     @Produces
@@ -23,7 +23,7 @@ public class Producer {
     protected EntityManager entityManager;
 
     /**
-     * Container managed thread pool via Concurrency 1.0 (JSR 236)
+     * Container managed thread pool via Concurrency 1.0 (JSR-236)
      * 5 core threads, 25 max.
      * 
      */
