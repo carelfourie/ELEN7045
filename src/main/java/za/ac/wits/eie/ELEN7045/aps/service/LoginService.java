@@ -74,8 +74,7 @@ public class LoginService extends BaseService {
 	 * @throws APSException
 	 */
 	
-	public List<CompanyAccount> loadAPSUserAccounts(String password,
-			String username) throws APSException {
+	public List<CompanyAccount> loadAPSUserAccounts(String password, String username) throws APSException {
 		APSUser user = null;
 
 		try {
@@ -86,19 +85,10 @@ public class LoginService extends BaseService {
 
 		if (user != null) {
 			log.info("Loading scraped accounts for " + username);
-			@SuppressWarnings("unchecked")
-			List<CompanyAccount> results = entityManager
-					.createQuery(
-							"SELECT c FROM CompanyAccount c "
-									+ "join c.company join c.status join c.apsUser where c.apsUser.password=:password and "
-									+ "c.apsUser.username=:username")
-					.setParameter("password", password)
-					.setParameter("username", username).getResultList();
-			return results;
+			return user.getCompanyAccounts();			
 		} else {
 			throw new APSException("Invalid Login");
 		}
-
 	}
 
 	@Deprecated
