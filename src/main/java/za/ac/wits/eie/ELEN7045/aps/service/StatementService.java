@@ -23,25 +23,6 @@ public class StatementService extends BaseService {
     private FindByCriteriaRepository findByCriteriaRepo;
 	
 	/**
-     * Retrieve Company Account
-     * 
-     * @param accountNumber
-     * @return {@link CompanyAccount}
-     */
-	private CompanyAccount getCompanyAccount(String accountNumber) throws APSException {
-		log.info("Retrieving statement for account number " + accountNumber);
-
-        Map<String, String> map = new HashMap<String, String>(1);
-        map.put("accountNumber", accountNumber);
-        List<CompanyAccount> companyAccounts = findByCriteriaRepo.findByCriteria(CompanyAccount.class, Restrictions.allEq(map));
-        if (companyAccounts.size() < 1) {
-            throw new APSException(String.format("company Accounts not found: [%s]", accountNumber));
-        }
-		return companyAccounts.get(0);
-		
-	}
-	
-	/**
      * Load Statement object for the record that is return with the account number
      * 
      * @parameter accountNumber
@@ -58,5 +39,22 @@ public class StatementService extends BaseService {
         list.add(statement);
         return list;
     }
+    
+    /**
+     * Retrieve Company Account
+     * 
+     * @param accountNumber
+     * @return {@link CompanyAccount}
+     */
+    private CompanyAccount getCompanyAccount(String accountNumber) throws APSException {
+        log.info("Retrieving statement for account number " + accountNumber);
 
+        Map<String, String> map = new HashMap<String, String>(1);
+        map.put("accountNumber", accountNumber);
+        List<CompanyAccount> companyAccounts = findByCriteriaRepo.findByCriteria(CompanyAccount.class, Restrictions.allEq(map));
+        if (companyAccounts.size() < 1) {
+            throw new APSException(String.format("Company Accounts not found: [%s]", accountNumber));
+        }
+        return companyAccounts.get(0);
+    }
 }
