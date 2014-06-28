@@ -25,19 +25,19 @@ public abstract class BaseDomainEntity<ID extends Serializable> {
     public BaseDomainEntity(ID id) {
         this.id = id;
     }
-
-    protected <T extends BaseDomainEntity<Long>> List<T> constructListIfNull(List<T> list) {
-        if (list == null) {
-            list = new ArrayList<T>();
-        }
-        return list;
-    }
-
+    
     public ID getId() {
         return id;
     }
 
     public void setId(ID id) {
         this.id = id;
+    }
+    
+    protected <T extends BaseDomainEntity<Long>> List<T> constructListIfNull(List<T> list) {
+        if (list == null) {
+            list = new ArrayList<T>();
+        }
+        return list;
     }
 }
