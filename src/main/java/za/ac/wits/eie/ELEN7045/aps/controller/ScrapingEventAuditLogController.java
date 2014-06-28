@@ -31,7 +31,6 @@ public class ScrapingEventAuditLogController {
 
 	private List<ScrapingEventAuditLog> scrapingEventList;
 
-	// public List<ScrapingEventAuditLog> getAuditLog() throws APSException {
 	public String getAuditLog() throws APSException {
 
 		List<ScrapingEventAuditLog> results = null;
