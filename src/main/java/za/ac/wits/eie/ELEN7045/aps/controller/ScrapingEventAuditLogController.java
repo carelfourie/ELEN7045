@@ -42,8 +42,7 @@ public class ScrapingEventAuditLogController {
 			setScrapingEventList(results);
 			return "success";
 		} catch (APSException e) {
-			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					e.getMessage(), e.getMessage());
+			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage());
 			facesContext.addMessage(null, m);
 		}
 		return "failure";
