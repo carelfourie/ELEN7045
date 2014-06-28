@@ -31,5 +31,4 @@ public class Datapair {
 	public void setValue(String value) {
 		this.value = value;
 	}
-
 }

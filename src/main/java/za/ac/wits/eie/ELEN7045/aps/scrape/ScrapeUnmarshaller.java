@@ -13,7 +13,6 @@ import org.w3c.dom.NodeList;
 public class ScrapeUnmarshaller {
 
 	public static ScrapeSession domUnmarshaller(String filename) {
-
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -54,10 +53,8 @@ public class ScrapeUnmarshaller {
 	}
 
 	private static String getTagValue(String sTag, Element eElement) {
-
 		NodeList nlList = eElement.getElementsByTagName(sTag).item(0).getChildNodes();
 		Node nValue = nlList.item(0);
 		return nValue.getNodeValue();
 	}
-
 }

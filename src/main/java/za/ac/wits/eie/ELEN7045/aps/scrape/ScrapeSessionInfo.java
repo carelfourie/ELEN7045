@@ -238,5 +238,4 @@ public class ScrapeSessionInfo extends BaseDomainEntity<Long> {
 	public void setVatAmount(String vatAmount) {
 		this.vatAmount = vatAmount;
 	}
-
 }
