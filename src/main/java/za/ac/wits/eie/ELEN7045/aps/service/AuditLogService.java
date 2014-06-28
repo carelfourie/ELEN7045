@@ -23,8 +23,7 @@ public class AuditLogService extends BaseService {
         if (auditLog.size() < 1) {
             throw new APSException(String.format("User not found: [%s]", username));
         }
-
+        
         return auditLog;
     }
-
 }
