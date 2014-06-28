@@ -2,10 +2,6 @@ package za.ac.wits.eie.ELEN7045.aps.controller;
 
 import java.util.Date;
 
-import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
-import za.ac.wits.eie.ELEN7045.aps.model.Company;
-import za.ac.wits.eie.ELEN7045.aps.model.ReturnCode;
-
 public class AuditLog {
 	  
 	private String companyName;
