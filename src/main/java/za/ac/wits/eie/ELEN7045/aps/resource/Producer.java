@@ -29,7 +29,7 @@ public class Producer {
      */
     @Produces
     @PersistenceContext(type = PersistenceContextType.TRANSACTION, unitName = "primary")
-    protected EntityManager em;
+    protected EntityManager entityManager;
     
     /**
      * Faces 2.1
