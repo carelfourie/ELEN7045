@@ -13,8 +13,6 @@ public class ScrapingSessionInvocationHandler implements InvocationHandler {
 	
 	private Object concurrentScrapingExecutor;
 	
-	
-	
 	@Inject
 	private SaveRepository saveRepository;
 
@@ -33,6 +31,7 @@ public class ScrapingSessionInvocationHandler implements InvocationHandler {
 		log.setReturnCode(null);
 		log.setScrapeDate(new Date());
 		
+		// save
 		saveRepository.save(log);
 		
 		//invoke the method
