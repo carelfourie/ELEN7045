@@ -7,15 +7,15 @@ import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 @Entity
 public class MunicipalityStatement extends Statement {
 
-	private String installmentNotice;
-	private String electricityUsed;
 	private String electricityCharges;
-	private String gasUsed;
+	private String electricityUsed;
 	private String gasCharges;
-	private String waterUsed;
-	private String waterCharges;
-	private String sewerageCharges;
+	private String gasUsed;
+	private String installmentNotice;
 	private String refuseCharges;
+	private String sewerageCharges;
+	private String waterCharges;
+	private String waterUsed;
 	
     public MunicipalityStatement() {
         super();
@@ -25,79 +25,80 @@ public class MunicipalityStatement extends Statement {
         super(id);
     }
 
-	public String getInstallmentNotice() {
-		return installmentNotice;
-	}
-
-	public void setInstallmentNotice(String installmentNotice) {
-		this.installmentNotice = installmentNotice;
-	}
-
 	public String getElectricityUsed() {
 		return electricityUsed;
-	}
-
-	public void setElectricityUsed(String electricityUsed) {
-		this.electricityUsed = electricityUsed;
 	}
 
 	public String getElectrictyCharges() {
 		return electricityCharges;
 	}
 
-	public void setElectricityCharges(String electrictyCharges) {
-		this.electricityCharges = electrictyCharges;
+	public String getGasCharges() {
+		return gasCharges;
 	}
 
 	public String getGasUsed() {
 		return gasUsed;
 	}
 
-	public void setGasUsed(String gasUsed) {
-		this.gasUsed = gasUsed;
-	}
-
-	public String getGasCharges() {
-		return gasCharges;
-	}
-
-	public void setGasCharges(String gasCharges) {
-		this.gasCharges = gasCharges;
-	}
-
-	public String getWaterUsed() {
-		return waterUsed;
-	}
-
-	public void setWaterUsed(String waterUsed) {
-		this.waterUsed = waterUsed;
-	}
-
-	public String getWaterCharges() {
-		return waterCharges;
-	}
-
-	public void setWaterCharges(String waterCharges) {
-		this.waterCharges = waterCharges;
-	}
-
-	public String getSewerageCharges() {
-		return sewerageCharges;
-	}
-
-	public void setSewerageCharges(String sewerageCharges) {
-		this.sewerageCharges = sewerageCharges;
+	public String getInstallmentNotice() {
+		return installmentNotice;
 	}
 
 	public String getRefuseCharges() {
 		return refuseCharges;
 	}
 
+	public String getSewerageCharges() {
+		return sewerageCharges;
+	}
+
+	public String getWaterCharges() {
+		return waterCharges;
+	}
+
+	public String getWaterUsed() {
+		return waterUsed;
+	}
+
+	public void setElectricityCharges(String electrictyCharges) {
+		this.electricityCharges = electrictyCharges;
+	}
+
+	public void setElectricityUsed(String electricityUsed) {
+		this.electricityUsed = electricityUsed;
+	}
+
+	public void setGasCharges(String gasCharges) {
+		this.gasCharges = gasCharges;
+	}
+
+	public void setGasUsed(String gasUsed) {
+		this.gasUsed = gasUsed;
+	}
+
+	public void setInstallmentNotice(String installmentNotice) {
+		this.installmentNotice = installmentNotice;
+	}
+
 	public void setRefuseCharges(String refuseCharges) {
 		this.refuseCharges = refuseCharges;
 	}
+
+	public void setSewerageCharges(String sewerageCharges) {
+		this.sewerageCharges = sewerageCharges;
+	}
+
+	public void setWaterCharges(String waterCharges) {
+		this.waterCharges = waterCharges;
+	}
+
+	public void setWaterUsed(String waterUsed) {
+		this.waterUsed = waterUsed;
+	}
     
-	public String toString(){
+	@Override
+    public String toString(){
 		return String.format("{MUNICIPALITY-SCRAPE [base-url: %s][date: %s][time: %s][return-code: %s][electricity-used: %s][electricity-charges: %s]}", getBaseUrl(), getDate(), getTime(), getReturnCode(), getElectricityUsed(),getElectrictyCharges());
 	}
     

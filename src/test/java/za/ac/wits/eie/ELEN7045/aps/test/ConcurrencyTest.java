@@ -42,13 +42,13 @@ import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
 public class ConcurrencyTest extends BaseTest {
     
     @Inject
+    ConcurrentScrapingExecutor executor;
+    
+    @Inject
     Logger log;
     
     @Inject
     LoginService loginService;
-    
-    @Inject
-    ConcurrentScrapingExecutor executor;
    
     private  List<ScrapingSession> getScrapingSessions() throws APSException {
         List<ScrapingSession> sessions = new ArrayList<ScrapingSession>();

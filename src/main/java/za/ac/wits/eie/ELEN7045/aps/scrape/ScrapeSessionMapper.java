@@ -7,9 +7,6 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
-import za.ac.wits.eie.ELEN7045.aps.model.statement.CreditCardStatement;
-import za.ac.wits.eie.ELEN7045.aps.model.statement.MunicipalityStatement;
-import za.ac.wits.eie.ELEN7045.aps.model.statement.TelcoStatement;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 
 @Stateless
@@ -19,6 +16,12 @@ public class ScrapeSessionMapper {
 	private Logger log;
 
 
+	private Object invoke(Statement statement, String methodName, Object parameter) throws Exception{
+		Class<?> c = statement.getClass();
+		Method m = c.getMethod(methodName, parameter.getClass());
+		return m.invoke(statement, parameter);
+	}
+	
 	public void map(ScrapeSession scrapeSession,
 			Statement statement) throws Exception {
 		statement.setBaseUrl(scrapeSession.getBaseurl());
@@ -41,11 +44,5 @@ public class ScrapeSessionMapper {
 				
 			}
 		}
-	}
-	
-	private Object invoke(Statement statement, String methodName, Object parameter) throws Exception{
-		Class<?> c = statement.getClass();
-		Method m = c.getMethod(methodName, parameter.getClass());
-		return m.invoke(statement, parameter);
 	}
 }

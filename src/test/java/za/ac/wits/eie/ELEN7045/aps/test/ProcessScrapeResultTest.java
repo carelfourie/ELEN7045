@@ -1,5 +1,8 @@
 package za.ac.wits.eie.ELEN7045.aps.test;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import javax.inject.Inject;
 
 import org.jboss.arquillian.junit.Arquillian;
@@ -14,8 +17,6 @@ import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeSession;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeSessionMapper;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeUnmarshaller;
 import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(Arquillian.class)
 public class ProcessScrapeResultTest extends BaseTest{
@@ -51,13 +52,13 @@ public class ProcessScrapeResultTest extends BaseTest{
 		return result;
 	}
 	
-	private boolean testTelco(){
+	private boolean testMunicipality(){
 		boolean result = true;
-		String exampleFileName = "temp/InputData/telco.xml";
+		String exampleFileName = "temp/InputData/municipality.xml";
 		ScrapeSession ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
 		assertNotNull(ss);
 		
-		TelcoStatement ccs = new TelcoStatement();
+		MunicipalityStatement ccs = new MunicipalityStatement();
 		
 		try {
 			scrapeSessionMapper.map(ss, ccs);
@@ -69,13 +70,13 @@ public class ProcessScrapeResultTest extends BaseTest{
 		return result;
 	}
 
-	private boolean testMunicipality(){
+	private boolean testTelco(){
 		boolean result = true;
-		String exampleFileName = "temp/InputData/municipality.xml";
+		String exampleFileName = "temp/InputData/telco.xml";
 		ScrapeSession ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
 		assertNotNull(ss);
 		
-		MunicipalityStatement ccs = new MunicipalityStatement();
+		TelcoStatement ccs = new TelcoStatement();
 		
 		try {
 			scrapeSessionMapper.map(ss, ccs);

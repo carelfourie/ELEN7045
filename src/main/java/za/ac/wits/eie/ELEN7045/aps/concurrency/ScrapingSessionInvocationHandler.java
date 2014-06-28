@@ -11,12 +11,12 @@ import za.ac.wits.eie.ELEN7045.aps.model.ScrapingEventAuditLog;
 
 public class ScrapingSessionInvocationHandler implements InvocationHandler {
 	
+	private Object concurrentScrapingExecutor;
+	
+	
+	
 	@Inject
 	private SaveRepository saveRepository;
-	
-	
-	
-	private Object concurrentScrapingExecutor;
 
 	public ScrapingSessionInvocationHandler(Object concurrentScrapingExecutor) {
 	   this.concurrentScrapingExecutor = concurrentScrapingExecutor;

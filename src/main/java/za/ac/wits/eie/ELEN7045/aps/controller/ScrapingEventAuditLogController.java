@@ -20,14 +20,6 @@ import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 @Model
 public class ScrapingEventAuditLogController {
 
-	private List<ScrapingEventAuditLog> scrapingEventList;
-
-	@Produces
-	@Named
-	public List<ScrapingEventAuditLog> getScrapingEventList() {
-		return scrapingEventList;
-	}
-
 	@Inject
 	private AuditLogService auditLogService;
 
@@ -36,6 +28,8 @@ public class ScrapingEventAuditLogController {
 
 	@Inject
 	private Logger log;
+
+	private List<ScrapingEventAuditLog> scrapingEventList;
 
 	// public List<ScrapingEventAuditLog> getAuditLog() throws APSException {
 	public String getAuditLog() throws APSException {
@@ -54,6 +48,12 @@ public class ScrapingEventAuditLogController {
 		}
 		return "failure";
 
+	}
+
+	@Produces
+	@Named
+	public List<ScrapingEventAuditLog> getScrapingEventList() {
+		return scrapingEventList;
 	}
 
 	@PostConstruct

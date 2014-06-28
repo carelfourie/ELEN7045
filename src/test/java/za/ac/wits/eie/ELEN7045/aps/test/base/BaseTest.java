@@ -17,7 +17,6 @@ import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 import za.ac.wits.eie.ELEN7045.aps.rest.JAXRSActivator;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeSession;
 import za.ac.wits.eie.ELEN7045.aps.service.MemberRegistration;
-import za.ac.wits.eie.ELEN7045.aps.util.Resources;
 
 public abstract class BaseTest {
 

@@ -1,5 +1,10 @@
 package za.ac.wits.eie.ELEN7045.aps.test;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +13,6 @@ import org.junit.Test;
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
 import za.ac.wits.eie.ELEN7045.aps.service.LoginService;
 import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
-import static org.mockito.Mockito.*;
 
 public class APSUserLoginMockTest {
 	

@@ -10,41 +10,41 @@ import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 @Entity
 public class Statement extends BaseDomainEntity<Long> {
 
-	private String statement;
-
-	private String baseUrl;
-	
-	private String date;
-	
-	private String time;
-	
-	private String returnCode;
-	
-	private String accountNumber;
-
 	private String accountHolderName;
+
+	private String accountNumber;
 	
-	private String statementDate;
-	
-	private String statementNumber;
-	
-	private String statementMonth;
-	
-	private String totalDue;
-	
-	private String dueDate;
-	
-	private String openingBalance;
+	private String baseUrl;
 	
 	private String closingBalance;
 	
-	private String paymentReceived;
+	private String date;
+	
+	private String deductions;
+
+	private String discount;
+	
+	private String dueDate;
 	
 	private String newCharges;
 	
-	private String deductions;
+	private String openingBalance;
 	
-	private String discount;
+	private String paymentReceived;
+	
+	private String returnCode;
+	
+	private String statement;
+	
+	private String statementDate;
+	
+	private String statementMonth;
+	
+	private String statementNumber;
+	
+	private String time;
+	
+	private String totalDue;
 	
 	private String vatAmount;
 	
@@ -56,152 +56,152 @@ public class Statement extends BaseDomainEntity<Long> {
         super(id);
     }
 
-	public String getStatement() {
-		return statement;
+	public String getAccountHolderName() {
+		return accountHolderName;
 	}
 
-	public void setStatement(String statement) {
-		this.statement = statement;
+	public String getAccountNumber() {
+		return accountNumber;
 	}
 		
 	public String getBaseUrl() {
 		return baseUrl;
 	}
 
-	public void setBaseUrl(String baseUrl) {
-		this.baseUrl = baseUrl;
+	public String getClosingBalance() {
+		return closingBalance;
 	}
 
 	public String getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
-	public String getReturnCode() {
-		return returnCode;
-	}
-
-	public void setReturnCode(String returnCode) {
-		this.returnCode = returnCode;
-	}
-		
-	public String getAccountNumber() {
-		return accountNumber;
-	}
-
-	public void setAccountNumber(String acccountNumber) {
-		this.accountNumber = acccountNumber;
-	}
-
-	public String getAccountHolderName() {
-		return accountHolderName;
-	}
-
-	public void setAccountHolderName(String accountHolderName) {
-		this.accountHolderName = accountHolderName;
-	}
-
-	public String getStatementDate() {
-		return statementDate;
-	}
-
-	public void setStatementDate(String statementDate) {
-		this.statementDate = statementDate;
-	}
-
-	public String getStatementNumber() {
-		return statementNumber;
-	}
-
-	public void setStatementNumber(String statementNumber) {
-		this.statementNumber = statementNumber;
-	}
-
-	public String getStatementMonth() {
-		return statementMonth;
-	}
-
-	public void setStatementMonth(String statementMonth) {
-		this.statementMonth = statementMonth;
-	}
-
-	public String getTotalDue() {
-		return totalDue;
-	}
-
-	public void setTotalDue(String totalDue) {
-		this.totalDue = totalDue;
-	}
-
-	public String getDueDate() {
-		return dueDate;
-	}
-
-	public void setDueDate(String dueDate) {
-		this.dueDate = dueDate;
-	}
-
-	public String getOpeningBalance() {
-		return openingBalance;
-	}
-
-	public void setOpeningBalance(String openingBalance) {
-		this.openingBalance = openingBalance;
-	}
-
-	public String getClosingBalance() {
-		return closingBalance;
-	}
-
-	public void setClosingBalance(String closingBalance) {
-		this.closingBalance = closingBalance;
-	}
-
-	public String getPaymentReceived() {
-		return paymentReceived;
-	}
-
-	public void setPaymentReceived(String paymentReceived) {
-		this.paymentReceived = paymentReceived;
-	}
-
-	public String getNewCharges() {
-		return newCharges;
-	}
-
-	public void setNewCharges(String newCharges) {
-		this.newCharges = newCharges;
-	}
-
 	public String getDeductions() {
 		return deductions;
-	}
-
-	public void setDeductions(String deductions) {
-		this.deductions = deductions;
 	}
 
 	public String getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(String discount) {
-		this.discount = discount;
+	public String getDueDate() {
+		return dueDate;
+	}
+
+	public String getNewCharges() {
+		return newCharges;
+	}
+
+	public String getOpeningBalance() {
+		return openingBalance;
+	}
+		
+	public String getPaymentReceived() {
+		return paymentReceived;
+	}
+
+	public String getReturnCode() {
+		return returnCode;
+	}
+
+	public String getStatement() {
+		return statement;
+	}
+
+	public String getStatementDate() {
+		return statementDate;
+	}
+
+	public String getStatementMonth() {
+		return statementMonth;
+	}
+
+	public String getStatementNumber() {
+		return statementNumber;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public String getTotalDue() {
+		return totalDue;
 	}
 
 	public String getVatAmount() {
 		return vatAmount;
+	}
+
+	public void setAccountHolderName(String accountHolderName) {
+		this.accountHolderName = accountHolderName;
+	}
+
+	public void setAccountNumber(String acccountNumber) {
+		this.accountNumber = acccountNumber;
+	}
+
+	public void setBaseUrl(String baseUrl) {
+		this.baseUrl = baseUrl;
+	}
+
+	public void setClosingBalance(String closingBalance) {
+		this.closingBalance = closingBalance;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public void setDeductions(String deductions) {
+		this.deductions = deductions;
+	}
+
+	public void setDiscount(String discount) {
+		this.discount = discount;
+	}
+
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
+	}
+
+	public void setNewCharges(String newCharges) {
+		this.newCharges = newCharges;
+	}
+
+	public void setOpeningBalance(String openingBalance) {
+		this.openingBalance = openingBalance;
+	}
+
+	public void setPaymentReceived(String paymentReceived) {
+		this.paymentReceived = paymentReceived;
+	}
+
+	public void setReturnCode(String returnCode) {
+		this.returnCode = returnCode;
+	}
+
+	public void setStatement(String statement) {
+		this.statement = statement;
+	}
+
+	public void setStatementDate(String statementDate) {
+		this.statementDate = statementDate;
+	}
+
+	public void setStatementMonth(String statementMonth) {
+		this.statementMonth = statementMonth;
+	}
+
+	public void setStatementNumber(String statementNumber) {
+		this.statementNumber = statementNumber;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public void setTotalDue(String totalDue) {
+		this.totalDue = totalDue;
 	}
 
 	public void setVatAmount(String vatAmount) {

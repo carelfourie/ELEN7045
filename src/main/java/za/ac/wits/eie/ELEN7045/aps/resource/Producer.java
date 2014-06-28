@@ -15,6 +15,14 @@ import org.jboss.logging.Logger;
 public class Producer {
     
     /**
+     * Container managed persistence via JPA 2.1
+     * 
+     */
+    @Produces
+    @PersistenceContext(type = PersistenceContextType.TRANSACTION, unitName = "primary")
+    protected EntityManager entityManager;
+
+    /**
      * Container managed thread pool - JSR 236
      * 5 core threads, 25 max.
      * 
@@ -22,14 +30,6 @@ public class Producer {
     @Produces
     @Resource(name = "java:jboss/ee/concurrency/executor/default")
     private ManagedExecutorService managedExecutorService;
-
-    /**
-     * Container managed persistence via JPA 2.1
-     * 
-     */
-    @Produces
-    @PersistenceContext(type = PersistenceContextType.TRANSACTION, unitName = "primary")
-    protected EntityManager entityManager;
     
     /**
      * Faces 2.1

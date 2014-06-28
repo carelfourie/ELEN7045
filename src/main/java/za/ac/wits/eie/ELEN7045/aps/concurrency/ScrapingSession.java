@@ -18,15 +18,15 @@ public class ScrapingSession implements Runnable {
         this.companyAccount = companyAccount;
     }
     
-    @Override
+    public CompanyAccount getCompanyAccount() {
+		return companyAccount;
+	}
+
+	@Override
     public void run() {
         log.info(String.format("scraping: [%s]", companyAccount.getUrl()));
         // now pass this to the "already developed scraper..."
     }
-
-	public CompanyAccount getCompanyAccount() {
-		return companyAccount;
-	}
 
 	public void setCompanyAccount(CompanyAccount companyAccount) {
 		this.companyAccount = companyAccount;

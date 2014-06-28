@@ -26,125 +26,46 @@ import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 @SessionScoped
 public class Scraper {
 	
-	private List<CompanyAccount> companyAccounts;     
-	private DataModel<CompanyAccount> companyAccountModel;
-	
-	private String accountNumber;
-	private String openingBalance;
-	private String closingBalance;
-	private String discount;
-	
-	//telco statement
-	private String telNo;
-	private String electricityCharges;
-	private String serviceCharges;
+	private String accountNumber;     
 	private String callCharges;
 	
-	//render 
-	private boolean renderTelco;
-	private boolean renderMunicpal;
-	private boolean renderCredit;
+	private String closingBalance;
+	private DataModel<CompanyAccount> companyAccountModel;
+	private List<CompanyAccount> companyAccounts;
+	private String creditAvailable;
 	
 	//credit card statement
 	private String creditCardType;
-    private String creditAvailable;
-    private String creditLimit;
-    private String interestRate;
-    private String minimumAmountDue;
+	private String creditLimit;
+	private String discount;
+	private String electricityCharges;
 	
-	
+	private String interestRate;
 	@Inject
     private Logger log;
+	@Inject
+	Login login;
+	
+	private String minimumAmountDue;
+    private String openingBalance;
+    private boolean renderCredit;
+    private boolean renderMunicpal;
+    //render 
+	private boolean renderTelco;
+	
+	
+	private String serviceCharges;
 	
 	@Inject
     private StatementService statementService;
 	
-	@Inject
-	Login login;
-	
-	@PostConstruct   public void init() {
-		companyAccounts = login.getCompanyAccountList();         
-		companyAccountModel = new ListDataModel<CompanyAccount>(companyAccounts);
-	}
+	//telco statement
+	private String telNo;
 	
 	@Produces
     @Named
 	public String getAccountNumber() {
 		return accountNumber;
-	}
-
-	public void setAccountNumber(String accountNumber) {
-		this.accountNumber = accountNumber;
-	}
-
-	@Produces
-    @Named
-	public String getOpeningBalance() {
-		return openingBalance;
-	}
-
-	public void setOpeningBalance(String openingBalance) {
-		this.openingBalance = openingBalance;
-	}
-
-	@Produces
-    @Named
-	public String getClosingBalance() {
-		return closingBalance;
-	}
-
-	public void setClosingBalance(String closingBalance) {
-		this.closingBalance = closingBalance;
-	}
-
-	@Produces
-    @Named
-	public String getDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(String discount) {
-		this.discount = discount;
-	}
-	
-	@Produces
-    @Named
-	public String getTelNo() {
-		return telNo;
-	}
-
-	public void setTelNo(String telNo) {
-		this.telNo = telNo;
-	}
-	
-	@Produces
-    @Named
-	public String getCreditCardType() {
-		return creditCardType;
-	}
-
-	public void setCreditCardType(String creditCardType) {
-		this.creditCardType = creditCardType;
-	}
-	
-	@Produces
-    @Named
-	public String getElectricityCharges() {
-		return electricityCharges;
-	}
-
-	public void setElectricityCharges(String electricityCharges) {
-		this.electricityCharges = electricityCharges;
-	}
-
-	@Produces
-    @Named
-	public String getServiceCharges() {
-		return serviceCharges;
-	}
-
-	public void setServiceCharges(String serviceCharges) {
-		this.serviceCharges = serviceCharges;
 	}
 	
 	@Produces
@@ -153,56 +74,10 @@ public class Scraper {
 		return callCharges;
 	}
 
-	public void setCallCharges(String callCharges) {
-		this.callCharges = callCharges;
-	}
-
 	@Produces
     @Named
-	public String getCreditAvailable() {
-		return creditAvailable;
-	}
-
-	public void setCreditAvailable(String creditAvailable) {
-		this.creditAvailable = creditAvailable;
-	}
-
-	@Produces
-    @Named
-	public String getCreditLimit() {
-		return creditLimit;
-	}
-
-	public void setCreditLimit(String creditLimit) {
-		this.creditLimit = creditLimit;
-	}
-
-	@Produces
-    @Named
-	public String getInterestRate() {
-		return interestRate;
-	}
-
-	public void setInterestRate(String interestRate) {
-		this.interestRate = interestRate;
-	}
-
-	@Produces
-    @Named
-	public String getMinimumAmountDue() {
-		return minimumAmountDue;
-	}
-
-	public void setMinimumAmountDue(String minimumAmountDue) {
-		this.minimumAmountDue = minimumAmountDue;
-	}
-
-	public List<CompanyAccount> getCompanyAccounts() {
-		return companyAccounts;
-	}
-
-	public void setCompanyAccounts(List<CompanyAccount> companyAccounts) {
-		this.companyAccounts = companyAccounts;
+	public String getClosingBalance() {
+		return closingBalance;
 	}
 
 	@Produces
@@ -211,10 +86,165 @@ public class Scraper {
 		return companyAccountModel;
 	}
 
+	public List<CompanyAccount> getCompanyAccounts() {
+		return companyAccounts;
+	}
+
+	@Produces
+    @Named
+	public String getCreditAvailable() {
+		return creditAvailable;
+	}
+
+	@Produces
+    @Named
+	public String getCreditCardType() {
+		return creditCardType;
+	}
+
+	@Produces
+    @Named
+	public String getCreditLimit() {
+		return creditLimit;
+	}
+
+	@Produces
+    @Named
+	public String getDiscount() {
+		return discount;
+	}
+	
+	@Produces
+    @Named
+	public String getElectricityCharges() {
+		return electricityCharges;
+	}
+
+	@Produces
+    @Named
+	public String getInterestRate() {
+		return interestRate;
+	}
+	
+	@Produces
+    @Named
+	public String getMinimumAmountDue() {
+		return minimumAmountDue;
+	}
+
+	@Produces
+    @Named
+	public String getOpeningBalance() {
+		return openingBalance;
+	}
+	
+	@Produces
+    @Named
+	public String getServiceCharges() {
+		return serviceCharges;
+	}
+
+	@Produces
+    @Named
+	public String getTelNo() {
+		return telNo;
+	}
+
+	@PostConstruct   public void init() {
+		companyAccounts = login.getCompanyAccountList();         
+		companyAccountModel = new ListDataModel<CompanyAccount>(companyAccounts);
+	}
+
+	@Produces
+    @Named
+	public boolean isRenderCredit() {
+		return renderCredit;
+	}
+	
+	@Produces
+    @Named
+	public boolean isRenderMunicpal() {
+		return renderMunicpal;
+	}
+
+	@Produces
+    @Named
+	public boolean isRenderTelco() {
+		return renderTelco;
+	}
+
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
+	public void setCallCharges(String callCharges) {
+		this.callCharges = callCharges;
+	}
+
+	public void setClosingBalance(String closingBalance) {
+		this.closingBalance = closingBalance;
+	}
+
 	public void setCompanyAccountModel(DataModel<CompanyAccount> companyAccountModel) {
 		this.companyAccountModel = companyAccountModel;
+	}
+
+	public void setCompanyAccounts(List<CompanyAccount> companyAccounts) {
+		this.companyAccounts = companyAccounts;
+	}
+
+	public void setCreditAvailable(String creditAvailable) {
+		this.creditAvailable = creditAvailable;
+	}
+
+	public void setCreditCardType(String creditCardType) {
+		this.creditCardType = creditCardType;
+	}
+
+	public void setCreditLimit(String creditLimit) {
+		this.creditLimit = creditLimit;
+	}
+
+	public void setDiscount(String discount) {
+		this.discount = discount;
+	}
+
+	public void setElectricityCharges(String electricityCharges) {
+		this.electricityCharges = electricityCharges;
+	}
+
+	public void setInterestRate(String interestRate) {
+		this.interestRate = interestRate;
+	}
+
+	public void setMinimumAmountDue(String minimumAmountDue) {
+		this.minimumAmountDue = minimumAmountDue;
 	} 
 	
+	public void setOpeningBalance(String openingBalance) {
+		this.openingBalance = openingBalance;
+	}
+
+	public void setRenderCredit(boolean renderCredit) {
+		this.renderCredit = renderCredit;
+	}
+
+	public void setRenderMunicpal(boolean renderMunicpal) {
+		this.renderMunicpal = renderMunicpal;
+	}
+
+	public void setRenderTelco(boolean renderTelco) {
+		this.renderTelco = renderTelco;
+	}
+
+	public void setServiceCharges(String serviceCharges) {
+		this.serviceCharges = serviceCharges;
+	}
+
+	public void setTelNo(String telNo) {
+		this.telNo = telNo;
+	}
+
 	public String view() {
 		
 		List<Statement> results = new ArrayList<Statement>();
@@ -273,35 +303,5 @@ public class Scraper {
 			}
 		}
 		return "failure";
-	}
-
-	@Produces
-    @Named
-	public boolean isRenderTelco() {
-		return renderTelco;
-	}
-
-	public void setRenderTelco(boolean renderTelco) {
-		this.renderTelco = renderTelco;
-	}
-
-	@Produces
-    @Named
-	public boolean isRenderMunicpal() {
-		return renderMunicpal;
-	}
-
-	public void setRenderMunicpal(boolean renderMunicpal) {
-		this.renderMunicpal = renderMunicpal;
-	}
-
-	@Produces
-    @Named
-	public boolean isRenderCredit() {
-		return renderCredit;
-	}
-
-	public void setRenderCredit(boolean renderCredit) {
-		this.renderCredit = renderCredit;
 	}	
 }

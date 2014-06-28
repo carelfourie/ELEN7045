@@ -4,34 +4,34 @@ import java.util.Date;
 
 public class AuditLog {
 	  
-	private String companyName;
 	private String apsUserName;
-	private String returnCode;
+	private String companyName;
 	private Date date;
+	private String returnCode;
 	
-	public String getCompanyName() {
-		return companyName;
-	}
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
 	public String getApsUserName() {
 		return apsUserName;
 	}
-	public void setApsUserName(String apsUserName) {
-		this.apsUserName = apsUserName;
-	}
-	public String getReturnCode() {
-		return returnCode;
-	}
-	public void setReturnCode(String returnCode) {
-		this.returnCode = returnCode;
+	public String getCompanyName() {
+		return companyName;
 	}
 	public Date getDate() {
 		return date;
 	}
+	public String getReturnCode() {
+		return returnCode;
+	}
+	public void setApsUserName(String apsUserName) {
+		this.apsUserName = apsUserName;
+	}
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public void setReturnCode(String returnCode) {
+		this.returnCode = returnCode;
 	}
 	
 	
