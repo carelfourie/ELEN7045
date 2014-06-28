@@ -25,6 +25,6 @@ public class ScrapingSession implements Runnable {
 	@Override
     public void run() {
         log.info(String.format("scraping: [%s]", companyAccount.getUrl()));
-        // now pass this to the "already developed scraper..."
+        // now pass companyAccount this to the scraper...
     }
 }
