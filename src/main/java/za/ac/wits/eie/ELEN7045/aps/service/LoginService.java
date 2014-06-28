@@ -28,41 +28,13 @@ import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 public class LoginService extends BaseService {
 
 	@Inject
-	protected EntityManager entityManager;
+	private EntityManager entityManager;
 
 	@Inject
 	private FindByCriteriaRepository findByCriteriaRepo;
 
 	@Inject
 	private ScrapeSessionMapper scrapeSessionMapper;
-
-	/**
-	 * Retrieve user
-	 * 
-	 * @param password
-	 * @param username
-	 * @return {@link APSUser}
-	 */
-	private APSUser getAPSUser(String password, String username) throws APSException {
-		log.info("Retrieving user with username " + username);
-		try {
-			Map<String, String> map = new HashMap<String, String>(2);
-			map.put("username", username);
-			map.put("password", password);
-
-			List<APSUser> users = findByCriteriaRepo.findByCriteria(APSUser.class, Restrictions.allEq(map));
-
-			Map<String, String> msgVal = new LinkedHashMap<String, String>(2);
-			msgVal.put("User not found: [%s]", username);
-			msgVal.put("Duplicate user found: [%s]", username);
-
-			listCheck(users, msgVal);
-
-			return users.get(0);
-		} catch (Exception e) {
-			throw new APSException("Invalid Login");
-		}
-	}
 
 	@Deprecated
 	public List<Statement> loadAccountStatements(String password, String username) throws APSException {
@@ -126,6 +98,34 @@ public class LoginService extends BaseService {
 			log.info("Loading scraped accounts for " + username);
 			return user.getCompanyAccounts();
 		} else {
+			throw new APSException("Invalid Login");
+		}
+	}
+
+	/**
+	 * Retrieve user
+	 * 
+	 * @param password
+	 * @param username
+	 * @return {@link APSUser}
+	 */
+	private APSUser getAPSUser(String password, String username) throws APSException {
+		log.info("Retrieving user with username " + username);
+		try {
+			Map<String, String> map = new HashMap<String, String>(2);
+			map.put("username", username);
+			map.put("password", password);
+
+			List<APSUser> users = findByCriteriaRepo.findByCriteria(APSUser.class, Restrictions.allEq(map));
+
+			Map<String, String> msgVal = new LinkedHashMap<String, String>(2);
+			msgVal.put("User not found: [%s]", username);
+			msgVal.put("Duplicate user found: [%s]", username);
+
+			listCheck(users, msgVal);
+
+			return users.get(0);
+		} catch (Exception e) {
 			throw new APSException("Invalid Login");
 		}
 	}
