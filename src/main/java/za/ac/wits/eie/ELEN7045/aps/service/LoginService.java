@@ -2,6 +2,7 @@ package za.ac.wits.eie.ELEN7045.aps.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,34 +43,22 @@ public class LoginService extends BaseService {
 	 * @param username
 	 * @return {@link APSUser}
 	 */
-	private APSUser getAPSUser(String password, String username)
-			throws APSException {
+	private APSUser getAPSUser(String password, String username) throws APSException {
 		log.info("Retrieving user with username " + username);
 		try {
 			Map<String, String> map = new HashMap<String, String>(2);
 			map.put("username", username);
 			map.put("password", password);
 
-			List<APSUser> users = findByCriteriaRepo.findByCriteria(
-					APSUser.class, Restrictions.allEq(map));
-			if (users.size() < 1) {
-				throw new APSException(String.format("User not found: [%s]",
-						username));
-			}
-
-			if (users.size() > 1) {
-				throw new APSException(String.format(
-						"Duplicate user found: [%s]", username));
-			}
+			List<APSUser> users = findByCriteriaRepo.findByCriteria(APSUser.class, Restrictions.allEq(map));
+			
+			Map<String, String> msgVal = new LinkedHashMap<String, String>(2);
+	        msgVal.put("User not found: [%s]", username);
+	        msgVal.put("Duplicate user found: [%s]", username);
+	       
+	        listCheck(users, msgVal);
 
 			return users.get(0);
-
-			/*
-			 * return (APSUser) entityManager.createQuery(
-			 * "SELECT u FROM APSUser u where u.password=:password and " +
-			 * "u.username=:username") .setParameter("password", password)
-			 * .setParameter("username", username) .getSingleResult();
-			 */
 		} catch (Exception e) {
 			throw new APSException("Invalid Login");
 		}
