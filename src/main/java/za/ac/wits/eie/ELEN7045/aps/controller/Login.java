@@ -14,6 +14,7 @@ import javax.inject.Named;
 
 import org.jboss.logging.Logger;
 
+import za.ac.wits.eie.ELEN7045.aps.dto.CredentialsDTO;
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
 import za.ac.wits.eie.ELEN7045.aps.service.LoginService;
 import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
@@ -25,7 +26,7 @@ public class Login {
 
 	@Produces
 	@Named
-	private Credentials credentials;
+	private CredentialsDTO credentials;
 
 	@Inject
 	private FacesContext facesContext;
@@ -44,7 +45,7 @@ public class Login {
 
 	@PostConstruct
 	public void initCredentials() {
-		credentials = new Credentials();
+		credentials = new CredentialsDTO();
 	}
 
 	/**

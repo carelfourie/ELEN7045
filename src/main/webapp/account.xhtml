@@ -6,7 +6,7 @@
     template="/WEB-INF/templates/default.xhtml">
     <ui:define name="content">
     
-      <h:form>
+   <h:form>
    <h:panelGrid columns="2">
         <h:outputLabel for="_username1">Username:</h:outputLabel>
         <h:inputText id="_username1" value="#{accountInfo.username}"/>
@@ -14,12 +14,9 @@
         <h:inputSecret id="_password1" value="#{accountInfo.password1}"/>
         <h:outputLabel for="_password2">Re-enter Password:</h:outputLabel>
         <h:inputSecret id="_password2" value="#{accountInfo.password2}"/>
-        <h:commandButton value="Register" action="#{account.createAccount}"/>
+        <h:commandButton value="Register" action="#{accountController.createAccount()}"/>
     </h:panelGrid>
-    <h:messages styleClass="messages"
-                        errorClass="invalid" infoClass="valid"
-                        warnClass="warning" globalOnly="true" />
-</h:form>
-	
-    </ui:define>
+    <h:messages styleClass="messages" errorClass="invalid" infoClass="valid" warnClass="warning" globalOnly="true" />
+	</h:form>
+</ui:define>
 </ui:composition>
