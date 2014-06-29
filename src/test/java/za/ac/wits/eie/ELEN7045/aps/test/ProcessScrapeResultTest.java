@@ -25,7 +25,7 @@ public class ProcessScrapeResultTest extends BaseTest {
 	private Logger logger;
 
 	@Inject
-	private ScrapeResultMapper scrapeSessionMapper;
+	private ScrapeResultMapper scrapeResultMapper;
 
 	@Test
 	public void parseScrapeResult() {
@@ -37,14 +37,14 @@ public class ProcessScrapeResultTest extends BaseTest {
 	private boolean testCreditCard() {
 		boolean result = true;
 		String exampleFileName = "temp/InputData/creditcard.xml";
-		ScrapeResultDTO ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
-		assertNotNull(ss);
+		ScrapeResultDTO scrapeResult = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
+		assertNotNull(scrapeResult);
 
-		CreditCardStatement ccs = new CreditCardStatement();
+		CreditCardStatement creditCardStatement = new CreditCardStatement();
 
 		try {
-			scrapeSessionMapper.map(ss, ccs);
-			logger.info(">>> TEST >>> Scraped: " + ccs.toString());
+			scrapeResultMapper.map(scrapeResult, creditCardStatement);
+			logger.info(">>> TEST >>> Scraped: " + creditCardStatement.toString());
 		} catch (Exception e) {
 			logger.error(e);
 			result = false;
@@ -55,14 +55,14 @@ public class ProcessScrapeResultTest extends BaseTest {
 	private boolean testMunicipality() {
 		boolean result = true;
 		String exampleFileName = "temp/InputData/municipality.xml";
-		ScrapeResultDTO ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
-		assertNotNull(ss);
+		ScrapeResultDTO scrapeResult = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
+		assertNotNull(scrapeResult);
 
-		MunicipalityStatement ccs = new MunicipalityStatement();
+		MunicipalityStatement municipleStatement = new MunicipalityStatement();
 
 		try {
-			scrapeSessionMapper.map(ss, ccs);
-			logger.info(">>> TEST >>> Scraped: " + ccs.toString());
+			scrapeResultMapper.map(scrapeResult, municipleStatement);
+			logger.info(">>> TEST >>> Scraped: " + municipleStatement.toString());
 		} catch (Exception e) {
 			logger.error(e);
 			result = false;
@@ -73,14 +73,14 @@ public class ProcessScrapeResultTest extends BaseTest {
 	private boolean testTelco() {
 		boolean result = true;
 		String exampleFileName = "temp/InputData/telco.xml";
-		ScrapeResultDTO ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
-		assertNotNull(ss);
+		ScrapeResultDTO scrapeResult = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
+		assertNotNull(scrapeResult);
 
-		TelcoStatement ccs = new TelcoStatement();
+		TelcoStatement telcoStatement = new TelcoStatement();
 
 		try {
-			scrapeSessionMapper.map(ss, ccs);
-			logger.info(">>> TEST >>> Scraped: " + ccs.toString());
+			scrapeResultMapper.map(scrapeResult, telcoStatement);
+			logger.info(">>> TEST >>> Scraped: " + telcoStatement.toString());
 		} catch (Exception e) {
 			logger.error(e);
 			result = false;
