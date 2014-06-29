@@ -17,13 +17,8 @@ public class APSUserAccountService extends BaseService {
 	@Inject
 	private Event<APSUser> userEventSrc;
 
-	/**
-	 * Create account for user
-	 * 
-	 * @param aPSUser
-	 */
 	public void createAccount(APSUser apsUser) {
-		log.info("Creating account for " + apsUser.getUsername());
+		log.info(String.format("creating account for: [%s]", apsUser.getUsername()));
 		saveRepo.save(apsUser);
 		userEventSrc.fire(apsUser);
 	}
