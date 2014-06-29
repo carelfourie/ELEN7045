@@ -32,7 +32,7 @@ public class LoginService extends BaseService {
 		}
 
 		if (user != null) {
-			log.info("Loading scraped accounts for " + username);
+			log.info(String.format("loading accounts for: [%s]", username));
 			return user.getCompanyAccounts();
 		} else {
 			throw new APSException("Invalid Login");
@@ -40,7 +40,7 @@ public class LoginService extends BaseService {
 	}
 
 	private APSUser getAPSUser(String password, String username) throws APSException {
-		log.info("Retrieving user with username " + username);
+		log.info(String.format("retrieving user: [%s]", username));
 		try {
 			Map<String, String> map = new HashMap<String, String>(2);
 			map.put("username", username);

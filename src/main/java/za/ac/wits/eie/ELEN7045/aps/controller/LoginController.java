@@ -56,21 +56,19 @@ public class LoginController {
 	 */
 	public String login() throws APSException {
 		try {
-			log.info("login to get scraped accounts for ........ " + credentials.getUsername());
 			List<CompanyAccount> results = loginService.loadAPSUserAccounts(credentials.getPassword(), credentials.getUsername());
-			log.info("account size ........ " + results.size());
 			if (results.size() != 0) {
 				setCompanyAccountList(results);
 				new ListDataModel<CompanyAccount>(results);
 				initCredentials();
-				return "success";
-			} else {
-				return "success";
 			}
+			log.info("logged in");
+			return "success";
 		} catch (APSException e) {
 			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage());
 			facesContext.addMessage(null, m);
 		}
+		log.info("log in failed");
 		return "failure";
 	}
 
