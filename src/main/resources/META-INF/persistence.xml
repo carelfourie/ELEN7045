@@ -13,6 +13,7 @@
       <class>za.ac.wits.eie.ELEN7045.aps.model.Company</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.ReturnCode</class>
+      <class>za.ac.wits.eie.ELEN7045.aps.model.ScraperInfo</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.ScrapingEvent</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.ScrapingEventAuditLog</class>
       <class>za.ac.wits.eie.ELEN7045.aps.model.Status</class>
