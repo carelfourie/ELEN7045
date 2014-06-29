@@ -24,8 +24,8 @@ public abstract class BaseTest {
 		File[] libs = pom.resolve().withTransitivity().asFile();
 
 		return ShrinkWrap.create(WebArchive.class, "jee_aps_app_test.war").addClasses(BaseTest.class).addClass(Producer.class).addPackages(true, ScrapingSession.class.getPackage())
-				.addPackages(true, MemberController.class.getPackage()).addPackages(true, MemberListProducer.class.getPackage()).addPackages(true, APSUser.class.getPackage())
-				.addPackages(true, JAXRSActivator.class.getPackage()).addPackages(true, ScrapeSession.class.getPackage()).addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
-				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml").addAsWebInfResource("test-ds.xml").addAsLibraries(libs);
+				.addPackages(true, APSUser.class.getPackage()).addPackages(true, JAXRSActivator.class.getPackage()).addPackages(true, ScrapeSession.class.getPackage())
+				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml").addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml").addAsWebInfResource("test-ds.xml")
+				.addAsLibraries(libs);
 	}
 }
