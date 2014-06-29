@@ -12,8 +12,8 @@ import org.jboss.shrinkwrap.resolver.api.maven.PomEquippedResolveStage;
 
 import za.ac.wits.eie.ELEN7045.aps.concurrency.ScrapingSession;
 import za.ac.wits.eie.ELEN7045.aps.controller.MemberController;
-import za.ac.wits.eie.ELEN7045.aps.data.MemberListProducer;
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
+import za.ac.wits.eie.ELEN7045.aps.repository.MemberListProducer;
 import za.ac.wits.eie.ELEN7045.aps.resource.Producer;
 import za.ac.wits.eie.ELEN7045.aps.rest.JAXRSActivator;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeSession;

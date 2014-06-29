@@ -9,8 +9,8 @@ import javax.inject.Inject;
 
 import org.hibernate.criterion.Restrictions;
 
-import za.ac.wits.eie.ELEN7045.aps.data.FindByCriteriaRepository;
 import za.ac.wits.eie.ELEN7045.aps.model.ReturnCode;
+import za.ac.wits.eie.ELEN7045.aps.repository.FindByCriteriaRepository;
 import za.ac.wits.eie.ELEN7045.aps.service.base.BaseService;
 import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 

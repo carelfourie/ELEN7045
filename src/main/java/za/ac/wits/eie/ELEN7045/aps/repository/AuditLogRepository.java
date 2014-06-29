@@ -1,4 +1,4 @@
-package za.ac.wits.eie.ELEN7045.aps.data;
+package za.ac.wits.eie.ELEN7045.aps.repository;
 
 import java.util.List;
 
@@ -7,7 +7,6 @@ import javax.enterprise.context.ApplicationScoped;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-import za.ac.wits.eie.ELEN7045.aps.data.base.BaseRepository;
 import za.ac.wits.eie.ELEN7045.aps.model.ScrapingEventAuditLog;
 
 @ApplicationScoped

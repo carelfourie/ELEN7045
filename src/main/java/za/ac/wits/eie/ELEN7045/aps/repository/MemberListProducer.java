@@ -1,4 +1,4 @@
-package za.ac.wits.eie.ELEN7045.aps.data;
+package za.ac.wits.eie.ELEN7045.aps.repository;
 
 import java.util.List;
 

@@ -6,8 +6,8 @@ import java.util.Date;
 
 import javax.inject.Inject;
 
-import za.ac.wits.eie.ELEN7045.aps.data.SaveRepository;
 import za.ac.wits.eie.ELEN7045.aps.model.ScrapingEventAuditLog;
+import za.ac.wits.eie.ELEN7045.aps.repository.SaveRepository;
 
 public class ScrapingSessionInvocationHandler implements InvocationHandler {
 

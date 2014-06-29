@@ -25,8 +25,8 @@ import javax.ws.rs.core.Response;
 
 import org.jboss.logging.Logger;
 
-import za.ac.wits.eie.ELEN7045.aps.data.MemberRepository;
 import za.ac.wits.eie.ELEN7045.aps.model.Member;
+import za.ac.wits.eie.ELEN7045.aps.repository.MemberRepository;
 import za.ac.wits.eie.ELEN7045.aps.service.MemberRegistration;
 
 @Path("/members")

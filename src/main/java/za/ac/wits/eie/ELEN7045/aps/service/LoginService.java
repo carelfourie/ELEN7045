@@ -13,11 +13,11 @@ import javax.persistence.EntityManager;
 import org.hibernate.criterion.Restrictions;
 
 import za.ac.wits.eie.ELEN7045.aps.controller.ScraperInfo;
-import za.ac.wits.eie.ELEN7045.aps.data.FindByCriteriaRepository;
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 import za.ac.wits.eie.ELEN7045.aps.model.CompanyAccount;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.CreditCardStatement;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
+import za.ac.wits.eie.ELEN7045.aps.repository.FindByCriteriaRepository;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeSession;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeSessionMapper;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeUnmarshaller;

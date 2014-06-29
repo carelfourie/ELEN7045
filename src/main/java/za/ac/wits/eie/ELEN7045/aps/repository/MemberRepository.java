@@ -1,4 +1,4 @@
-package za.ac.wits.eie.ELEN7045.aps.data;
+package za.ac.wits.eie.ELEN7045.aps.repository;
 
 import java.util.List;
 
@@ -7,7 +7,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import za.ac.wits.eie.ELEN7045.aps.data.base.BaseRepository;
 import za.ac.wits.eie.ELEN7045.aps.model.Member;
 
 @ApplicationScoped
