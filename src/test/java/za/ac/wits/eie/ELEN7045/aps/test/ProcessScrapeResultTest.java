@@ -14,7 +14,7 @@ import za.ac.wits.eie.ELEN7045.aps.dto.ScrapeResultDTO;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.CreditCardStatement;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.MunicipalityStatement;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.TelcoStatement;
-import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeSessionMapper;
+import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeResultMapper;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeUnmarshaller;
 import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
 
@@ -25,7 +25,7 @@ public class ProcessScrapeResultTest extends BaseTest {
 	private Logger logger;
 
 	@Inject
-	private ScrapeSessionMapper scrapeSessionMapper;
+	private ScrapeResultMapper scrapeSessionMapper;
 
 	@Test
 	public void parseScrapeResult() {

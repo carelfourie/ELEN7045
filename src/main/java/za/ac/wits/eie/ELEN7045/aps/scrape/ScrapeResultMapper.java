@@ -11,7 +11,7 @@ import za.ac.wits.eie.ELEN7045.aps.dto.ScrapeResultDTO;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 
 @Stateless
-public class ScrapeSessionMapper {
+public class ScrapeResultMapper {
 
 	@Inject
 	private Logger log;
