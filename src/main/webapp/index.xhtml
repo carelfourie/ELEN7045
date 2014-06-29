@@ -14,8 +14,7 @@
         <h:inputSecret id="password" value="#{credentials.password}"/>
         <h:commandButton value="Login" action="#{loginController.login}"/>
     	No account?
-    	<h:commandLink value="reister now" action="account.jsf?faces-redirect=true">
-    	</h:commandLink>
+    	<h:commandLink value="reister now" action="account.jsf?faces-redirect=true"></h:commandLink>
     </h:panelGrid>
     <h:messages styleClass="messages" errorClass="invalid" infoClass="valid" warnClass="warning" globalOnly="true" />
     </h:form>
