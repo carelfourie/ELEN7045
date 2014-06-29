@@ -22,49 +22,6 @@ public class LoginService extends BaseService {
 	@Inject
 	private FindByCriteriaRepository findByCriteriaRepo;
 
-	// @Deprecated
-	// public List<Statement> loadAccountStatements(String password, String
-	// username) throws APSException {
-	// APSUser user = null;
-	// List<Statement> statements = new ArrayList<Statement>();
-	// try {
-	// user = getAPSUser(password, username);
-	// } catch (APSException e) {
-	// throw new APSException(e.getMessage());
-	// }
-	//
-	// if (user != null) {
-	//
-	// @SuppressWarnings("unchecked")
-	// List<ScraperInfo> scraperInfoList =
-	// entityManager.createQuery("select s from ScraperInfo s where apsUser_id=:id").setParameter("id",
-	// user.getId()).getResultList();
-	// try {
-	// log.info(">>>>> scraperInfoList size = " + scraperInfoList.size());
-	//
-	// for (ScraperInfo si : scraperInfoList) {
-	// log.info(">>>> XmlResultFile = " + si.getXmlResultFile());
-	//
-	// ScrapeSession ss =
-	// ScrapeUnmarshaller.domUnmarshaller(si.getXmlResultFile());
-	//
-	// CreditCardStatement statement = new CreditCardStatement();
-	//
-	// try {
-	// scrapeSessionMapper.map(ss, statement);
-	// statements.add(statement);
-	// } catch (Exception e) {
-	// log.error("[-1] ScrapeSession error", e);
-	// }
-	// }
-	// } catch (Exception e) {
-	// log.error("[-2] ScraperInfo error", e);
-	// }
-	// } else {
-	// }
-	// return statements;
-	// }
-
 	public List<CompanyAccount> loadAPSUserAccounts(String password, String username) throws APSException {
 		APSUser user = null;
 
