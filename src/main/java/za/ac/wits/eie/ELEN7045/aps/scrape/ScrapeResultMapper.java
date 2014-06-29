@@ -30,7 +30,6 @@ public class ScrapeResultMapper {
 
 		for (Datapair datapair : scrapeResult.getDatapairs()) {
 			try {
-
 				String methodName = AttributeTranslator.translate("set", datapair.getText());
 				if (methodName == null) {
 					continue;
