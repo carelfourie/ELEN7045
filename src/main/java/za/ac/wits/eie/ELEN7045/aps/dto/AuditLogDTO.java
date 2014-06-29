@@ -1,8 +1,8 @@
-package za.ac.wits.eie.ELEN7045.aps.controller;
+package za.ac.wits.eie.ELEN7045.aps.dto;
 
 import java.util.Date;
 
-public class AuditLog {
+public class AuditLogDTO {
 
 	private String apsUserName;
 	private String companyName;
