@@ -8,8 +8,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.jboss.logging.Logger;
-
 import za.ac.wits.eie.ELEN7045.aps.dto.AccountInfoDTO;
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 import za.ac.wits.eie.ELEN7045.aps.service.APSUserAccountService;
@@ -26,9 +24,6 @@ public class AccountController {
 
 	@Inject
 	private FacesContext facesContext;
-
-	@Inject
-	private Logger log;
 
 	/**
 	 * Create account for user
