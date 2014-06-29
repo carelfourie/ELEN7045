@@ -12,8 +12,6 @@ import org.junit.runner.RunWith;
 
 import za.ac.wits.eie.ELEN7045.aps.dto.ScrapeResultDTO;
 import za.ac.wits.eie.ELEN7045.aps.factory.StatementFactory;
-import za.ac.wits.eie.ELEN7045.aps.model.statement.MunicipalityStatement;
-import za.ac.wits.eie.ELEN7045.aps.model.statement.TelcoStatement;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeResultMapper;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeUnmarshaller;
