@@ -20,15 +20,6 @@ public class StatementService extends BaseService {
 	@Inject
 	private FindByCriteriaRepository findByCriteriaRepo;
 
-	/**
-	 * Load Statement object for the record that is return with the account
-	 * number
-	 * 
-	 * @parameter accountNumber
-	 * @parameter password
-	 * @return CompanyAccount
-	 * @throws APSException
-	 */
 	public List<Statement> loadAccountStatement(String accountNumber) throws APSException {
 		CompanyAccount companyAccount = getCompanyAccount(accountNumber);
 		Statement statement = companyAccount.getStatement();
@@ -37,12 +28,6 @@ public class StatementService extends BaseService {
 		return list;
 	}
 
-	/**
-	 * Retrieve Company Account
-	 * 
-	 * @param accountNumber
-	 * @return {@link CompanyAccount}
-	 */
 	private CompanyAccount getCompanyAccount(String accountNumber) throws APSException {
 		List<CompanyAccount> companyAccounts = findByCriteriaRepo.findByCriteria(CompanyAccount.class, Restrictions.eq("accountNumber", accountNumber));
 		if (companyAccounts.size() < 1) {
