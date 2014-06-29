@@ -11,9 +11,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import za.ac.wits.eie.ELEN7045.aps.dto.ScrapeResultDTO;
-import za.ac.wits.eie.ELEN7045.aps.model.statement.CreditCardStatement;
+import za.ac.wits.eie.ELEN7045.aps.factory.StatementFactory;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.MunicipalityStatement;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.TelcoStatement;
+import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeResultMapper;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeUnmarshaller;
 import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
@@ -40,7 +41,7 @@ public class ProcessScrapeResultTest extends BaseTest {
 		ScrapeResultDTO scrapeResult = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
 		assertNotNull(scrapeResult);
 
-		CreditCardStatement creditCardStatement = new CreditCardStatement();
+		Statement creditCardStatement = StatementFactory.createCreditCardStatement();
 
 		try {
 			scrapeResultMapper.map(scrapeResult, creditCardStatement);
@@ -58,7 +59,7 @@ public class ProcessScrapeResultTest extends BaseTest {
 		ScrapeResultDTO scrapeResult = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
 		assertNotNull(scrapeResult);
 
-		MunicipalityStatement municipleStatement = new MunicipalityStatement();
+		Statement municipleStatement = StatementFactory.createMunicipalityStatement();
 
 		try {
 			scrapeResultMapper.map(scrapeResult, municipleStatement);
@@ -76,7 +77,7 @@ public class ProcessScrapeResultTest extends BaseTest {
 		ScrapeResultDTO scrapeResult = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
 		assertNotNull(scrapeResult);
 
-		TelcoStatement telcoStatement = new TelcoStatement();
+		Statement telcoStatement = StatementFactory.createTelcoStatement();
 
 		try {
 			scrapeResultMapper.map(scrapeResult, telcoStatement);
