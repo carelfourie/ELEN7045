@@ -10,10 +10,10 @@ import org.jboss.logging.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import za.ac.wits.eie.ELEN7045.aps.dto.ScrapeResultDTO;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.CreditCardStatement;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.MunicipalityStatement;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.TelcoStatement;
-import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeSession;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeSessionMapper;
 import za.ac.wits.eie.ELEN7045.aps.scrape.ScrapeUnmarshaller;
 import za.ac.wits.eie.ELEN7045.aps.test.base.BaseTest;
@@ -37,7 +37,7 @@ public class ProcessScrapeResultTest extends BaseTest {
 	private boolean testCreditCard() {
 		boolean result = true;
 		String exampleFileName = "temp/InputData/creditcard.xml";
-		ScrapeSession ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
+		ScrapeResultDTO ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
 		assertNotNull(ss);
 
 		CreditCardStatement ccs = new CreditCardStatement();
@@ -55,7 +55,7 @@ public class ProcessScrapeResultTest extends BaseTest {
 	private boolean testMunicipality() {
 		boolean result = true;
 		String exampleFileName = "temp/InputData/municipality.xml";
-		ScrapeSession ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
+		ScrapeResultDTO ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
 		assertNotNull(ss);
 
 		MunicipalityStatement ccs = new MunicipalityStatement();
@@ -73,7 +73,7 @@ public class ProcessScrapeResultTest extends BaseTest {
 	private boolean testTelco() {
 		boolean result = true;
 		String exampleFileName = "temp/InputData/telco.xml";
-		ScrapeSession ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
+		ScrapeResultDTO ss = ScrapeUnmarshaller.domUnmarshaller(exampleFileName);
 		assertNotNull(ss);
 
 		TelcoStatement ccs = new TelcoStatement();

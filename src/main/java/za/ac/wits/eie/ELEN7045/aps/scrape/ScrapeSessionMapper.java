@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
+import za.ac.wits.eie.ELEN7045.aps.dto.ScrapeResultDTO;
 import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 
 @Stateless
@@ -16,18 +17,18 @@ public class ScrapeSessionMapper {
 	private Logger log;
 
 	private Object invoke(Statement statement, String methodName, Object parameter) throws Exception {
-		Class<?> c = statement.getClass();
-		Method m = c.getMethod(methodName, parameter.getClass());
-		return m.invoke(statement, parameter);
+		Class<?> cls = statement.getClass();
+		Method method= cls.getMethod(methodName, parameter.getClass());
+		return method.invoke(statement, parameter);
 	}
 
-	public void map(ScrapeSession scrapeSession, Statement statement) throws Exception {
-		statement.setBaseUrl(scrapeSession.getBaseurl());
-		statement.setDate(scrapeSession.getDate());
-		statement.setTime(scrapeSession.getTime());
-		statement.setReturnCode(scrapeSession.getReturncode());
+	public void map(ScrapeResultDTO scrapeResult, Statement statement) throws Exception {
+		statement.setBaseUrl(scrapeResult.getBaseurl());
+		statement.setDate(scrapeResult.getDate());
+		statement.setTime(scrapeResult.getTime());
+		statement.setReturnCode(scrapeResult.getReturncode());
 
-		for (Datapair datapair : scrapeSession.getDatapairs()) {
+		for (Datapair datapair : scrapeResult.getDatapairs()) {
 			try {
 
 				String methodName = AttributeTranslator.translate("set", datapair.getText());

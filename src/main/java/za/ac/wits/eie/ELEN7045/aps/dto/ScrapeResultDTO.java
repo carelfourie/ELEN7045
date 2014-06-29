@@ -1,9 +1,11 @@
-package za.ac.wits.eie.ELEN7045.aps.scrape;
+package za.ac.wits.eie.ELEN7045.aps.dto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScrapeSession {
+import za.ac.wits.eie.ELEN7045.aps.scrape.Datapair;
+
+public class ScrapeResultDTO {
 
 	private String baseurl;
 
