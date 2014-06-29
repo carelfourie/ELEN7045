@@ -1,4 +1,3 @@
-insert into Member (id, name, email, phone_number) values (1, 'John Smith', 'john.smith@mailinator.com', '2125551212') 
 insert into APSUser (id, password, username) values (1, 'john', 'john')
 insert into BillingCycle (id, cycle) values (1, 'WEEKLY')
 insert into BillingCycle (id, cycle) values (2, 'MONTHLY')
