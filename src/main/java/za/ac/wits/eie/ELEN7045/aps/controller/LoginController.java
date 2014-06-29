@@ -55,11 +55,9 @@ public class LoginController {
 	 * @throws APSException
 	 */
 	public String login() throws APSException {
-
-		List<CompanyAccount> results;
 		try {
 			log.info("login to get scraped accounts for ........ " + credentials.getUsername());
-			results = loginService.loadAPSUserAccounts(credentials.getPassword(), credentials.getUsername());
+			List<CompanyAccount> results = loginService.loadAPSUserAccounts(credentials.getPassword(), credentials.getUsername());
 			log.info("account size ........ " + results.size());
 			if (results.size() != 0) {
 				setCompanyAccountList(results);
@@ -79,5 +77,4 @@ public class LoginController {
 	public void setCompanyAccountList(List<CompanyAccount> companyAccountList) {
 		this.companyAccountList = companyAccountList;
 	}
-
 }
