@@ -1,9 +1,8 @@
-package za.ac.wits.eie.ELEN7045.aps.controller;
+package za.ac.wits.eie.ELEN7045.aps.model;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
 
 @Entity

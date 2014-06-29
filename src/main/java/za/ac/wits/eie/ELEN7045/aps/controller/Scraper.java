@@ -44,7 +44,7 @@ public class Scraper {
 	@Inject
 	private Logger log;
 	@Inject
-	Login login;
+	LoginController login;
 
 	private String minimumAmountDue;
 	private String openingBalance;
