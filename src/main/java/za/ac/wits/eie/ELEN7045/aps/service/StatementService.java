@@ -1,9 +1,7 @@
 package za.ac.wits.eie.ELEN7045.aps.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -33,7 +31,7 @@ public class StatementService extends BaseService {
 	 */
 	public List<Statement> loadAccountStatement(String accountNumber) throws APSException {
 		CompanyAccount companyAccount = getCompanyAccount(accountNumber);
-		log.info("Loading account statements for " + companyAccount.getAccountNumber());
+		log.info(String.format("loading account statements for: [%s]", companyAccount.getCompany().getName()));
 		Statement statement = companyAccount.getStatement();
 		log.info("statement for " + statement);
 		List<Statement> list = new ArrayList<Statement>();
@@ -49,10 +47,7 @@ public class StatementService extends BaseService {
 	 */
 	private CompanyAccount getCompanyAccount(String accountNumber) throws APSException {
 		log.info("Retrieving statement for account number " + accountNumber);
-
-		Map<String, String> map = new HashMap<String, String>(1);
-		map.put("accountNumber", accountNumber);
-		List<CompanyAccount> companyAccounts = findByCriteriaRepo.findByCriteria(CompanyAccount.class, Restrictions.allEq(map));
+		List<CompanyAccount> companyAccounts = findByCriteriaRepo.findByCriteria(CompanyAccount.class, Restrictions.eq("accountNumber", accountNumber));
 		if (companyAccounts.size() < 1) {
 			throw new APSException(String.format("Company Accounts not found: [%s]", accountNumber));
 		}
