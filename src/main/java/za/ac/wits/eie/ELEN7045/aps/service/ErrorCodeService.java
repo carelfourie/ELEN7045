@@ -22,13 +22,10 @@ public class ErrorCodeService extends BaseService {
 
 	public String getDescriptionForCode(String code) throws APSException {
 		List<ReturnCode> codes = findByCriteriaRepo.findByCriteria(ReturnCode.class, Restrictions.eq("code", code));
-
 		Map<String, String> msgVal = new LinkedHashMap<String, String>(2);
 		msgVal.put("Code not found: [%s]", code);
 		msgVal.put("Duplicate code found: [%s]", code);
-
 		listCheck(codes, msgVal);
-
 		return codes.get(0).getApsdescription();
 	}
 }
