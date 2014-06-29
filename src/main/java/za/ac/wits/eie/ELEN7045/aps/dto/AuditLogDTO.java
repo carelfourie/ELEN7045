@@ -5,8 +5,11 @@ import java.util.Date;
 public class AuditLogDTO {
 
 	private String apsUserName;
+	
 	private String companyName;
+	
 	private Date date;
+	
 	private String returnCode;
 
 	public String getApsUserName() {
@@ -40,5 +43,4 @@ public class AuditLogDTO {
 	public void setReturnCode(String returnCode) {
 		this.returnCode = returnCode;
 	}
-
 }
