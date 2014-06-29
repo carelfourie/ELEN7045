@@ -14,7 +14,7 @@ import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 import za.ac.wits.eie.ELEN7045.aps.service.APSUserAccountService;
 
 @Model
-public class Account {
+public class AccountController {
 
 	@Produces
 	@Named
