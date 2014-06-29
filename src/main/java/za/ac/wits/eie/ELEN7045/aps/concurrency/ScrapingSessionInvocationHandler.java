@@ -23,16 +23,16 @@ public class ScrapingSessionInvocationHandler implements InvocationHandler {
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 		// log the scrape
-		ScrapingSession ss = (ScrapingSession) args[0];
-		ScrapingEventAuditLog log = new ScrapingEventAuditLog();
+		ScrapingSession scrapingSession = (ScrapingSession) args[0];
+		ScrapingEventAuditLog eventLog = new ScrapingEventAuditLog();
 
-		log.setApsUser(ss.getCompanyAccount().getApsUser());
-		log.setCompany(ss.getCompanyAccount().getCompany());
-		log.setReturnCode(null);
-		log.setScrapeDate(new Date());
+		eventLog.setApsUser(scrapingSession.getCompanyAccount().getApsUser());
+		eventLog.setCompany(scrapingSession.getCompanyAccount().getCompany());
+		eventLog.setReturnCode(null);
+		eventLog.setScrapeDate(new Date());
 
 		// save
-		saveRepository.save(log);
+		saveRepository.save(eventLog);
 
 		// invoke the method
 		return method.invoke(concurrentScrapingExecutor, args);
