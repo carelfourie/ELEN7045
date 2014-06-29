@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
 
 import za.ac.wits.eie.ELEN7045.aps.model.base.BaseDomainEntity;
+import za.ac.wits.eie.ELEN7045.aps.repository.base.BaseRepository;
 
 @ApplicationScoped
 public class FindByCriteriaRepository extends BaseRepository {

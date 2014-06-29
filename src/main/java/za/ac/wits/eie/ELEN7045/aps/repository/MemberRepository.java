@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import za.ac.wits.eie.ELEN7045.aps.model.Member;
+import za.ac.wits.eie.ELEN7045.aps.repository.base.BaseRepository;
 
 @ApplicationScoped
 public class MemberRepository extends BaseRepository {

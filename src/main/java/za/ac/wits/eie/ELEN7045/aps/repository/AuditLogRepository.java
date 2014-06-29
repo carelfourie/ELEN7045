@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import za.ac.wits.eie.ELEN7045.aps.model.ScrapingEventAuditLog;
+import za.ac.wits.eie.ELEN7045.aps.repository.base.BaseRepository;
 
 @ApplicationScoped
 public class AuditLogRepository extends BaseRepository {
