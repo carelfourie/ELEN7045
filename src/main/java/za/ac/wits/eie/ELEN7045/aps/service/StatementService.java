@@ -46,10 +46,9 @@ public class StatementService extends BaseService {
 	 * @return {@link CompanyAccount}
 	 */
 	private CompanyAccount getCompanyAccount(String accountNumber) throws APSException {
-		log.info("Retrieving statement for account number " + accountNumber);
 		List<CompanyAccount> companyAccounts = findByCriteriaRepo.findByCriteria(CompanyAccount.class, Restrictions.eq("accountNumber", accountNumber));
 		if (companyAccounts.size() < 1) {
-			throw new APSException(String.format("Company Accounts not found: [%s]", accountNumber));
+			throw new APSException(String.format("Company Account number not found: [%s]", accountNumber));
 		}
 		return companyAccounts.get(0);
 	}
