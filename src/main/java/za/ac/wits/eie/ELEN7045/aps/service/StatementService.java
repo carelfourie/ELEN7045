@@ -31,9 +31,7 @@ public class StatementService extends BaseService {
 	 */
 	public List<Statement> loadAccountStatement(String accountNumber) throws APSException {
 		CompanyAccount companyAccount = getCompanyAccount(accountNumber);
-		log.info(String.format("loading account statements for: [%s]", companyAccount.getCompany().getName()));
 		Statement statement = companyAccount.getStatement();
-		log.info("statement for " + statement);
 		List<Statement> list = new ArrayList<Statement>();
 		list.add(statement);
 		return list;
@@ -50,6 +48,7 @@ public class StatementService extends BaseService {
 		if (companyAccounts.size() < 1) {
 			throw new APSException(String.format("Company Account number not found: [%s]", accountNumber));
 		}
+		log.info(String.format("loaded account statements for: [%s]", accountNumber));
 		return companyAccounts.get(0);
 	}
 }
