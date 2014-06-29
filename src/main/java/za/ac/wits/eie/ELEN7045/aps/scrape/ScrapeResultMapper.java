@@ -39,7 +39,7 @@ public class ScrapeResultMapper {
 			} catch (NullPointerException npe) {
 				log.error("Error mapping field: " + npe.getMessage());
 			} catch (Exception e) {
-
+			    log.error(e);
 			}
 		}
 	}
