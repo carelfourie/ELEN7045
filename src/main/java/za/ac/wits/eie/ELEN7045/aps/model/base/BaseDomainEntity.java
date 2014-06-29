@@ -11,9 +11,9 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class BaseDomainEntity<ID extends Serializable> {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private ID id;
 
 	public BaseDomainEntity() {

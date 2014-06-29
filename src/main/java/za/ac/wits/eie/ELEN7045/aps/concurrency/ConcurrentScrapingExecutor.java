@@ -8,7 +8,7 @@ import javax.inject.Named;
 
 @Named
 public class ConcurrentScrapingExecutor implements ConcurrentScrapingExecutorIFace {
-    
+
 	@Inject
 	private ManagedExecutorService managedExecutorService;
 

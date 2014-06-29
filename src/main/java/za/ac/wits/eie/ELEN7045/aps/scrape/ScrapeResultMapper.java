@@ -18,7 +18,7 @@ public class ScrapeResultMapper {
 
 	private Object invoke(Statement statement, String methodName, Object parameter) throws Exception {
 		Class<?> cls = statement.getClass();
-		Method method= cls.getMethod(methodName, parameter.getClass());
+		Method method = cls.getMethod(methodName, parameter.getClass());
 		return method.invoke(statement, parameter);
 	}
 

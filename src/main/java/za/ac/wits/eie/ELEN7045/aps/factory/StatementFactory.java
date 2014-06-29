@@ -10,11 +10,11 @@ public abstract class StatementFactory {
 	public static Statement createCreditCardStatement() {
 		return new CreditCardStatement();
 	}
-	
+
 	public static Statement createMunicipalityStatement() {
 		return new MunicipalityStatement();
 	}
-	
+
 	public static Statement createTelcoStatement() {
 		return new TelcoStatement();
 	}
