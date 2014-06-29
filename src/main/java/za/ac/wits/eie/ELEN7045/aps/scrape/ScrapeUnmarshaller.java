@@ -44,7 +44,8 @@ public class ScrapeUnmarshaller {
 		}
 	}
 
-	private static String getTagValue(NodeList nodeList) {
+	@SuppressWarnings("unused")
+    private static String getTagValue(NodeList nodeList) {
 		if (nodeList == null) {
 			return null;
 		}
