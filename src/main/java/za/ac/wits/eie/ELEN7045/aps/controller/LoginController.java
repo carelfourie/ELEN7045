@@ -60,7 +60,7 @@ public class LoginController {
 			if (results.size() != 0) {
 				setCompanyAccountList(results);
 				new ListDataModel<CompanyAccount>(results);
-				initCredentials();
+				//initCredentials();
 			}
 			log.info("logged in");
 			return "success";

@@ -36,8 +36,6 @@ public class AccountController {
 	 * @return
 	 */
 	public String createAccount() {
-		// logic to create account
-		log.info("Creating account for user:  " + accountInfo.getUsername());
 		APSUser aPSUser = new APSUser();
 		if ((accountInfo.getUsername() != null) && (accountInfo.getPassword1().equals(accountInfo.getPassword2()))) {
 			aPSUser.setPassword(accountInfo.getPassword1());
