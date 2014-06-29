@@ -27,29 +27,42 @@ import za.ac.wits.eie.ELEN7045.aps.service.exception.APSException;
 public class Scraper {
 
 	private String accountNumber;
+
 	private String callCharges;
 
 	private String closingBalance;
+
 	private DataModel<CompanyAccount> companyAccountModel;
+
 	private List<CompanyAccount> companyAccounts;
+
 	private String creditAvailable;
 
 	// credit card statement
 	private String creditCardType;
+
 	private String creditLimit;
+
 	private String discount;
+
 	private String electricityCharges;
 
 	private String interestRate;
+
 	@Inject
 	private Logger log;
+
 	@Inject
-	LoginController login;
+	private LoginController login;
 
 	private String minimumAmountDue;
+
 	private String openingBalance;
+
 	private boolean renderCredit;
+
 	private boolean renderMunicpal;
+
 	// render
 	private boolean renderTelco;
 
