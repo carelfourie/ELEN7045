@@ -1,6 +1,6 @@
-package za.ac.wits.eie.ELEN7045.aps.controller;
+package za.ac.wits.eie.ELEN7045.aps.dto;
 
-public class AccountInfo {
+public class AccountInfoDTO {
 
 	private String password1;
 

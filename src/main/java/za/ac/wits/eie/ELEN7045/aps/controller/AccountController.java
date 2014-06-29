@@ -10,6 +10,7 @@ import javax.inject.Named;
 
 import org.jboss.logging.Logger;
 
+import za.ac.wits.eie.ELEN7045.aps.dto.AccountInfoDTO;
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 import za.ac.wits.eie.ELEN7045.aps.service.APSUserAccountService;
 
@@ -18,7 +19,7 @@ public class AccountController {
 
 	@Produces
 	@Named
-	private AccountInfo accountInfo;
+	private AccountInfoDTO accountInfo;
 
 	@Inject
 	APSUserAccountService aPSUserAccountService;
@@ -52,6 +53,6 @@ public class AccountController {
 
 	@PostConstruct
 	public void initCredentials() {
-		accountInfo = new AccountInfo();
+		accountInfo = new AccountInfoDTO();
 	}
 }
