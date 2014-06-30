@@ -8,8 +8,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.jboss.logging.Logger;
-
 import za.ac.wits.eie.ELEN7045.aps.dto.AccountInfoDTO;
 import za.ac.wits.eie.ELEN7045.aps.model.APSUser;
 import za.ac.wits.eie.ELEN7045.aps.service.APSUserAccountService;
@@ -27,17 +25,12 @@ public class AccountController {
 	@Inject
 	private FacesContext facesContext;
 
-	@Inject
-	private Logger log;
-
 	/**
 	 * Create account for user
 	 * 
 	 * @return
 	 */
 	public String createAccount() {
-		// logic to create account
-		log.info("Creating account for user:  " + accountInfo.getUsername());
 		APSUser aPSUser = new APSUser();
 		if ((accountInfo.getUsername() != null) && (accountInfo.getPassword1().equals(accountInfo.getPassword2()))) {
 			aPSUser.setPassword(accountInfo.getPassword1());
