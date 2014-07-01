@@ -3,7 +3,7 @@ package za.ac.wits.eie.ELEN7045.aps.dto;
 public class CredentialsDTO {
 
 	private String password;
-	
+
 	private String username;
 
 	public String getPassword() {

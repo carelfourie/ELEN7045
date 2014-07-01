@@ -8,13 +8,13 @@ import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 public class TelcoStatement extends Statement {
 
 	private String callCharges;
-	
+
 	private String serviceCharges;
-	
+
 	private String telephoneNumber;
-	
+
 	private String totalCallDuration;
-	
+
 	private String totalNumberOfCalls;
 
 	public TelcoStatement() {

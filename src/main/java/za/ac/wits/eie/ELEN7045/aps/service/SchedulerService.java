@@ -9,6 +9,5 @@ public class SchedulerService extends BaseService {
 
 	@Inject
 	private FindByCriteriaRepository findByCriteriaRepo;
-	
-	
+
 }

@@ -8,21 +8,21 @@ import za.ac.wits.eie.ELEN7045.aps.model.statement.base.Statement;
 public class MunicipalityStatement extends Statement {
 
 	private String electricityCharges;
-	
+
 	private String electricityUsed;
-	
+
 	private String gasCharges;
-	
+
 	private String gasUsed;
-	
+
 	private String installmentNotice;
-	
+
 	private String refuseCharges;
-	
+
 	private String sewerageCharges;
-	
+
 	private String waterCharges;
-	
+
 	private String waterUsed;
 
 	public MunicipalityStatement() {
