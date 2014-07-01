@@ -5,23 +5,30 @@
   <PROCESS-ITEM ID="rules:#account.xhtml:0" NAME="item"
    PATH="/account.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="success:#{account.createAccount}:#index.xhtml" NAME="output"
-    PATH="/index.xhtml" TARGET="rules:#index.xhtml"
-    TITLE="#{account.createAccount}:success" model-entity="JSFProcessItemOutput"/>
+    ID="success:#{accountController.createAccount}:#index.xhtml"
+    NAME="output" PATH="/index.xhtml" TARGET="rules:#index.xhtml"
+    TITLE="#{accountController.createAccount}:success" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
   SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#index.xhtml:0" NAME="item"
    PATH="/index.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="success:#{login.login}:#scrape.xhtml"
-    NAME="output" PATH="/scrape.xhtml" TARGET="rules:#scrape.xhtml"
-    TITLE="#{login.login}:success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="success:#{loginController.login}:#scrape.xhtml" NAME="output"
+    PATH="/scrape.xhtml" TARGET="rules:#scrape.xhtml"
+    TITLE="#{loginController.login}:success" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#scrape.xhtml" PATH="/scrape.xhtml"
   SHAPE="448,17,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#scrape.xhtml:0" NAME="item"
+   PATH="/scrape.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success:#{scraper.view}:#statement.xhtml"
+    NAME="output" PATH="/statement.xhtml"
+    TARGET="rules:#statement.xhtml" TITLE="#{scraper.view}:success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#scrape.xhtml:1" NAME="item1"
    PATH="/scrape.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
     ID="success:#{scrapingEventAuditLogController.getAuditLog}:#auditlog.xhtml"
@@ -31,4 +38,6 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#auditlog.xhtml" PATH="/auditlog.xhtml"
   SHAPE="656,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#statement.xhtml" PATH="/statement.xhtml"
+  SHAPE="672,177,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

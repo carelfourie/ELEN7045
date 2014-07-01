@@ -25,7 +25,7 @@
 <navigation-rule>
         <from-view-id>/account.xhtml</from-view-id>
 	<navigation-case>
-		<from-action>#{account.createAccount}</from-action>
+		<from-action>#{accountController.createAccount}</from-action>
 		<from-outcome>success</from-outcome>
 		<to-view-id>/index.xhtml</to-view-id>
 	</navigation-case>
@@ -33,7 +33,7 @@
 <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
 	<navigation-case>
-		<from-action>#{login.login}</from-action>
+		<from-action>#{loginController.login}</from-action>
 		<from-outcome>success</from-outcome>
 		<to-view-id>/scrape.xhtml</to-view-id>
 	</navigation-case>
