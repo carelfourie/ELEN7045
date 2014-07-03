@@ -50,17 +50,8 @@ public class ConcurrencyTest extends BaseTest {
 	@Inject
 	LoginService loginService;
 
-	private List<ScrapingSession> getScrapingSessions() throws APSException {
-		List<ScrapingSession> sessions = new ArrayList<ScrapingSession>();
-		List<CompanyAccount> acounts = loginService.loadAPSUserAccounts("john", "john");
-		for (CompanyAccount companyAccount : acounts) {
-			sessions.add(new ScrapingSession(companyAccount));
-		}
-		return sessions;
-	}
-
 	@Test
-	public void test1() throws Exception {
+	public void directTest() throws Exception {
 		try {
 			for (ScrapingSession scrapingSession : getScrapingSessions()) {
 				Future<?> task = executor.submit(scrapingSession);
@@ -78,7 +69,7 @@ public class ConcurrencyTest extends BaseTest {
 	}
 
 	@Test
-	public void test2() throws Exception {
+	public void proxyTest() throws Exception {
 		try {
 			for (ScrapingSession scrapingSession : getScrapingSessions()) {
 				ConcurrentScrapingExecutorIFace proxyExecutor = (ConcurrentScrapingExecutorIFace) ProxyFactory.newInstance(new ConcurrentScrapingExecutor());
@@ -96,4 +87,12 @@ public class ConcurrencyTest extends BaseTest {
 		}
 	}
 
+	private List<ScrapingSession> getScrapingSessions() throws APSException {
+		List<ScrapingSession> sessions = new ArrayList<ScrapingSession>();
+		List<CompanyAccount> acounts = loginService.loadAPSUserAccounts("john", "john");
+		for (CompanyAccount companyAccount : acounts) {
+			sessions.add(new ScrapingSession(companyAccount));
+		}
+		return sessions;
+	}
 }

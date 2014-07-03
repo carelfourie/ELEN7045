@@ -16,7 +16,7 @@ public class Producer {
 
 	/**
 	 * Container managed persistence via JPA 2.1 (JSR-338)
-	 * 
+	 *
 	 */
 	@Produces
 	@PersistenceContext(type = PersistenceContextType.TRANSACTION, unitName = "primary")
@@ -25,15 +25,15 @@ public class Producer {
 	/**
 	 * Container managed thread pool via Concurrency 1.0 (JSR-236) 5 core
 	 * threads, 25 max.
-	 * 
+	 *
 	 */
 	@Produces
 	@Resource(name = "java:jboss/ee/concurrency/executor/default")
-	private ManagedExecutorService managedExecutorService;
+	protected ManagedExecutorService managedExecutorService;
 
 	/**
 	 * Faces 2.1
-	 * 
+	 *
 	 */
 	@Produces
 	@RequestScoped
@@ -43,7 +43,7 @@ public class Producer {
 
 	/**
 	 * Produce logger for injection elsewhere.
-	 * 
+	 *
 	 */
 	@Produces
 	public Logger produceLog(InjectionPoint injectionPoint) {

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.1.6" icons="false" automaticImage="PNG">  
+  <object id="1" language="java" name="za.ac.wits.eie.ELEN7045.aps.concurrency.ProxyFactory" project="jee_aps_app" 
+    file="/jee_aps_app/src/main/java/za/ac/wits/eie/ELEN7045/aps/concurrency/ProxyFactory.java" binary="false" 
+    label="proxyFactory" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="115" y="0"/>    
+    <execution id="2">      
+      <position height="63" width="183" x="5" y="114"/>    
+    </execution>  
+  </object>  
+  <object id="5" language="java" name="za.ac.wits.eie.ELEN7045.aps.concurrency.ScrapingSessionInvocationHandler" 
+    project="jee_aps_app" 
+    file="/jee_aps_app/src/main/java/za/ac/wits/eie/ELEN7045/aps/concurrency/ScrapingSessionInvocationHandler.java" 
+    binary="false" label="scrapingSessionInvocationHandler" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="419" y="0"/>    
+    <execution id="4">      
+      <position height="21" width="222" x="192" y="135"/>    
+    </execution>    
+    <execution id="6">      
+      <position height="63" width="222" x="192" y="169"/>    
+    </execution>    
+    <execution id="9">      
+      <position height="63" width="222" x="192" y="254"/>    
+    </execution>  
+  </object>  
+  <object id="12" language="java" name="za.ac.wits.eie.ELEN7045.aps.repository.SaveRepository" project="jee_aps_app" 
+    file="/jee_aps_app/src/main/java/za/ac/wits/eie/ELEN7045/aps/repository/SaveRepository.java" binary="false" 
+    label="saveRepository" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="384" y="0"/>    
+    <execution id="8">      
+      <position height="21" width="173" x="418" y="190"/>    
+    </execution>  
+  </object>  
+  <object id="13" language="java" name="za.ac.wits.eie.ELEN7045.aps.concurrency.ConcurrentScrapingExecutor" 
+    project="jee_aps_app" 
+    file="/jee_aps_app/src/main/java/za/ac/wits/eie/ELEN7045/aps/concurrency/ConcurrentScrapingExecutor.java" 
+    binary="false" label="concurrentScrapingExecutor" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="561" y="0"/>    
+    <execution id="11">      
+      <position height="21" width="189" x="595" y="275"/>    
+    </execution>    
+    <execution id="14">      
+      <position height="63" width="189" x="595" y="352"/>    
+    </execution>  
+  </object>  
+  <object id="17" language="java" name="za.ac.wits.eie.ELEN7045.aps.concurrency.ScrapingSession" project="jee_aps_app" 
+    file="/jee_aps_app/src/main/java/za/ac/wits/eie/ELEN7045/aps/concurrency/ScrapingSession.java" binary="false" 
+    label="scrapingSession" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="723" y="0"/>    
+    <execution id="16">      
+      <position height="21" width="183" x="788" y="373"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="invoke(java.lang.Object,java.lang.reflect.Method,java.lang.Object[]):java.lang.Object">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="7" operation="save(T)">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="10" 
+    operation="submit(za.ac.wits.eie.ELEN7045.aps.concurrency.ScrapingSession):java.util.concurrent.Future&lt;?&gt;">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="15" operation="run():void">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>
+</sequence-diagram>
